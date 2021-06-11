@@ -1,0 +1,19 @@
+# dotfiles
+
+## How to install
+
+Install via snippet:
+```
+curl -lKs https://gist.githubusercontent.com/kaiserdrake/0406658292f73208435845bb4d6622d5/raw/2c116600acb441621155d7e1befbc519d3e6d5c0/fetch-dotfiles.sh | /bin/bash
+```
+
+Manual installation procedure:
+```
+git clone https://github.com/kaiserdrake/dotfiles.git .dotfiles
+sh .dotfiles/metascripts/bootstrap.sh
+```
+
+## How to uninstall
+```
+sh .dotfiles/metascripts/bootstrap.sh uninstall
+```
