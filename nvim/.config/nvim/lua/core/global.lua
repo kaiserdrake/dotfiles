@@ -2,23 +2,20 @@ local global = {}
 local home = os.getenv("HOME")
 local path_sep = global.is_windows and '\\' or '/'
 local os_name = vim.loop.os_uname().sysname
+local filestore = os.getenv("FILESTORE_PATH")
 
-local function get_hostname()
-  local f = io.popen ("/bin/hostname")
-  local hostname = f:read("*a") or ""
-  f:close()
-  hostname =string.gsub(hostname, "\n$", "")
-  return hostname
-end
-
-local function get_env_context()
-  env_context = os.getenv("META_IMAGEREF")
-  if (env_context == nil or env_context == '') then
-    return get_hostname()
-  else
-    return env_context
+function global:set_linenumber(option)
+  if (option == 'relative') then
+    vim.wo.number = true
+    vim.wo.relativenumber = true
+  elseif (option == 'on') then
+    vim.wo.number = true
+    vim.wo.relativenumber = false
+  elseif (option == 'off') then
+    vim.wo.number = false
+    vim.wo.relativenumber = false
   end
-end  
+end
 
 function global:load_variables()
   self.is_mac = os_name == 'Mac'
@@ -30,8 +27,7 @@ function global:load_variables()
   self.path_sep = path_sep
   self.home = home
   self.data_dir = string.format('%s/site/',vim.fn.stdpath('data'))
-  self.hostname = get_hostname()
-  self.env_context = get_env_context()
+  self.filestore = filestore
 end
 
 global:load_variables()

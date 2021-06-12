@@ -4,7 +4,7 @@
 
 # Check function if execution context is within a docker container
 function within_docker() {
-    awk -F/ '$2 == "docker"' /proc/self/cgroup | read
+    (awk -F/ '$2 == "docker"' /proc/self/cgroup | read dummy)
 }
 
 # Command list generator using 'history' as source.
@@ -22,7 +22,7 @@ function get-history-lines(){
 # either # or ```.
 function get-stored-command-lines(){
     if [ -f "$1" ]; then
-        cat "$1" | sed ':loop /^[^#].*[^\\]\\$/N; s/\\\n//; t loop' | sed -e '/^#/d;/^```/d;/^$/d' | tr -s " "
+      sed '/```/{n;:l N;/```/b; s/\n//; bl}' $1 | sed -n '/```/,/```/{//!p}' | sed 's/\\//g'
     fi
 }
 
@@ -36,14 +36,22 @@ function get-code-size(){
 
 # Command list aggregator.
 # Uses fuzzy search to allow searching of commamnds list.
+# Sample usage: ARGS="file1 file2" DRYRUN=echo do-command "command"
 function do-command(){
     unset MY_FIND_COMMAND
-    COMFILE="$METACFG_LOCATION/commands.md"
+    COMFILE="$FILESTORE_PATH/wikinotes/commands.md"
     if [ -z "$1" ]; then
         MY_FIND_COMMAND=`(get-history-lines && get-stored-command-lines $COMFILE) | sort -u | fzf`
     else
         MY_FIND_COMMAND=`(get-history-lines && get-stored-command-lines $COMFILE) | sort -u | fzf -q "$1" -1 -0`
     fi
+    # Replace all positional parameters in found command with the parameters
+    # passed to this function
+    args=(`echo ${ARGS}`)
+    for ((i=0; i<${#args[@]}; i++)) do
+      pattern="\$"${i+1}
+      MY_FIND_COMMAND=${MY_FIND_COMMAND/$pattern/${args[i]}}
+    done
     ${DRYRUN} eval $MY_FIND_COMMAND
 }
 
@@ -77,8 +85,8 @@ function docker-run(){
         IMAGENAME=$1
     fi
 
-    # Fetch run command configuration through the docker.abode.md file.
-    COMFILE="$METACFG_LOCATION/docker.abode.md"
+    # Fetch run command configuration through the docker_mapping.md file.
+    COMFILE="$FILESTORE_PATH/wikinotes/docker_mapping.md"
     if [ -f "$COMFILE" ]; then
         if [ -z "$IMAGENAME" ]; then
             ABODE=`get-stored-command-lines $COMFILE | fzf --prompt=Pattern: --header "HOSTNAME | IMAGE | OPTIONS | COMMAND" -1 -0`
@@ -100,7 +108,7 @@ function docker-run(){
         COMMANDS=${tokens[3]}
     fi
 
-    # Append run configuration from docker.abode and default.
+    # Append run configuration from docker_mapping.md and default.
     DOCKOPTS=$(echo "$DOCKOPTS $DOCKER_DEFOPTIONS" | tr -s " ")
     if [ ! -z "$DOCKHOST" ]; then
         # do not use docker generated hostname
@@ -110,5 +118,9 @@ function docker-run(){
         DOCKOPTS=$(echo "$DOCKOPTS -e META_IMAGEREF=$IMAGENAME")
     fi
     DOCKOPTS=$(echo "$DOCKOPTS -w `pwd`")
-    ${DRYRUN} eval docker run $DOCKOPTS $IMAGENAME $COMMANDS
+    if [ -n "$ZSH_VERSION" ]; then
+      ${DRYRUN} eval docker run $DOCKOPTS $IMAGENAME /bin/zsh $COMMANDS
+    else
+      ${DRYRUN} eval docker run $DOCKOPTS $IMAGENAME $COMMANDS
+    fi
 }

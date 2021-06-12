@@ -13,7 +13,6 @@ local def_map = {
     ["n|[w"]         = map_cu('WhitespacePrev'):with_noremap(),
     ["n|]b"]         = map_cu('bp'):with_noremap(),
     ["n|[b"]         = map_cu('bn'):with_noremap(),
-    ["n|<Space>cw"]  = map_cu([[silent! keeppatterns %substitute/\s\+$//e]]):with_noremap():with_silent(),
     ["n|<C-h>"]      = map_cmd('<C-w>h'):with_noremap(),
     ["n|<C-l>"]      = map_cmd('<C-w>l'):with_noremap(),
     ["n|<C-j>"]      = map_cmd('<C-w>j'):with_noremap(),
@@ -21,8 +20,6 @@ local def_map = {
     ["n|<A-[>"]      = map_cr('vertical resize -5'):with_silent(),
     ["n|<A-]>"]      = map_cr('vertical resize +5'):with_silent(),
     ["n|<C-q>"]      = map_cmd(':wq<CR>'),
-    ["n|<Leader>ss"] = map_cu('SessionSave'):with_noremap(),
-    ["n|<Leader>sl"] = map_cu('SessionLoad'):with_noremap(),
   -- Insert
     ["i|<C-w>"]      = map_cmd('<C-[>diwa'):with_noremap(),
     ["i|<C-h>"]      = map_cmd('<BS>'):with_noremap(),

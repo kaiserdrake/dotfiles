@@ -36,6 +36,12 @@ function config.vim_cursorword()
   vim.api.nvim_command('augroup END')
 end
 
+function config.vim_rooter()
+  vim.g.rooter_silent_chdir = 1
+  vim.g.rooter_resolve_links = 1
+  vim.g.rooter_patterns = {"package.json", ".git/"}
+end
+
 function config.telescope()
   if not packer_plugins['plenary.nvim'].loaded then
     vim.cmd [[packadd plenary.nvim]]
@@ -44,23 +50,54 @@ function config.telescope()
   end
   require('telescope').setup {
     defaults = {
+      find_command = {
+        "rg",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+        "--follow",
+        "-uu",
+      },
       prompt_prefix = '> ',
-      prompt_position = 'bottom',
       selection_caret = " ",
-      sorting_strategy = 'ascending',
-      results_width = 0.6,
+      sorting_strategy = 'descending',
+      layout_strategy = 'horizontal',
       file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
       grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
       qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+      file_ignore_patterns = {
+        'node_modules/.*',
+        '.git/.*',
+      },
+    },
+    pickers = {
+      buffers = {
+        results_title = "",
+        sort_lastused = true,
+        mappings = {
+          i = {
+            ["<c-d>"] = require("telescope.actions").delete_buffer,
+          },
+          n = {
+            ["<c-d>"] = require("telescope.actions").delete_buffer,
+          }
+        }
+      },
+      find_files = {
+        results_title = "",
+      },
     },
     extensions = {
-        fzy_native = {
-            override_generic_sorter = false,
-            override_file_sorter = true,
-        }
-    }
+      fzy_native = {
+        override_generic_sorter = false,
+        override_file_sorter = true,
+      },
+    },
   }
   require'telescope'.load_extension('dotfiles')
+  vim.cmd[[highlight link TelescopePromptPrefix Character]]
 end
 
 function config.nvim_treesitter()
@@ -82,6 +119,203 @@ function config.nvim_treesitter()
         },
       },
     },
+  }
+end
+
+function config.galaxyline()
+  require('modules.editor.statusline')
+end
+
+function config.bufferline()
+  require("bufferline").setup {
+    options = {
+      indicator_icon = "▎",
+      buffer_close_icon = "",
+      modified_icon = "●",
+      close_icon = "",
+      close_command = "bdelete %d",
+      right_mouse_command = "bdelete! %d",
+      left_trunc_marker = "",
+      right_trunc_marker = "",
+      offsets = {
+        {
+          filetype = "NvimTree",
+          text = "",
+          text_align = "center",
+          padding = 1,
+        },
+      },
+      show_tab_indicators = true,
+      show_close_icon = false,
+      show_buffer_close_icons = false,
+      diagnostics = false,
+    },
+    highlights = {
+      fill = {
+        guifg = { attribute = "fg", highlight = "Normal" },
+        guibg = { attribute = "bg", highlight = "StatusLineNC" },
+      },
+    },
+  }
+end
+
+function config.onedark()
+  vim.g.onedark_terminal_italics=1
+  vim.g.onedark_hide_endofbuffer=1
+  vim.cmd [[colorscheme onedark]]
+end
+
+function config.gitsigns()
+  if not packer_plugins['plenary.nvim'].loaded then
+    vim.cmd [[packadd plenary.nvim]]
+  end
+  require('gitsigns').setup {
+    signs = {
+      add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+      change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+      delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+      topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+      changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    },
+    keymaps = {
+       -- Default keymap options
+       noremap = true,
+       buffer = true,
+
+       ['n ]g'] = { expr = true, "&diff ? ']g' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'"},
+       ['n [g'] = { expr = true, "&diff ? '[g' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'"},
+
+       ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+       ['n <leader>hu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+       ['n <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+       ['n <leader>hp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
+       ['n <leader>hb'] = '<cmd>lua require"gitsigns".blame_line()<CR>',
+
+       -- Text objects
+       ['o ih'] = ':<C-U>lua require"gitsigns".text_object()<CR>',
+       ['x ih'] = ':<C-U>lua require"gitsigns".text_object()<CR>'
+     },
+  }
+end
+
+function config.indent_blankline()
+  vim.g.indent_blankline_char = "│"
+  vim.g.indent_blankline_show_first_indent_level = true
+  vim.g.indent_blankline_filetype_exclude = {
+    "startify",
+    "dashboard",
+    "dotooagenda",
+    "log",
+    "fugitive",
+    "gitcommit",
+    "packer",
+    "vimwiki",
+    "markdown",
+    "json",
+    "txt",
+    "vista",
+    "help",
+    "todoist",
+    "peekaboo",
+    "git",
+    "TelescopePrompt",
+    "undotree",
+    "flutterToolsOutline",
+    "" -- for all buffers without a file type
+  }
+  vim.g.indent_blankline_buftype_exclude = {"terminal", "nofile"}
+  vim.g.indent_blankline_show_trailing_blankline_indent = false
+  vim.g.indent_blankline_show_current_context = true
+  vim.g.indent_blankline_context_patterns = {
+    "class",
+    "function",
+    "method",
+    "block",
+    "list_literal",
+    "selector",
+    "^if",
+    "^table",
+    "if_statement",
+    "while",
+    "for"
+  }
+  -- because lazy load indent-blankline so need readd this autocmd
+  vim.cmd('autocmd CursorMoved * IndentBlanklineRefresh')
+end
+
+function config.which_key()
+  require("which-key").setup {
+    show_help = true,
+    ignore_missing = false,
+    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CMD>", "<CR>", "<cr>", "call", "lua", "^:", "^ ", "<Plug>"},
+    key_labels = {
+      ["<space>"] = "SPC",
+      ["<cr>"] = "ENTER",
+      ["<tab>"] = "TAB"
+    },
+    plugins = {
+      marks = true, -- shows a list of your marks on ' and `
+      registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+      -- the presets plugin, adds help for a bunch of default keybindings in Neovim
+      -- No actual key bindings are created
+      presets = {
+        operators = false, -- adds help for operators like d, y, ...
+        motions = false, -- adds help for motions
+        text_objects = false, -- help for text objects triggered after entering an operator
+        windows = true, -- default bindings on <c-w>
+        nav = true, -- misc bindings to work with windows
+        z = true, -- bindings for folds, spelling and others prefixed with z
+        g = true, -- bindings for prefixed with g
+      },
+    },
+    icons = {
+      breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+      separator = "→", -- symbol used between a key and it's label
+      group = "+", -- symbol prepended to a group
+    },
+    triggers_blacklist = {
+      -- list of mode / prefixes that should never be hooked by WhichKey
+      -- this is mostly relevant for key maps that start with a native binding
+      -- most people should not need to change this
+      i = { "j", "k" },
+      v = { "j", "k" },
+    },
+    window = {
+      border = "none", -- none, single, double, shadow
+      position = "bottom", -- bottom, top
+      margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
+      padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+    },
+    layout = {
+      height = { min = 4, max = 25 }, -- min and max height of the columns
+      width = { min = 20, max = 50 }, -- min and max width of the columns
+      spacing = 6, -- spacing between columns
+      align = "left",
+    },
+  }
+  require('keymap.keymapping')
+  vim.api.nvim_command[[autocmd ColorScheme * highlight link WhichKey Statement]]
+  vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeySeparator ctermfg=114 guifg=#98C379]]
+  vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyDesc ctermfg=39 guifg=#61AFEF]]
+  vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyGroup cterm=italic ctermfg=39 gui=bold guifg=#61AFEF]]
+end
+
+function config.vimwiki()
+  wikipath = require('core.global').filestore..'/wikinotes'
+  vim.g.vimwiki_list = {{path=wikipath,
+                         syntax='markdown',
+                         ext='.md',
+                         auto_diary_index=1}}
+  vim.g.vimwiki_key_mappings = {['table_mappings']='0'}
+  vim.g.vimwiki_autowriteall = 1
+end
+
+function config.sessions()
+  require('auto-session').setup{
+    auto_session_enable_last_session = false,
+    auto_session_enable = true,
+    auto_session_root_dir = require('core.global').cache_dir.."sessions/",
+    auto_save_enabled = true,
   }
 end
 

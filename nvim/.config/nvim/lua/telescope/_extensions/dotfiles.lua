@@ -12,7 +12,11 @@ local dotfiles_list = function(opts)
   for file in p:lines() do
     table.insert(list,file)
   end
-  local dot_conf = io.popen('rg --files '..global.home..'/.config')
+  local dot_conf = io.popen('rg --files '..global.home..'/.dotfiles')
+  for file in dot_conf:lines() do
+    table.insert(list,file)
+  end
+  local dot_conf = io.popen('rg --files '..global.filestore)
   for file in dot_conf:lines() do
     table.insert(list,file)
   end

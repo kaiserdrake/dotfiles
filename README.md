@@ -4,7 +4,7 @@
 
 Install via snippet:
 ```
-curl -lKs https://gist.githubusercontent.com/kaiserdrake/0406658292f73208435845bb4d6622d5/raw/2c116600acb441621155d7e1befbc519d3e6d5c0/fetch-dotfiles.sh | /bin/bash
+curl -lKs https://gist.githubusercontent.com/kaiserdrake/0406658292f73208435845bb4d6622d5/raw/84c753abdde630b8f1fc18aa8c67eb5e1ad03c22/fetch-dotfiles.sh | /bin/bash
 ```
 
 Manual installation procedure:
