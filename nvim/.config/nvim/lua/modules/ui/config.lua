@@ -113,6 +113,7 @@ function config.which_key()
       v = { "j", "k" },
     }
   }
+  require('keymap.keymapping')
 end
 
 return config
