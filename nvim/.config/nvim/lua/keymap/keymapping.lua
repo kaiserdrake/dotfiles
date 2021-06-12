@@ -4,7 +4,7 @@ local wk = require('which-key')
 wk.register({
   -- Files
   ["<leader>f"] = {name = "+file"},
-  ["<leader>ff"] = {"<cmd>Telescope find_files<cr>", "Find File"},
+  ["<leader>ff"] = {"<cmd>Telescope find_files previewer=false<cr>", "Find File"},
   ["<leader>fd"] = {"<cmd>Telescope dotfiles path="..os.getenv("HOME").."/.dotfiles<cr>", "Find Dotfile"},
   ["<leader>fb"] = {"<cmd>Telescope file_browser<cr>", "Browse File"},
   -- Buffer
