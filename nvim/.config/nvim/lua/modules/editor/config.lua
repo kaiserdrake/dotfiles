@@ -36,6 +36,11 @@ function config.vim_cursorword()
   vim.api.nvim_command('augroup END')
 end
 
+function config.vim_rooter()
+  vim.g.rooter_silent_chdir = 1
+  vim.g.rooter_resolve_links = 1
+end
+
 function config.telescope()
   if not packer_plugins['plenary.nvim'].loaded then
     vim.cmd [[packadd plenary.nvim]]

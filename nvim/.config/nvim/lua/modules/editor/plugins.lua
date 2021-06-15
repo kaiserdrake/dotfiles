@@ -30,6 +30,10 @@ editor['hrsh7th/vim-eft'] = {
   end
 }
 
+editor['airblade/vim-rooter'] = {
+  config = conf.vim_rooter,
+} 
+
 editor['nvim-telescope/telescope.nvim'] = {
   cmd = 'Telescope',
   config = conf.telescope,
