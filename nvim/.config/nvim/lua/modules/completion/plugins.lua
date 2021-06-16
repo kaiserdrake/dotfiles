@@ -22,4 +22,14 @@ completion['mattn/vim-sonictemplate'] = {
   config = conf.vim_sonictemplate,
 }
 
+completion['mattn/vim-sonictemplate'] = {
+  cmd = 'Template',
+  ft = {'go','typescript','lua','javascript','vim','rust','markdown'},
+  config = conf.vim_sonictemplate,
+}
+
+completion['ludovicchabant/vim-gutentags'] = {
+  config = conf.gutentags,
+}
+
 return completion

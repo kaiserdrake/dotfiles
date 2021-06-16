@@ -5,8 +5,9 @@ wk.register({
   -- Files
   ["<leader>f"] = {name = "+File"},
   ["<leader>ff"] = {"<cmd>Telescope find_files find_command=rg,--ignore,--files,--follow cwd="..os.getenv("HOME").."<cr>", "Find File"},
+  ["<leader>fh"] = {"<cmd>Telescope find_files find_command=rg,--hidden,--files,--follow cwd="..os.getenv("HOME").."<cr>", "Find All Files"},
   ["<leader>fp"] = {"<cmd>Telescope find_files find_command=rg,--ignore,--files,--follow<cr>", "Find Project File"},
-  ["<leader>fh"] = {"<cmd>Telescope find_files find_command=rg,--hidden,--files,--follow<cr>", "Find All Files"},
+  ["<leader>fh"] = {"<cmd>Telescope find_files find_command=rg,--hidden,--files,--follow<cr>", "Find All Project Files"},
   ["<leader>fd"] = {"<cmd>Telescope dotfiles path="..os.getenv("HOME").."/.dotfiles<cr>", "Find Dotfile"},
   ["<leader>fg"] = {"<cmd>Telescope git_files<cr>", "Find Git File"},
   ["<leader>fb"] = {"<cmd>Telescope file_browser<cr>", "Browse File"},

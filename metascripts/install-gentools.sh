@@ -1,5 +1,4 @@
 packageList=(
-  net-tools
   tmux
   trash-cli
   tree
@@ -7,6 +6,7 @@ packageList=(
   xclip
   fzf
   ripgrep
+  universal-ctags
 )
 
 preconfigure()
