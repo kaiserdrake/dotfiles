@@ -116,11 +116,11 @@ function config.gitsigns()
   end
   require('gitsigns').setup {
     signs = {
-      add = {hl = 'GitGutterAdd', text = '▋'},
-      change = {hl = 'GitGutterChange',text= '▋'},
-      delete = {hl= 'GitGutterDelete', text = '▋'},
-      topdelete = {hl ='GitGutterDeleteChange',text = '▔'},
-      changedelete = {hl = 'GitGutterChange', text = '▎'},
+      add = {hl = 'GitGutterAdd', text = '+'},
+      change = {hl = 'GitGutterChange',text= '~'},
+      delete = {hl= 'GitGutterDelete', text = '-'},
+      topdelete = {hl ='GitGutterDeleteChange',text = '-'},
+      changedelete = {hl = 'GitGutterChange', text = '~'},
     },
     keymaps = {
        -- Default keymap options
@@ -186,15 +186,6 @@ function config.indent_blankline()
   }
   -- because lazy load indent-blankline so need readd this autocmd
   vim.cmd('autocmd CursorMoved * IndentBlanklineRefresh')
-end
-
-function config.gutentags()
-  vim.g.gutentags_add_default_project_roots = 0
-  vim.g.gutentags_project_root = {"package.json", ".git"}
-  vim.g.gutentags_generate_on_new = 1
-  vim.g.gutentags_generate_on_missing = 1
-  vim.g.gutentags_generate_on_write = 1
-  vim.g.gutentags_generate_on_empty_buffer = 0
 end
 
 function config.which_key()

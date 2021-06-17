@@ -26,4 +26,9 @@ completion['mattn/vim-sonictemplate'] = {
   config = conf.vim_sonictemplate,
 }
 
+-- Provides auto generation of ctags
+completion['ludovicchabant/vim-gutentags'] = {
+  config = conf.gutentags,
+}
+
 return completion

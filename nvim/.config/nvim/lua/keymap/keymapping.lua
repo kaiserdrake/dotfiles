@@ -17,6 +17,10 @@ wk.register({
   ["<leader>bb"] = {"<cmd>Telescope buffers<cr>", "Find Buffer"},
   -- Tools
   ["<leader>t"] = {name = "+Tools"},
+  ---- Gutentags
+  ["<leader>tg"] = {name = "+Ctags"},
+  ["<leader>tgc"] = {"<cmd>GutentagsClearCache<cr>", "Clear ctags cache"},
+  ["<leader>tgu"] = {"<cmd>GutentagsUpdate<cr>", "Update ctags"},
   ---- Packer
   ["<leader>tp"] = {name = "+Packer"},
   ["<leader>tpu"] = {"<cmd>PackerUpdate<cr>", "PackerUpdate"},

@@ -36,7 +36,7 @@ editor['airblade/vim-rooter'] = {
   config = conf.vim_rooter,
 }
 
--- Provides fuzzy search of files, buffers, tags, etc
+-- Provides fuzzy search of files, buffers, etc
 editor['nvim-telescope/telescope.nvim'] = {
   cmd = 'Telescope',
   config = conf.telescope,
@@ -82,11 +82,6 @@ editor['lukas-reineke/indent-blankline.nvim'] = {
   event = 'BufRead',
   branch = 'lua',
   config = conf.indent_blankline
-}
-
--- Provides auto generation of ctags
-editor['ludovicchabant/vim-gutentags'] = {
-  config = conf.gutentags,
 }
 
 -- Provides whichkey mapping
