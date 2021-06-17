@@ -94,4 +94,9 @@ editor['folke/which-key.nvim'] = {
   config = conf.which_key
 }
 
+-- Provides orgmode folding and highlighting support
+editor['axvr/org.vim'] = {
+  opt = false
+}
+
 return editor

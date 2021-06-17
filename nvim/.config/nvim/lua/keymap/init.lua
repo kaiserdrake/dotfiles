@@ -3,6 +3,7 @@ local map_cr = bind.map_cr
 local map_cu = bind.map_cu
 local map_cmd = bind.map_cmd
 local map_args = bind.map_args
+
 require('keymap.config')
 
 -- Core mapping not registered in interactive keymaps
@@ -24,6 +25,9 @@ local plug_map = {
   ["n|F"]              = map_cmd("v:lua.enhance_ft_move('F')"):with_expr(),
   ["x|F"]              = map_cmd("v:lua.enhance_ft_move('F')"):with_expr(),
   ["o|F"]              = map_cmd("v:lua.enhance_ft_move('F')"):with_expr(),
+  -- Date insertion
+  ["i|<C-x>d"]         = map_cmd('strftime("[%Y-%m-%d %a]\")'):with_noremap():with_expr(),
+  ["n|<C-x>d"]         = map_cu('normal a<C-R>=strftime("[%Y-%m-%d %a]\")<CR>'):with_noremap():with_silent(),
   -- telescope
   ["n|<C-x>b"]         = map_cu('Telescope buffers'):with_noremap():with_silent(),
   ["n|<C-x>f"]         = map_cu('Telescope find_files find_command=rg,--ignore,--files,--follow'):with_noremap():with_silent(),
