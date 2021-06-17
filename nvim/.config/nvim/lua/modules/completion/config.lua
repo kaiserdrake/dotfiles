@@ -1,4 +1,3 @@
-
 local config = {}
 
 function config.nvim_lsp()
@@ -10,7 +9,7 @@ function config.nvim_compe()
     enabled = true;
     debug = false;
     min_length = 1;
-    preselect = 'always';
+    preselect = 'disable';
     allow_prefix_unmatch = false;
     source = {
       path = true;
@@ -19,6 +18,8 @@ function config.nvim_compe()
       vsnip = true;
       nvim_lsp = true;
       nvim_lua = true;
+      vsnip = true;
+      ultisnips = true;
       spell = true;
       tags = true;
       snippets_nvim = false;

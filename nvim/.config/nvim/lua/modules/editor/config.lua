@@ -52,11 +52,24 @@ function config.telescope()
       prompt_prefix = '> ',
       prompt_position = 'bottom',
       selection_caret = " ",
-      sorting_strategy = 'ascending',
+      sorting_strategy = 'descending',
       results_width = 0.6,
       file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
       grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
       qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+    },
+    pickers = {
+      buffers = {
+        sort_lastused = true,
+        mappings = {
+          i = {
+            ["<c-d>"] = require("telescope.actions").delete_buffer,
+          },
+          n = {
+            ["<c-d>"] = require("telescope.actions").delete_buffer,
+          }
+        }
+      },
     },
     extensions = {
         fzy_native = {
@@ -117,9 +130,9 @@ function config.gitsigns()
   require('gitsigns').setup {
     signs = {
       add = {hl = 'GitGutterAdd', text = '+'},
-      change = {hl = 'GitGutterChange',text= '~'},
-      delete = {hl= 'GitGutterDelete', text = '-'},
-      topdelete = {hl ='GitGutterDeleteChange',text = '-'},
+      change = {hl = 'GitGutterChange', text= '~'},
+      delete = {hl = 'GitGutterDelete', text = '-'},
+      topdelete = {hl ='GitGutterDeleteChange', text = '-'},
       changedelete = {hl = 'GitGutterChange', text = '~'},
     },
     keymaps = {
@@ -196,6 +209,11 @@ function config.which_key()
       ["<cr>"] = "ENTER",
       ["<tab>"] = "TAB"
     },
+    icons = {
+      breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+      separator = "➜", -- symbol used between a key and it's label
+      group = "+", -- symbol prepended to a group
+    },
     triggers_blacklist = {
       -- list of mode / prefixes that should never be hooked by WhichKey
       -- this is mostly relevant for key maps that start with a native binding
@@ -205,6 +223,9 @@ function config.which_key()
     }
   }
   require('keymap.keymapping')
+  vim.api.nvim_command[[autocmd ColorScheme * highlight link WhichKey Statement]]
+  vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyDesc ctermfg=39 guifg=#61AFEF]]
+  vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyGroup cterm=italic ctermfg=39 gui=italic guifg=#61AFEF]]
 end
 
 return config
