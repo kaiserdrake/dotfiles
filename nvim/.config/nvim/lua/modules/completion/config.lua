@@ -34,11 +34,4 @@ function config.vim_sonictemplate()
   vim.g.sonictemplate_vim_template_dir = os.getenv("HOME").. '/.config/nvim/template'
 end
 
-function config.gutentags()
-  vim.g.gutentags_generate_on_new = 1
-  vim.g.gutentags_generate_on_missing = 1
-  vim.g.gutentags_generate_on_write = 1
-  vim.g.gutentags_generate_on_empty_buffer = 0
-end
-
 return config
