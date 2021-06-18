@@ -94,4 +94,9 @@ editor['axvr/org.vim'] = {
   opt = false
 }
 
+-- Provides note taking capability
+editor['vimwiki/vimwiki'] = {
+  config = conf.vimwiki
+}
+
 return editor

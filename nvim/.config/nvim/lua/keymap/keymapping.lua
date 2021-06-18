@@ -6,17 +6,24 @@ wk.register({
     f = {
       name = "+File",
       f = {"<cmd>Telescope find_files find_command=rg,--ignore,--files,--follow cwd="..os.getenv("HOME").."<cr>", "Find File"},
-      h = {"<cmd>Telescope find_files find_command=rg,--hidden,--files,--follow cwd="..os.getenv("HOME").."<cr>", "Find All Files"},
+      F = {"<cmd>Telescope find_files find_command=rg,--hidden,--files,--follow cwd="..os.getenv("HOME").."<cr>", "Find All Files"},
       p = {"<cmd>Telescope find_files find_command=rg,--ignore,--files,--follow<cr>", "Find Project File"},
-      h = {"<cmd>Telescope find_files find_command=rg,--hidden,--files,--follow<cr>", "Find All Project Files"},
+      P = {"<cmd>Telescope find_files find_command=rg,--hidden,--files,--follow<cr>", "Find All Project Files"},
       d = {"<cmd>Telescope dotfiles path="..os.getenv("HOME").."/.dotfiles<cr>", "Find Dotfile"},
       g = {"<cmd>Telescope git_files<cr>", "Find Git File"},
       b = {"<cmd>Telescope file_browser<cr>", "Browse File"},
+      e = {"<cmd>Explore .<cr>", "Exlore mode"},
       w = {"<cmd>Telescope grep_string<cr>", "Find Word"},
     },
     b = {"<cmd>Telescope buffers<cr>", "Find Buffer"},
     c = {
       name = "+Quickfix list",
+    },
+    w = {
+      name = "+vimwiki",
+      ["<space>"] = {
+        name = "+More..."
+      }
     },
     t = {
       name = "+Tools",

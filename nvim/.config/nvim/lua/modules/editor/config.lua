@@ -60,6 +60,7 @@ function config.telescope()
     },
     pickers = {
       buffers = {
+        results_title = "",
         sort_lastused = true,
         mappings = {
           i = {
@@ -69,6 +70,9 @@ function config.telescope()
             ["<c-d>"] = require("telescope.actions").delete_buffer,
           }
         }
+      },
+      find_files = {
+        results_title = "",
       },
     },
     extensions = {
@@ -80,6 +84,7 @@ function config.telescope()
   }
   require('telescope').load_extension('fzy_native')
   require'telescope'.load_extension('dotfiles')
+  vim.cmd[[highlight link TelescopePromptPrefix Character]]
 end
 
 function config.nvim_treesitter()
@@ -203,7 +208,8 @@ end
 
 function config.which_key()
   require("which-key").setup {
-    ignore_missing = true, -- do not show mappings without labels
+    ignore_missing = false,
+    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ ","<Plug>"},
     key_labels = {
       ["<space>"] = "SPC",
       ["<cr>"] = "ENTER",
@@ -220,12 +226,20 @@ function config.which_key()
       -- most people should not need to change this
       i = { "j", "k" },
       v = { "j", "k" },
-    }
+    },
+    layout = {
+      spacing = 8, -- spacing between columns
+      align = "left", -- align columns left, center or right
+    },
   }
   require('keymap.keymapping')
   vim.api.nvim_command[[autocmd ColorScheme * highlight link WhichKey Statement]]
   vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyDesc ctermfg=39 guifg=#61AFEF]]
   vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyGroup cterm=italic ctermfg=39 gui=italic guifg=#61AFEF]]
+end
+
+function config.vimwiki()
+  vim.g.vimwiki_list = {{path='~/.wikinotes', syntax='markdown', ext='.md'}}
 end
 
 return config
