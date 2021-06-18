@@ -28,9 +28,6 @@ export METACFG_LOCATION=$PRIMARY_WORKSPACE
 # export TERM=xterm-256color
 alias ls='ls --color=always'
 
-# Alias to organize dot configs as bare git repository
-alias dotcfg='/usr/bin/git --git-dir=$HOME/.dotconfig/ --work-tree=$HOME'
-
 # Alias ssh to use xterm
 alias ssh='TERM=xterm-256color ssh'
 
