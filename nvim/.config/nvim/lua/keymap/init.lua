@@ -26,8 +26,8 @@ local plug_map = {
   ["x|F"]              = map_cmd([[v:lua.enhance_ft_move('F')]]):with_expr(),
   ["o|F"]              = map_cmd([[v:lua.enhance_ft_move('F')]]):with_expr(),
   -- Date insertion
-  ["i|<C-x>d"]         = map_cmd([[strftime("[%Y-%m-%d %a]\")]]):with_noremap():with_expr(),
-  ["n|<C-x>d"]         = map_cu([[normal a<C-R>=strftime("[%Y-%m-%d %a]\")<CR>]]):with_noremap():with_silent(),
+  ["i|<C-x>d"]         = map_cmd([[strftime("[%Y-%m-%d %a]")]]):with_noremap():with_expr(),
+  ["n|<C-x>d"]         = map_cu([[normal a<C-R>=strftime("[%Y-%m-%d %a]")<CR>]]):with_noremap():with_silent(),
   -- telescope
   ["n|<C-x>b"]         = map_cu([[Telescope buffers]]):with_noremap():with_silent(),
   ["n|<C-x>f"]         = map_cu([[Telescope find_files find_command=rg,--ignore,--files,--follow]]):with_noremap():with_silent(),

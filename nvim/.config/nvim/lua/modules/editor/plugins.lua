@@ -84,14 +84,14 @@ editor['lukas-reineke/indent-blankline.nvim'] = {
   config = conf.indent_blankline
 }
 
--- Provides whichkey mapping
-editor['folke/which-key.nvim'] = {
-  config = conf.which_key
-}
-
 -- Provides orgmode folding and highlighting support
 editor['axvr/org.vim'] = {
   opt = false
+}
+
+-- Provides whichkey mapping
+editor['folke/which-key.nvim'] = {
+  config = conf.which_key
 }
 
 -- Provides note taking capability

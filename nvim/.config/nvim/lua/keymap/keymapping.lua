@@ -5,8 +5,10 @@ wk.register({
   ["<leader>"] = {
     f = {
       name = "+File",
-      f = {"<cmd>Telescope find_files find_command=rg,--ignore,--files,--follow cwd="..os.getenv("HOME").."<cr>", "Find File"},
-      F = {"<cmd>Telescope find_files find_command=rg,--hidden,--files,--follow cwd="..os.getenv("HOME").."<cr>", "Find All Files"},
+      f = {"<cmd>Telescope find_files find_command=rg,--ignore,--files,--follow cwd="..os.getenv("HOME").."<cr>", 
+           "Find File"},
+      F = {"<cmd>Telescope find_files find_command=rg,--hidden,--files,--follow cwd="..os.getenv("HOME").."<cr>",
+           "Find All Files"},
       p = {"<cmd>Telescope find_files find_command=rg,--ignore,--files,--follow<cr>", "Find Project File"},
       P = {"<cmd>Telescope find_files find_command=rg,--hidden,--files,--follow<cr>", "Find All Project Files"},
       d = {"<cmd>Telescope dotfiles path="..os.getenv("HOME").."/.dotfiles<cr>", "Find Dotfile"},
@@ -21,9 +23,11 @@ wk.register({
     },
     w = {
       name = "+vimwiki",
+      l = {"<cmd>VimwikiIndex<cr><cmd>VimwikiGoto todo<cr>", "Vimwiki ToDo List"},
+      c = {"<cmd>VimwikiIndex<cr><cmd>VimwikiGoto Scratch<cr>", "Vimwiki Scratch"},
       ["<space>"] = {
         name = "+More..."
-      }
+      },
     },
     t = {
       name = "+Tools",
@@ -41,5 +45,15 @@ wk.register({
         u = {"<cmd>GutentagsUpdate<cr>", "Update ctags"},
       },
     },
+    e = {
+      name = "+Editor settings",
+      n = {
+        name = "+Line number",
+        n = {"<cmd>lua require('core.global'):set_linenumber('on')<cr>", "Show line number"},
+        r = {"<cmd>lua require('core.global'):set_linenumber('relative')<cr>", "Show relative line number"},
+        h = {"<cmd>lua require('core.global'):set_linenumber('off')<cr>", "Hide line number"},
+      }
+
+    }
   },
  })
