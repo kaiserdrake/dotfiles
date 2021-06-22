@@ -42,7 +42,7 @@ function config.gutentags()
   vim.cmd('command! -nargs=0 GutentagsClearCache call system(\'rm \' . g:gutentags_cache_dir . \'/*\')')
   -- limit generation of tags to project folders only
   vim.g.gutentags_add_default_project_roots = 0
-  vim.g.gutentags_project_root = {"package.json", ".git"}
+  vim.g.gutentags_project_root = {"package.json", ".git/"}
   -- update tags on buffer write
   vim.g.gutentags_generate_on_new = 1
   vim.g.gutentags_generate_on_missing = 1

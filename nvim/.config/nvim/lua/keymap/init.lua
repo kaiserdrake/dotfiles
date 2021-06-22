@@ -31,7 +31,7 @@ local plug_map = {
   -- telescope
   ["n|<C-x>b"]         = map_cu([[Telescope buffers]]):with_noremap():with_silent(),
   ["n|<C-x>f"]         = map_cu([[Telescope find_files find_command=rg,--ignore,--files,--follow]]):with_noremap():with_silent(),
-  ["n|<C-x>F"]         = map_cu([[Telescope find_files find_command=rg,--hidden,--files,--follow]]):with_noremap():with_silent(),
+  ["n|<C-x>F"]         = map_cu([[Telescope find_files find_command=rg,--no-ignore,--hidden,--files,--follow]]):with_noremap():with_silent(),
 };
 
 bind.nvim_load_mapping(plug_map)
