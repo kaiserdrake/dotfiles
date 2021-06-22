@@ -23,7 +23,8 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 export PRIMARY_WORKSPACE=$HOME/WORKSPACE
-export FILESTORE_PATH=$PRIMARY_WORKSPACE
+export DEFAULT_FILESTORE_PATH=$HOME/.filestore
+export FILESTORE_PATH=$DEFAULT_FILESTORE_PATH
 
 # export TERM=xterm-256color
 alias ls='ls --color=always'
@@ -46,9 +47,10 @@ fi
 HOSTN=`echo $HOSTNAME | awk '{print tolower($0)}'`
 if [ -f ~/.config/shell/profile.$HOSTN.sh ]; then
     . ~/.config/shell/profile.$HOSTN.sh
+    . $DEFAULT_FILESTORE_PATH/profiles/bash/profile.$HOSTN.sh
 fi
 if within_docker; then
-    . ~/.config/shell/profile.docker.sh
+    . $DEFAULT_FILESTORE_PATH/profiles/bash/profile.docker.sh
 fi
 
 # -----------------------------------------------------------------------------
