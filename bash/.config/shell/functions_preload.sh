@@ -89,7 +89,6 @@ function docker-run(){
 
     # Found a corresponding configuration, tokenize it and set to approriate variables.
     if [ ! -z "$ABODE" ]; then
-        echo $ABODE
         ABODE=$(echo $ABODE | tr -s " ")
         OLDIFS=$IFS
         IFS='|'

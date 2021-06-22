@@ -6,6 +6,7 @@ packageList=(
   xclip
   fzf
   ripgrep
+  build-essential
   universal-ctags
 )
 

@@ -45,8 +45,7 @@ fi
 # This is useful when the configuration is used in multiple machines with
 # subtle changes  (e.g. PRIMARY_WORKSPACE location difference).
 HOSTN=`echo $HOSTNAME | awk '{print tolower($0)}'`
-if [ -f ~/.config/shell/profile.$HOSTN.sh ]; then
-    . ~/.config/shell/profile.$HOSTN.sh
+if [ -f $DEFAULT_FILESTORE_PATH/profiles/bash/profile.$HOSTN.sh ]; then
     . $DEFAULT_FILESTORE_PATH/profiles/bash/profile.$HOSTN.sh
 fi
 if within_docker; then
