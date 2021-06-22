@@ -38,7 +38,7 @@ function get-code-size(){
 # Uses fuzzy search to allow searching of commamnds list.
 function do-command(){
     unset MY_FIND_COMMAND
-    COMFILE="$METACFG_LOCATION/wikinotes/commands.md"
+    COMFILE="$FILESTORE_PATH/wikinotes/commands.md"
     if [ -z "$1" ]; then
         MY_FIND_COMMAND=`(get-history-lines && get-stored-command-lines $COMFILE) | sort -u | fzf`
     else
@@ -78,7 +78,7 @@ function docker-run(){
     fi
 
     # Fetch run command configuration through the docker_mapping.md file.
-    COMFILE="$METACFG_LOCATION/wikinotes/docker_mapping.md"
+    COMFILE="$FILESTORE_PATH/wikinotes/docker_mapping.md"
     if [ -f "$COMFILE" ]; then
         if [ -z "$IMAGENAME" ]; then
             ABODE=`get-stored-command-lines $COMFILE | fzf --prompt=Pattern: --header "HOSTNAME | IMAGE | OPTIONS | COMMAND" -1 -0`

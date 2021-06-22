@@ -239,8 +239,9 @@ function config.which_key()
 end
 
 function config.vimwiki()
-  vim.g.vimwiki_list = {{path='~/.googledrive/filestore/wikinotes', 
-                         syntax='markdown', 
+  wikipath = require('core.global').filestore..'/wikinotes'
+  vim.g.vimwiki_list = {{path=wikipath,
+                         syntax='markdown',
                          ext='.md',
                          auto_diary_index=1}}
   vim.g.vimwiki_key_mappings = {['table_mappings']='0'}

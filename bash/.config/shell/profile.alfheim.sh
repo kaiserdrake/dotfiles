@@ -1,6 +1,6 @@
 # Piggyback environment variables used for aliases
 export PRIMARY_WORKSPACE=$HOME/WORKSPACE
-export METACFG_LOCATION=$HOME/.googledrive/filestore
+export FILESTORE_PATH=$HOME/.googledrive/filestore
 
 # trash-cli alias
 alias rm='trash-put'
@@ -21,7 +21,7 @@ export DOCKER_DEFOPTIONS="--rm -it \
     -v $HOME/.tmux.conf:/home/${USER}/.tmux.conf \
     -v $HOME/.ssh:/home/${USER}/.ssh \
     -v $HOME/.dotfiles:/home/${USER}/.dotfiles \
-    -v $METACFG_LOCATION:/home/${USER}/.filestore \
+    -v $FILESTORE_PATH:/home/${USER}/.filestore \
     -v $PRIMARY_WORKSPACE:/home/${USER}/WORKSPACE "
 
 # Google Cloud SDK bash completion

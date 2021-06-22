@@ -23,7 +23,7 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 export PRIMARY_WORKSPACE=$HOME/WORKSPACE
-export METACFG_LOCATION=$PRIMARY_WORKSPACE
+export FILESTORE_PATH=$PRIMARY_WORKSPACE
 
 # export TERM=xterm-256color
 alias ls='ls --color=always'

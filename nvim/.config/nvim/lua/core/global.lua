@@ -2,6 +2,7 @@ local global = {}
 local home = os.getenv("HOME")
 local path_sep = global.is_windows and '\\' or '/'
 local os_name = vim.loop.os_uname().sysname
+local filestore = os.getenv("FILESTORE_PATH")
 
 function global:get_hostname()
   local f = io.popen ("/bin/hostname")
@@ -45,6 +46,7 @@ function global:load_variables()
   self.data_dir = string.format('%s/site/',vim.fn.stdpath('data'))
   self.hostname = global:get_hostname()
   self.env_context = global:get_env_context()
+  self.filestore = filestore
 end
 
 global:load_variables()

@@ -1,6 +1,6 @@
 # Piggyback environment variables used for aliases
 export PRIMARY_WORKSPACE=$HOME/WORKSPACE
-export METACFG_LOCATION=$HOME/.filestore
+export FILESTORE_PATH=$HOME/.filestore
 
 # trash-cli alias
 alias rm='trash-put'

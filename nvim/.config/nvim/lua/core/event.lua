@@ -28,6 +28,8 @@ function autocmd.load_autocmds()
       {"BufWritePre","MERGE_MSG","setlocal noundofile"};
       {"BufWritePre","*.tmp","setlocal noundofile"};
       {"BufWritePre","*.bak","setlocal noundofile"};
+      {"BufNewFile","*filestore/wikinotes/diary/*.md",
+        "call append(0,['# '.split(expand('%:r'),'/')[-1],'','## ToDo From Previous Day','','## ToDo','','## Notes', ''])"};
     };
 
     wins = {
@@ -44,8 +46,9 @@ function autocmd.load_autocmds()
 
     ft = {
       {"FileType", "dashboard", "set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2"};
-      {"BufNewFile,BufRead","*.toml"," setf toml"},
-      {"BufEnter", "*.org", "setlocal formatoptions-=t"},
+      {"BufNewFile,BufRead","*.toml"," setf toml"};
+      {"BufEnter", "*.org", "setlocal formatoptions-=t"};
+      {"FileType", "vimwiki,markdown", "nmap <C-x><BS> <Plug>VimwikiGoBackLink"};
     };
 
     yank = {
