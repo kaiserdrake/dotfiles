@@ -9,18 +9,6 @@ packageList=(
   universal-ctags
 )
 
-preconfigure()
-{
-  # Set default shell to bash
-  echo "Setting default shell to 'bash'..."
-  echo dash dash/sh boolean false | sudo debconf-set-selections
-  sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
-
-  echo "Updating package library..."
-  sudo apt-get --yes update > /dev/null
-  sudo DEBIAN_FRONTEND=noninteractive apt-get --yes upgrade > /dev/null
-}
-
 install()
 {
   # Install common development tools
@@ -43,7 +31,6 @@ uninstall()
 if [ "$1" == "uninstall" ]; then
   uninstall
 else
-  preconfigure
   install
 fi
 
