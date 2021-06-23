@@ -39,6 +39,7 @@ end
 function config.vim_rooter()
   vim.g.rooter_silent_chdir = 1
   vim.g.rooter_resolve_links = 1
+  vim.g.rooter_patterns = {"package.json", ".git/"}
 end
 
 function config.telescope()

@@ -16,26 +16,30 @@ end
 function autocmd.load_autocmds()
   local definitions = {
     packer = {
-      {"BufWritePost","*.lua","lua require('core.packer').auto_compile()"};
+      {"BufWritePost", "*.lua", "lua require('core.packer').auto_compile()"};
     },
     bufs = {
       -- Reload vim config automatically
-      {"BufWritePost",[[$VIM_PATH/{*.vim,*.yaml,vimrc} nested source $MYVIMRC | redraw]]};
+      {"BufWritePost", [[$VIM_PATH/{*.vim,*.yaml,vimrc} nested source $MYVIMRC | redraw]]};
       -- Reload Vim script automatically if setlocal autoread
-      {"BufWritePost,FileWritePost","*.vim", [[nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]]};
-      {"BufWritePre","/tmp/*","setlocal noundofile"};
-      {"BufWritePre","COMMIT_EDITMSG","setlocal noundofile"};
-      {"BufWritePre","MERGE_MSG","setlocal noundofile"};
-      {"BufWritePre","*.tmp","setlocal noundofile"};
-      {"BufWritePre","*.bak","setlocal noundofile"};
-      {"BufNewFile","*filestore/wikinotes/diary/*.md",
+      {"BufWritePost,FileWritePost", "*.vim", [[nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]]};
+      {"BufWritePre", "/tmp/*", "setlocal noundofile"};
+      {"BufWritePre", "COMMIT_EDITMSG", "setlocal noundofile"};
+      {"BufWritePre", "MERGE_MSG", "setlocal noundofile"};
+      {"BufWritePre", "*.tmp", "setlocal noundofile"};
+      {"BufWritePre", "*.bak", "setlocal noundofile"};
+      {"BufNewFile", "*filestore/wikinotes/diary/*.md",
         "call append(0,['# '.split(expand('%:r'),'/')[-1],'','## ToDo From Previous Day','','## ToDo','','## Notes', ''])"};
     };
 
     wins = {
+      -- Open default file scratch when no argument is supplied
+      {"VimEnter", "*", [[if eval("@%") == "" | e $FILESTORE_PATH/wikinotes/Scratch.md | setl filetype=vimwiki | endif]]};
       -- Highlight current line only on focused window
       {"WinEnter,BufEnter,InsertLeave", "*", [[if ! &cursorline && &filetype !~# '^\(dashboard\|clap_\)' && ! &pvw | setlocal cursorline | endif]]};
       {"WinLeave,BufLeave,InsertEnter", "*", [[if &cursorline && &filetype !~# '^\(dashboard\|clap_\)' && ! &pvw | setlocal nocursorline | endif]]};
+      -- Highlight trailing whitespace
+      {"VimEnter", "*", [[call matchadd('TrailHighlight', '\s\+$', 100)]]};
       -- Equalize window dimensions when resizing vim window
       {"VimResized", "*", [[tabdo wincmd =]]};
       -- Force write shada on leaving nvim

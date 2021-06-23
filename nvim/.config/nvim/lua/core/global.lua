@@ -19,7 +19,7 @@ function global:get_env_context()
   else
     return env_context
   end
-end  
+end
 
 function global:set_linenumber(option)
   if (option == 'relative') then
