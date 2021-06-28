@@ -26,16 +26,6 @@ export PRIMARY_WORKSPACE=$HOME/WORKSPACE
 export DEFAULT_FILESTORE_PATH=$HOME/.filestore
 export FILESTORE_PATH=$DEFAULT_FILESTORE_PATH
 
-# export TERM=xterm-256color
-alias ls='ls --color=always'
-
-# Alias ssh to use xterm
-alias ssh='TERM=xterm-256color ssh'
-
-# Aliases for neovim
-alias nvim='$HOME/.bin/nvim.appimage'
-alias vim='nvim'
-
 # preload shell functions
 if [ -f ~/.config/shell/functions_preload.sh ]; then
     . ~/.config/shell/functions_preload.sh
