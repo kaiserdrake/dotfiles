@@ -26,14 +26,6 @@ function get-stored-command-lines(){
     fi
 }
 
-# Output the ROM and RAM Data Size of a particular object file.
-function get-code-size(){
-    output=$(size -t $1 | grep "TOTALS")
-    echo "--------------------------------------------------------------------------------"
-    echo "ROM Code + Data : `echo ${output} | awk '{print $1}'` bytes"
-    echo "RAM Data : `echo ${output} | awk '{print $2+$3}'` bytes"
-}
-
 # Command list aggregator.
 # Uses fuzzy search to allow searching of commamnds list.
 function do-command(){
@@ -56,6 +48,40 @@ function generate-name(){
     if [ -x /usr/bin/python3 ]; then
         echo `/usr/bin/python3 ~/.config/python3/names.generate.py`
     fi
+}
+
+# Function to match IP address to a subnet
+function on-subnet(){
+  if [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]]  || [[ "$1" == "" ]] ; then
+    printf "Usage:\n\ton-subnet [ --not ] partial-ip-address\n\n"
+    printf "Example:\n\ton-subnet 10.10.\n\ton-subnet --not 192.168.0.\n\n"
+    printf "Note:\n\tThe partial-ip-address must match starting at the first\n"
+    printf "\tcharacter of the ip-address, therefore the first example\n"
+    printf "\tabove will match 10.10.10.1 but not 110.10.10.1\n"
+    return 0
+  fi
+
+  on=0
+  off=1
+  if [[ "$1" == "--not" ]] ; then
+    shift
+    on=1
+    off=0
+  fi
+
+  regexp="^$(sed 's/\./\\./g' <<<"$1")"
+
+  if [[ "$(uname)" == "Darwin" ]] ; then
+    ifconfig | fgrep 'inet ' | fgrep -v 127.0.0. | cut -d ' ' -f 2 | egrep -q "$regexp"
+  else
+    hostname -I | tr -s " " "\012" | fgrep -v 127.0.0. | egrep -q "$regexp"
+  fi
+
+  if [[ $? == 0 ]]; then
+    return $on
+  else
+    return $off
+  fi
 }
 
 # docker run

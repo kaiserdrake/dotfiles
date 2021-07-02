@@ -8,6 +8,7 @@ packageList=(
   ripgrep
   build-essential
   universal-ctags
+  unison
 )
 
 install()
