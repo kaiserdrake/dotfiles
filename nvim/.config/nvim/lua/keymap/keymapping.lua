@@ -28,6 +28,17 @@ wk.register({
         name = "+More..."
       },
     },
+    l = {
+        name = "+Lsp",
+        S = {"<cmd>LspStart<cr>", "LspStart"},
+        s = {"<cmd>LspStop<cr>", "LspStop"},
+        r = {"<cmd>LspRestart<cr>", "LspRestart"},
+        i = {"<cmd>LspInfo<cr>", "LspInfo"},
+        f = {"<cmd>lua vim.lsp.buf.formatting()<cr>", "Formatting"},
+        d = {"<cmd>lua vim.lsp.buf.document_symbol()<cr>", "Document symbol"},
+        w = {"<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", "Workspace symbol"},
+        a = {"<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action"},
+    },
     t = {
       name = "+Tools",
       p = {

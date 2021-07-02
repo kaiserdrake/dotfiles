@@ -8,7 +8,7 @@ function config.nvim_compe()
   require'compe'.setup {
     enabled = true;
     debug = false;
-    min_length = 1;
+    min_length = 2;
     preselect = 'disable';
     allow_prefix_unmatch = false;
     source = {
@@ -20,7 +20,7 @@ function config.nvim_compe()
       nvim_lua = true;
       vsnip = true;
       ultisnips = true;
-      spell = true;
+      spell = false;
       tags = true;
       snippets_nvim = false;
     };
@@ -49,6 +49,5 @@ function config.gutentags()
   vim.g.gutentags_generate_on_write = 1
   vim.g.gutentags_generate_on_empty_buffer = 0
 end
-
 
 return config

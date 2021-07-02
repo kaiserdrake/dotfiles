@@ -1,101 +1,69 @@
 local api = vim.api
-local lspconfig = require 'lspconfig'
+local lsp = require 'lspconfig'
 local global = require 'core.global'
-local format = require('modules.completion.format')
 
-if not packer_plugins['lspsaga.nvim'].loaded then
-  vim.cmd [[packadd lspsaga.nvim]]
+local map = function(type, key, value)
+	api.nvim_buf_set_keymap(0,type,key,value,{noremap = true, silent = true});
 end
 
-local saga = require 'lspsaga'
-saga.init_lsp_saga({
-  code_action_icon = '💡'
-})
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-function _G.reload_lsp()
-  vim.lsp.stop_client(vim.lsp.get_active_clients())
-  vim.cmd [[edit]]
+local custom_attach = function(client)
+	print("LSP started.");
+  map('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
+	map('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>')
+	map('n','K','<cmd>lua vim.lsp.buf.hover()<CR>')
+	map('n','gr','<cmd>lua vim.lsp.buf.references()<CR>')
+	map('n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
+	map('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
+	map('n','gt','<cmd>lua vim.lsp.buf.type_definition()<CR>')
+  api.nvim_command('autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()')
 end
 
-function _G.open_lsp_log()
-  local path = vim.lsp.get_log_path()
-  vim.cmd("edit " .. path)
-end
-
-vim.cmd('command! -nargs=0 LspLog call v:lua.open_lsp_log()')
-vim.cmd('command! -nargs=0 LspRestart call v:lua.reload_lsp()')
-
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    -- Enable underline, use default values
-    underline = true,
-    -- Enable virtual text, override spacing to 4
-    virtual_text = true,
-    signs = {
-      enable = true,
-      priority = 20
+lsp.clangd.setup{
+  on_attach = custom_attach,
+  default_config = {
+    cmd = {
+      "clangd", "--background-index", "--pch-storage=memory",
+      "--clang-tidy", "--suggest-missing-includes"
     },
-    -- Disable a feature
-    update_in_insert = false,
-})
-
-local enhance_attach = function(client,bufnr)
-  if client.resolved_capabilities.document_formatting then
-    format.lsp_before_save()
-  end
-  api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-end
-
-lspconfig.sumneko_lua.setup {
-  cmd = {
-    global.home.."/workstation/lua-language-server/bin/macOS/lua-language-server",
-    "-E",
-    global.home.."/workstation/lua-language-server/main.lua"
-  };
-  settings = {
-    Lua = {
-      diagnostics = {
-        enable = true,
-        globals = {"vim","packer_plugins"}
-      },
-      runtime = {version = "LuaJIT"},
-      workspace = {
-        library = vim.list_extend({[vim.fn.expand("$VIMRUNTIME/lua")] = true},{}),
-      },
-    },
+    filetypes = {"c", "cpp", "objc", "objcpp"},
+    root_dir = [[root_pattern("compile_commands.json", "compile_flags.txt", ".git/") or dirname]];
+  },
+  handlers = {
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        -- Disable virtual_text
+        virtual_text = false
+      }
+    ),
   }
 }
 
-lspconfig.tsserver.setup {
-  on_attach = function(client)
-    client.resolved_capabilities.document_formatting = false
-    enhance_attach(client)
-  end
-}
-
-lspconfig.clangd.setup {
-  cmd = {
-    "clangd",
-    "--background-index",
-    "--suggest-missing-includes",
-    "--clang-tidy",
-    "--header-insertion=iwyu",
-  },
-}
-
-lspconfig.rust_analyzer.setup {
-  capabilities = capabilities,
+lsp.sumneko_lua.setup{
+	on_attach = custom_attach,
+	settings = {
+		Lua = {
+			runtime = { version = "LuaJIT", path = vim.split(package.path, ';'), },
+			completion = { keywordSnippet = "Disable", },
+			diagnostics = { enable = true, globals = {
+				"vim", "describe", "it", "before_each", "after_each" },
+			},
+			workspace = {
+				library = {
+					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+				}
+			}
+		}
+	}
 }
 
 local servers = {
-  'clangd','dockerls','bashls','pyright'
+  'dockerls','bashls','pyright'
 }
 
 for _,server in ipairs(servers) do
   lspconfig[server].setup {
-    on_attach = enhance_attach
+    on_attach = custom_attach
   }
 end
