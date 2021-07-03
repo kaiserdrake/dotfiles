@@ -209,7 +209,7 @@ end
 function config.which_key()
   require("which-key").setup {
     ignore_missing = false,
-    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ ","<Plug>"},
+    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CMD>", "<CR>", "<cr>", "call", "lua", "^:", "^ ", "<Plug>"},
     key_labels = {
       ["<space>"] = "SPC",
       ["<cr>"] = "ENTER",

@@ -14,6 +14,7 @@ packageList=(
 
 pipModules=(
   compiledb
+  pynvim
 )
 
 install()
@@ -28,7 +29,7 @@ install()
   # Install python3 pip modules
   for i in "${pipModules[@]}"; do
     echo "Installing '$i'..."
-    yes | pip install $i
+    yes | pip3 install $i
   done
 }
 

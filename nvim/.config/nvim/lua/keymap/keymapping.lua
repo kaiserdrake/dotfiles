@@ -5,7 +5,7 @@ wk.register({
   ["<leader>"] = {
     f = {
       name = "+File",
-      f = {"<cmd>Telescope find_files find_command=rg,--ignore,--files,--follow cwd="..os.getenv("HOME").."<cr>", 
+      f = {"<cmd>Telescope find_files find_command=rg,--ignore,--files,--follow cwd="..os.getenv("HOME").."<cr>",
            "Find File"},
       F = {"<cmd>Telescope find_files find_command=rg,--hidden,--files,--follow cwd="..os.getenv("HOME").."<cr>",
            "Find All Files"},
@@ -34,7 +34,7 @@ wk.register({
         s = {"<cmd>LspStop<cr>", "LspStop"},
         r = {"<cmd>LspRestart<cr>", "LspRestart"},
         i = {"<cmd>LspInfo<cr>", "LspInfo"},
-        f = {"<cmd>lua vim.lsp.buf.formatting()<cr>", "Formatting"},
+        ["="] = {"<cmd>lua vim.lsp.buf.formatting()<cr>", "Formatting"},
         d = {"<cmd>lua vim.lsp.buf.document_symbol()<cr>", "Document symbol"},
         w = {"<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", "Workspace symbol"},
         a = {"<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action"},

@@ -16,6 +16,7 @@ local custom_attach = function(client)
 	map('n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
 	map('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
 	map('n','gt','<cmd>lua vim.lsp.buf.type_definition()<CR>')
+
   api.nvim_command('autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()')
 end
 
@@ -57,6 +58,11 @@ lsp.sumneko_lua.setup{
 		}
 	}
 }
+
+vim.cmd([[sign define LspDiagnosticsSignError text= texthl= linehl= numhl=LspDiagnosticsSignError]])
+vim.cmd([[sign define LspDiagnosticsSignWarning text= texthl= linehl= numhl=LspDiagnosticsSignWarning]])
+vim.cmd([[sign define LspDiagnosticsSignInformation text= texthl= linehl= numhl=LspDiagnosticsSignInformation]])
+vim.cmd([[sign define LspDiagnosticsSignHint text= texthl= linehl= numhl=LspDiagnosticsSignHint]])
 
 local servers = {
   'dockerls','bashls','pyright'

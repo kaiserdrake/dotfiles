@@ -32,6 +32,21 @@ local plug_map = {
   ["n|<C-x>b"]         = map_cu([[Telescope buffers]]):with_noremap():with_silent(),
   ["n|<C-x>f"]         = map_cu([[Telescope find_files find_command=rg,--ignore,--files,--follow]]):with_noremap():with_silent(),
   ["n|<C-x>F"]         = map_cu([[Telescope find_files find_command=rg,--no-ignore,--hidden,--files,--follow]]):with_noremap():with_silent(),
+  -- quickfix
+  ["i|<C-x>cn"]        = map_cmd([[cn]]):with_noremap():with_expr(),
+  ["n|<C-x>cn"]        = map_cu([[cn]]):with_noremap():with_silent(),
+  ["i|<C-x>cp"]        = map_cmd([[cp]]):with_noremap():with_expr(),
+  ["n|<C-x>cp"]        = map_cu([[cp]]):with_noremap():with_silent(),
+  ["i|<C-x>co"]        = map_cmd([[copen]]):with_noremap():with_expr(),
+  ["n|<C-x>co"]        = map_cu([[copen]]):with_noremap():with_silent(),
+  ["i|<C-x>cc"]        = map_cmd([[ccl]]):with_noremap():with_expr(),
+  ["n|<C-x>cc"]        = map_cu([[ccl]]):with_noremap():with_silent(),
+  ["i|<C-x>cw"]        = map_cmd([[cw]]):with_noremap():with_expr(),
+  ["n|<C-x>cw"]        = map_cu([[cw]]):with_noremap():with_silent(),
+  ["i|<C-x>cf"]        = map_cmd([[cnf]]):with_noremap():with_expr(),
+  ["n|<C-x>cf"]        = map_cu([[cnf]]):with_noremap():with_silent(),
+  ["i|<C-x>cg"]        = map_cmd([[.cc]]):with_noremap():with_expr(),
+  ["n|<C-x>cg"]        = map_cu([[.cc]]):with_noremap():with_silent(),
 };
 
 bind.nvim_load_mapping(plug_map)

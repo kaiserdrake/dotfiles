@@ -3,13 +3,14 @@
 
 NVIMTARGET=${HOME}/.bin
 
-nvimLatest=https://github.com/neovim/neovim/releases/download/v0.4.4/nvim.appimage
+nvimLatest=https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
 nvimNightly=https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 
 install()
 {
   mkdir -p ${NVIMTARGET}
   pushd $NVIMTARGET
+  rm nvim.appimage
   curl -LO $1
   chmod u+x nvim.appimage
   popd

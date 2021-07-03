@@ -58,7 +58,7 @@ if [ "$1" == "uninstall" ]; then
 else
   preconfigure
   sh $SRCLOC/install-gentools.sh
-  sh $SRCLOC/install-nvim.sh nightly
+  sh $SRCLOC/install-nvim.sh
   load_symlink
 fi
 
