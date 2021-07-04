@@ -5,7 +5,7 @@ local conf = require('modules.editor.config')
 editor['Raimondi/delimitMate'] = {
   event = 'InsertEnter',
   config = conf.delimimate,
-} 
+}
 
 -- Provides accelerated scrolling with j/k when key is repeating
 editor['rhysd/accelerated-jk'] = {
@@ -60,9 +60,10 @@ editor['nvim-treesitter/nvim-treesitter-textobjects'] = {
 }
 
 -- Provides customization on status line
-editor['hoob3rt/lualine.nvim'] = {
-  config = conf.lualine,
-  requires = {'kyazdani42/nvim-web-devicons', opt = true}
+editor['glepnir/galaxyline.nvim'] = {
+  config = conf.galaxyline,
+  requires = {'kyazdani42/nvim-web-devicons', opt = true},
+  requires = {'ryanoasis/vim-devicons', opt = true}
 }
 
 -- Provides onedark theme

@@ -55,10 +55,12 @@ if [ "$1" == "uninstall" ]; then
   unload_symlink
   sh $SRCLOC/install-nvim.sh uninstall
   sh $SRCLOC/install-gentools.sh uninstall
+  sh $SRCLOC/install-zsh.sh uninstall
 else
   preconfigure
   sh $SRCLOC/install-gentools.sh
   sh $SRCLOC/install-nvim.sh
+  sh $SRCLOC/install-zsh.sh
   load_symlink
 fi
 

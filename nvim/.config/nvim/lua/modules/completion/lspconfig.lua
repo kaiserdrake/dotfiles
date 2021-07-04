@@ -8,7 +8,6 @@ end
 
 
 local custom_attach = function(client)
-	print("LSP started.");
   map('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
 	map('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>')
 	map('n','K','<cmd>lua vim.lsp.buf.hover()<CR>')
