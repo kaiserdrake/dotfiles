@@ -36,6 +36,11 @@ editor['airblade/vim-rooter'] = {
   config = conf.vim_rooter,
 }
 
+-- Provides onedark theme
+editor['joshdick/onedark.vim'] = {
+  config = conf.onedark
+}
+
 -- Provides fuzzy search of files, buffers, etc
 editor['nvim-telescope/telescope.nvim'] = {
   opt = false,
@@ -62,13 +67,14 @@ editor['nvim-treesitter/nvim-treesitter-textobjects'] = {
 -- Provides customization on status line
 editor['glepnir/galaxyline.nvim'] = {
   config = conf.galaxyline,
-  requires = {'kyazdani42/nvim-web-devicons', opt = true},
+  requires = {'kyazdani42/nvim-web-devicons', opt = false},
   requires = {'ryanoasis/vim-devicons', opt = true}
 }
 
--- Provides onedark theme
-editor['joshdick/onedark.vim'] = {
-  config = conf.onedark
+-- Provides bufferline in place of tabs
+editor['akinsho/nvim-bufferline.lua'] = {
+  config = conf.bufferline,
+  requires = {'kyazdani42/nvim-web-devicons', opt = false},
 }
 
 -- Provides git icons

@@ -113,6 +113,39 @@ function config.galaxyline()
   require('modules.editor.statusline')
 end
 
+function config.bufferline()
+  require("bufferline").setup {
+    options = {
+      indicator_icon = "▎",
+      buffer_close_icon = "",
+      modified_icon = "●",
+      close_icon = "",
+      close_command = "bdelete %d",
+      right_mouse_command = "bdelete! %d",
+      left_trunc_marker = "",
+      right_trunc_marker = "",
+      offsets = {
+        {
+          filetype = "NvimTree",
+          text = "",
+          text_align = "center",
+          padding = 1,
+        },
+      },
+      show_tab_indicators = true,
+      show_close_icon = false,
+      show_buffer_close_icons = false,
+      diagnostics = false,
+    },
+    highlights = {
+      fill = {
+        guifg = { attribute = "fg", highlight = "Normal" },
+        guibg = { attribute = "bg", highlight = "StatusLineNC" },
+      },
+    },
+  }
+end
+
 function config.onedark()
   vim.g.onedark_terminal_italics=1
   vim.g.onedark_hide_endofbuffer=1

@@ -1,6 +1,5 @@
 local gl = require('galaxyline')
 local fileinfo = require('galaxyline.provider_fileinfo')
-local buffer = require('galaxyline.provider_buffer')
 
 local downcase = function(fn)
   return function()
@@ -66,24 +65,6 @@ table.insert(gls.left, {
 })
 print(vim.fn.getbufvar(0, 'ts'))
 vim.fn.getbufvar(0, 'ts')
-
-table.insert(gls.left, {
-  FileIcon = {
-    provider = 'FileIcon',
-    condition = buffer_not_empty,
-    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.bg},
-  }
-})
-
-table.insert(gls.left, {
-  FileName = {
-    provider = {'FileName'},
-    condition = buffer_not_empty,
-    separator = ' ',
-    separator_highlight = {colors.bg, colors.bg},
-    highlight = {colors.grey, colors.bg}
-  }
-})
 
 table.insert(gls.left, {
   GitIcon = {
@@ -187,7 +168,7 @@ table.insert(gls.right, {
 
 table.insert(gls.right, {
   BufferType = {
-    provider = downcase(buffer.get_buffer_filetype),
+    provider = 'FileTypeName',
     condition = condition.hide_in_width,
     separator = '  ',
     separator_highlight = {colors.grey, colors.bg},
@@ -199,16 +180,6 @@ table.insert(gls.right, {
   FileEncode = {
     provider = downcase(fileinfo.get_file_encode),
     condition = condition.hide_in_width,
-    separator = '  ',
-    separator_highlight = {colors.bg, colors.bg},
-    highlight = {colors.grey, colors.bg}
-  }
-})
-
-
-table.insert(gls.right, {
-  LineInfo = {
-    provider = 'FileSize',
     separator = '  ',
     separator_highlight = {colors.bg, colors.bg},
     highlight = {colors.grey, colors.bg}
