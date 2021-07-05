@@ -13,7 +13,7 @@ wk.register({
       P = {"<cmd>Telescope find_files find_command=rg,--hidden,--files,--follow<cr>", "Find All Project Files"},
       d = {"<cmd>Telescope dotfiles path="..os.getenv("HOME").."/.dotfiles<cr>", "Find Dotfile"},
       g = {"<cmd>Telescope git_files<cr>", "Find Git File"},
-      b = {"<cmd>Telescope file_browser<cr>", "Browse File"},
+      b = {"<cmd>lua require('telescope.builtin').file_browser({hidden=true})<cr>", "Browse File"},
       e = {"<cmd>Explore .<cr>", "Exlore mode"},
       w = {"<cmd>Telescope grep_string<cr>", "Find Word"},
     },

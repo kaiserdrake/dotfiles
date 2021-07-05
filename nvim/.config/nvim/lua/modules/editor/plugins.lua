@@ -38,7 +38,7 @@ editor['airblade/vim-rooter'] = {
 
 -- Provides fuzzy search of files, buffers, etc
 editor['nvim-telescope/telescope.nvim'] = {
-  cmd = 'Telescope',
+  opt = false,
   config = conf.telescope,
   requires = {
     {'nvim-lua/popup.nvim', opt = false},
@@ -81,7 +81,7 @@ editor['lewis6991/gitsigns.nvim'] = {
 -- Provides indent markers on blank lines
 editor['lukas-reineke/indent-blankline.nvim'] = {
   event = 'BufRead',
-  branch = 'lua',
+  branch = 'master',
   config = conf.indent_blankline
 }
 
