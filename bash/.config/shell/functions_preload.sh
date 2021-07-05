@@ -4,7 +4,7 @@
 
 # Check function if execution context is within a docker container
 function within_docker() {
-    awk -F/ '$2 == "docker"' /proc/self/cgroup | read
+    (awk -F/ '$2 == "docker"' /proc/self/cgroup | read dummy)
 }
 
 # Command list generator using 'history' as source.
@@ -26,8 +26,17 @@ function get-stored-command-lines(){
     fi
 }
 
+# Output the ROM and RAM Data Size of a particular object file.
+function get-code-size(){
+    output=$(size -t $1 | grep "TOTALS")
+    echo "--------------------------------------------------------------------------------"
+    echo "ROM Code + Data : `echo ${output} | awk '{print $1}'` bytes"
+    echo "RAM Data : `echo ${output} | awk '{print $2+$3}'` bytes"
+}
+
 # Command list aggregator.
 # Uses fuzzy search to allow searching of commamnds list.
+# Sample usage: ARGS="file1 file2" DRYRUN=echo do-command "command"
 function do-command(){
     unset MY_FIND_COMMAND
     COMFILE="$FILESTORE_PATH/wikinotes/commands.md"
@@ -36,6 +45,13 @@ function do-command(){
     else
         MY_FIND_COMMAND=`(get-history-lines && get-stored-command-lines $COMFILE) | sort -u | fzf -q "$1" -1 -0`
     fi
+    # Replace all positional parameters in found command with the parameters
+    # passed to this function
+    args=(`echo ${ARGS}`)
+    for ((i=1; i<=${#args[@]}; i++)) do
+      pattern="\$"${i}
+      MY_FIND_COMMAND=${MY_FIND_COMMAND/$pattern/${args[i]}}
+    done
     ${DRYRUN} eval $MY_FIND_COMMAND
 }
 
@@ -48,40 +64,6 @@ function generate-name(){
     if [ -x /usr/bin/python3 ]; then
         echo `/usr/bin/python3 ~/.config/python3/names.generate.py`
     fi
-}
-
-# Function to match IP address to a subnet
-function on-subnet(){
-  if [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]]  || [[ "$1" == "" ]] ; then
-    printf "Usage:\n\ton-subnet [ --not ] partial-ip-address\n\n"
-    printf "Example:\n\ton-subnet 10.10.\n\ton-subnet --not 192.168.0.\n\n"
-    printf "Note:\n\tThe partial-ip-address must match starting at the first\n"
-    printf "\tcharacter of the ip-address, therefore the first example\n"
-    printf "\tabove will match 10.10.10.1 but not 110.10.10.1\n"
-    return 0
-  fi
-
-  on=0
-  off=1
-  if [[ "$1" == "--not" ]] ; then
-    shift
-    on=1
-    off=0
-  fi
-
-  regexp="^$(sed 's/\./\\./g' <<<"$1")"
-
-  if [[ "$(uname)" == "Darwin" ]] ; then
-    ifconfig | fgrep 'inet ' | fgrep -v 127.0.0. | cut -d ' ' -f 2 | egrep -q "$regexp"
-  else
-    hostname -I | tr -s " " "\012" | fgrep -v 127.0.0. | egrep -q "$regexp"
-  fi
-
-  if [[ $? == 0 ]]; then
-    return $on
-  else
-    return $off
-  fi
 }
 
 # docker run

@@ -77,7 +77,7 @@ table.insert(gls.left, {
 
 table.insert(gls.left, {
   FileName = {
-    provider = {'FileName','FileSize'},
+    provider = {'FileName'},
     condition = buffer_not_empty,
     separator = ' ',
     separator_highlight = {colors.bg, colors.bg},
@@ -208,7 +208,7 @@ table.insert(gls.right, {
 
 table.insert(gls.right, {
   LineInfo = {
-    provider = 'LineColumn',
+    provider = 'FileSize',
     separator = '  ',
     separator_highlight = {colors.bg, colors.bg},
     highlight = {colors.grey, colors.bg}
@@ -217,7 +217,7 @@ table.insert(gls.right, {
 
 table.insert(gls.right, {
   PerCent = {
-    provider = 'LinePercent',
+    provider = {'LineColumn','LinePercent'},
     separator = ' ',
     separator_highlight = {colors.bg, colors.bg},
     highlight = {colors.grey, colors.bg}

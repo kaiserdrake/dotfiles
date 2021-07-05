@@ -12,6 +12,7 @@ HISTFILE=$ZSHLCFGDIR/zsh_history
 # General configurations
 HOSTNAME=$(hostname)
 setopt PROMPT_SUBST
+setopt interactivecomments
 
 # Load plugin manager (antigen)
 source $ZSHLCFGDIR/antigen.zsh
