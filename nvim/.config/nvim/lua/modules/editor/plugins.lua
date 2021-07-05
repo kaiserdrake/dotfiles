@@ -14,7 +14,7 @@ editor['rhysd/accelerated-jk'] = {
 
 -- Provides loading of coding style using EditorConfig
 editor['editorconfig/editorconfig-vim'] = {
-  opt = true
+  opt = false
 }
 
 -- Provides highlighting of word under cursor

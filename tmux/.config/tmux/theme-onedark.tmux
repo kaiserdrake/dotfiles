@@ -5,6 +5,7 @@ onedark_yellow="#e5c07b"
 onedark_red="#e06c75"
 onedark_white="#aab2bf"
 onedark_green="#98c379"
+onedark_purple="#c678dd"
 onedark_visual_grey="#3e4452"
 onedark_comment_grey="#5c6370"
 
@@ -66,10 +67,10 @@ set "@prefix_highlight_copy_mode_attr" "fg=$onedark_black,bg=$onedark_green"
 set "@prefix_highlight_output_prefix" " > "
 
 if [ ! -z "$VIM_TERMINAL" ]; then
-    set "status-right" "#[fg=$onedark_white,bg=$onedark_visual_grey,nobold] VIMTERM #[fg=$onedark_white, bg=$onedark_visual_grey] $TERM #[fg=$onedark_black,bg=$onedark_green,bold] #h "
+    set "status-right" "#[fg=$onedark_white,bg=$onedark_visual_grey,nobold] VIMTERM #[fg=$onedark_white, bg=$onedark_visual_grey] $TERM "
 else
-    set "status-right" "#[fg=$onedark_white,bg=$onedark_visual_grey,nobold] #[fg=$onedark_white, bg=$onedark_visual_grey] $TERM #[fg=$onedark_black,bg=$onedark_green,bold] #h "
+  set "status-right" "#[fg=$onedark_white,bg=$onedark_visual_grey,nobold] #[fg=$onedark_white, bg=$onedark_visual_grey] $TERM #[fg=$onedark_green, bg=$onedark_visual_grey]%a%l:%M %p #[fg=$onedark_black, bg=$onedark_green,bold] %Y/%m/%d "
 fi
-set "status-left" "#[fg=$onedark_black,bg=$onedark_green,bold] #S #{prefix_highlight}"
+set "status-left" "#[fg=$onedark_black,bg=$onedark_green,bold] #h #[fg=$onedark_black,bg=$onedark_blue,bold] #S #{prefix_highlight}"
 set "window-status-format" "#[fg=$onedark_black,bg=$onedark_black,nobold,nounderscore,noitalics] #[fg=$onedark_white,bg=$onedark_black] [#I] #W #[fg=$onedark_black,bg=$onedark_black,nobold,nounderscore,noitalics] "
 set "window-status-current-format" "#[fg=$onedark_white,bg=$onedark_visual_grey,nobold] [#I] #W "
