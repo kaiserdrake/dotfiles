@@ -48,8 +48,8 @@ function do-command(){
     # Replace all positional parameters in found command with the parameters
     # passed to this function
     args=(`echo ${ARGS}`)
-    for ((i=1; i<=${#args[@]}; i++)) do
-      pattern="\$"${i}
+    for ((i=0; i<${#args[@]}; i++)) do
+      pattern="\$"${i+1}
       MY_FIND_COMMAND=${MY_FIND_COMMAND/$pattern/${args[i]}}
     done
     ${DRYRUN} eval $MY_FIND_COMMAND

@@ -7,14 +7,6 @@ packageList=(
   fzf
   ripgrep
   build-essential
-  universal-ctags
-  clangd
-  python3-pip
-)
-
-pipModules=(
-  compiledb
-  pynvim
 )
 
 install()
@@ -26,19 +18,10 @@ install()
     echo "Installing '$i'..."
     sudo apt-get install --yes $i > /dev/null
   done
-  # Install python3 pip modules
-  for i in "${pipModules[@]}"; do
-    echo "Installing '$i'..."
-    yes | pip3 install $i
-  done
 }
 
 uninstall()
 {
-  for i in "${pipModules[@]}"; do
-    echo "Removing '$i'..."
-    pip uninstall --yes $i > /dev/null
-  done
   for i in "${packageList[@]}"; do
     echo "Removing '$i'..."
     sudo apt-get remove --yes $i > /dev/null

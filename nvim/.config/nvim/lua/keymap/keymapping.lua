@@ -24,7 +24,7 @@ wk.register({
     w = {
       name = "+vimwiki",
       x = {"<cmd>VimwikiIndex<cr><cmd>VimwikiGoto Scratch<cr>", "Vimwiki Scratch"},
-      c = {"<cmd>VimwikiIndex<cr><cmd>VimwikiGoto Commands<cr>", "Vimwiki Commands"},
+      c = {"<cmd>VimwikiIndex<cr><cmd>VimwikiGoto commands<cr>", "Vimwiki Commands"},
       ["<space>"] = {
         name = "+More..."
       },

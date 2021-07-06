@@ -6,6 +6,10 @@ local map = function(type, key, value)
 	api.nvim_buf_set_keymap(0,type,key,value,{noremap = true, silent = true});
 end
 
+vim.cmd([[sign define LspDiagnosticsSignError text= texthl= linehl= numhl=LspDiagnosticsSignError]])
+vim.cmd([[sign define LspDiagnosticsSignWarning text= texthl= linehl= numhl=LspDiagnosticsSignWarning]])
+vim.cmd([[sign define LspDiagnosticsSignInformation text= texthl= linehl= numhl=LspDiagnosticsSignInformation]])
+vim.cmd([[sign define LspDiagnosticsSignHint text= texthl= linehl= numhl=LspDiagnosticsSignHint]])
 
 local custom_attach = function(client)
   map('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
@@ -55,20 +59,51 @@ lsp.sumneko_lua.setup{
 				}
 			}
 		}
-	}
-}
-
-vim.cmd([[sign define LspDiagnosticsSignError text= texthl= linehl= numhl=LspDiagnosticsSignError]])
-vim.cmd([[sign define LspDiagnosticsSignWarning text= texthl= linehl= numhl=LspDiagnosticsSignWarning]])
-vim.cmd([[sign define LspDiagnosticsSignInformation text= texthl= linehl= numhl=LspDiagnosticsSignInformation]])
-vim.cmd([[sign define LspDiagnosticsSignHint text= texthl= linehl= numhl=LspDiagnosticsSignHint]])
-
-local servers = {
-  'dockerls','bashls','pyright'
-}
-
-for _,server in ipairs(servers) do
-  lspconfig[server].setup {
-    on_attach = custom_attach
+	},
+  handlers = {
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        -- Disable virtual_text
+        virtual_text = false
+      }
+    ),
   }
-end
+}
+
+lsp.bashls.setup{
+  on_attach = custom_attach,
+  handlers = {
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        -- Disable virtual_text
+        virtual_text = false
+      }
+    ),
+  }
+}
+
+lsp.dockerls.setup{
+  on_attach = custom_attach,
+  handlers = {
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        -- Disable virtual_text
+        virtual_text = false
+      }
+    ),
+  }
+}
+
+lsp.pyls.setup{
+  on_attach = custom_attach,
+  handlers = {
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        -- Disable virtual_text
+        virtual_text = false
+      }
+    ),
+  }
+}
+
+
