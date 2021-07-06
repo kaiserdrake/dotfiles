@@ -67,6 +67,24 @@ print(vim.fn.getbufvar(0, 'ts'))
 vim.fn.getbufvar(0, 'ts')
 
 table.insert(gls.left, {
+  FileIcon = {
+    provider = 'FileIcon',
+    condition = buffer_not_empty,
+    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.bg},
+  }
+})
+
+table.insert(gls.left, {
+  FileName = {
+    provider = {'FileName'},
+    condition = buffer_not_empty,
+    separator = ' ',
+    separator_highlight = {colors.bg, colors.bg},
+    highlight = {colors.grey, colors.bg}
+  }
+})
+
+table.insert(gls.left, {
   GitIcon = {
     provider = function()
       return '  '

@@ -105,5 +105,3 @@ lsp.pyls.setup{
     ),
   }
 }
-
-

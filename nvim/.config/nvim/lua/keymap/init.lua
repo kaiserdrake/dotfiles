@@ -30,8 +30,8 @@ local plug_map = {
   ["n|<C-x>d"]         = map_cu([[normal a<C-R>=strftime("[%Y-%m-%d %a]")<CR>]]):with_noremap():with_silent(),
   -- telescope
   ["n|<C-x>b"]         = map_cu([[Telescope buffers]]):with_noremap():with_silent(),
-  ["n|<C-x>f"]         = map_cu([[Telescope find_files find_command=rg,--ignore,--files,--follow]]):with_noremap():with_silent(),
-  ["n|<C-x>F"]         = map_cu([[Telescope find_files find_command=rg,--no-ignore,--hidden,--files,--follow]]):with_noremap():with_silent(),
+  ["n|<C-x>f"]         = map_cu([[Telescope find_files find_command=rg,-uu,--files,--follow]]):with_noremap():with_silent(),
+  ["n|<C-x>F"]         = map_cu([[Telescope find_files find_command=rg,-uu,--files,--follow cwd=]]..os.getenv("HOME")):with_noremap():with_silent(),
   -- quickfix
   ["i|<C-x>cn"]        = map_cmd([[cn]]):with_noremap():with_expr(),
   ["n|<C-x>cn"]        = map_cu([[cn]]):with_noremap():with_silent(),
