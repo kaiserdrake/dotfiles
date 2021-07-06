@@ -33,12 +33,12 @@ install()
   # Install python3 pip modules
   for i in "${pipModules[@]}"; do
     echo "Installing '$i'..."
-    yes | pip3 install $i > /dev/null
+    yes | pip3 install $i 2> /dev/null
   done
   # install npm modules
   for i in "${npmModules[@]}"; do
     echo "Installing '$i'..."
-    sudo npm i -g --silent $i > /dev/null
+    sudo npm i -g --silent $i 2> /dev/null
   done
 
   mkdir -p ${NVIMTARGET}
