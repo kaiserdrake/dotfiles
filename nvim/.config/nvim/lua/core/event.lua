@@ -14,6 +14,8 @@ function autocmd.nvim_create_augroups(definitions)
 end
 
 function autocmd.load_autocmds()
+  vim.api.nvim_command[[autocmd ColorScheme * highlight TrailHighlight ctermfg=204 gui=reverse guifg=#E06C75]]
+
   local definitions = {
     packer = {
       {"BufWritePost", "*.lua", "lua require('core.packer').auto_compile()"};

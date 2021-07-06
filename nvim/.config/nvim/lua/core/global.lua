@@ -4,23 +4,6 @@ local path_sep = global.is_windows and '\\' or '/'
 local os_name = vim.loop.os_uname().sysname
 local filestore = os.getenv("FILESTORE_PATH")
 
-function global:get_hostname()
-  local f = io.popen ("/bin/hostname")
-  local hostname = f:read("*a") or ""
-  f:close()
-  hostname =string.gsub(hostname, "\n$", "")
-  return hostname
-end
-
-function global:get_env_context()
-  env_context = os.getenv("META_IMAGEREF")
-  if (env_context == nil or env_context == '') then
-    return global:get_hostname()
-  else
-    return env_context
-  end
-end
-
 function global:set_linenumber(option)
   if (option == 'relative') then
     vim.wo.number = true
@@ -44,8 +27,6 @@ function global:load_variables()
   self.path_sep = path_sep
   self.home = home
   self.data_dir = string.format('%s/site/',vim.fn.stdpath('data'))
-  self.hostname = global:get_hostname()
-  self.env_context = global:get_env_context()
   self.filestore = filestore
 end
 

@@ -44,17 +44,11 @@ local leader_map = function()
   vim.api.nvim_set_keymap('x',' ','',{noremap = true})
 end
 
--- Function : personal definitions
-local create_persinal_defines = function()
-  vim.api.nvim_command[[autocmd ColorScheme * highlight TrailHighlight ctermfg=204 gui=reverse guifg=#E06C75]]
-end
-
 local load_core = function()
   local pack = require('core.packer')
   createdir()
   disable_distribution_plugins()
   leader_map()
-  create_persinal_defines()
 
   pack.ensure_plugins()
   require('core.options')
