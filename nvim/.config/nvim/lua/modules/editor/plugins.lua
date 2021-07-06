@@ -73,8 +73,8 @@ editor['glepnir/galaxyline.nvim'] = {
 
 -- Provides bufferline in place of tabs
 editor['akinsho/nvim-bufferline.lua'] = {
-  config = conf.bufferline,
   requires = {'kyazdani42/nvim-web-devicons', opt = false},
+  config = conf.bufferline,
 }
 
 -- Provides git icons

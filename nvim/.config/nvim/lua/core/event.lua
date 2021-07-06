@@ -14,8 +14,6 @@ function autocmd.nvim_create_augroups(definitions)
 end
 
 function autocmd.load_autocmds()
-  vim.api.nvim_command[[autocmd ColorScheme * highlight TrailHighlight ctermfg=204 gui=reverse guifg=#E06C75]]
-
   local definitions = {
     packer = {
       {"BufWritePost", "*.lua", "lua require('core.packer').auto_compile()"};
@@ -41,7 +39,7 @@ function autocmd.load_autocmds()
       {"WinEnter,BufEnter,InsertLeave", "*", [[if ! &cursorline && &filetype !~# '^\(dashboard\|clap_\)' && ! &pvw | setlocal cursorline | endif]]};
       {"WinLeave,BufLeave,InsertEnter", "*", [[if &cursorline && &filetype !~# '^\(dashboard\|clap_\)' && ! &pvw | setlocal nocursorline | endif]]};
       -- Highlight trailing whitespace
-      {"VimEnter", "*", [[call matchadd('TrailHighlight', '\s\+$', 100)]]};
+      {"VimEnter", "*", [[call matchadd('NvimInternalError', '\s\+$', 100)]]};
       -- Equalize window dimensions when resizing vim window
       {"VimResized", "*", [[tabdo wincmd =]]};
       -- Force write shada on leaving nvim

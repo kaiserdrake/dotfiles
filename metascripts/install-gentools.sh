@@ -1,6 +1,5 @@
 packageList=(
   tmux
-  trash-cli
   tree
   stow
   xclip
