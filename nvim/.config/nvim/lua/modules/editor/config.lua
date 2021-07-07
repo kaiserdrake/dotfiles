@@ -50,6 +50,16 @@ function config.telescope()
   end
   require('telescope').setup {
     defaults = {
+      find_command = {
+        "rg",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+        "--follow",
+        "-uu",
+      },
       prompt_prefix = '> ',
       selection_caret = " ",
       sorting_strategy = 'descending',
@@ -60,7 +70,6 @@ function config.telescope()
       file_ignore_patterns = {
         'node_modules/.*',
         '.git/.*',
-        '.local/.*',
       },
     },
     pickers = {
@@ -78,6 +87,12 @@ function config.telescope()
       },
       find_files = {
         results_title = "",
+      },
+    },
+    extensions = {
+      fzy_native = {
+        override_generic_sorter = false,
+        override_file_sorter = true,
       },
     },
   }
@@ -255,7 +270,7 @@ function config.which_key()
     },
     icons = {
       breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-      separator = "➜", -- symbol used between a key and it's label
+      separator = "→", -- symbol used between a key and it's label
       group = "+", -- symbol prepended to a group
     },
     triggers_blacklist = {
@@ -280,8 +295,9 @@ function config.which_key()
   }
   require('keymap.keymapping')
   vim.api.nvim_command[[autocmd ColorScheme * highlight link WhichKey Statement]]
+  vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeySeparator ctermfg=114 guifg=#98C379]]
   vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyDesc ctermfg=39 guifg=#61AFEF]]
-  vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyGroup cterm=italic ctermfg=39 gui=italic guifg=#61AFEF]]
+  vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyGroup cterm=italic ctermfg=39 gui=bold guifg=#61AFEF]]
 end
 
 function config.vimwiki()
@@ -291,6 +307,15 @@ function config.vimwiki()
                          ext='.md',
                          auto_diary_index=1}}
   vim.g.vimwiki_key_mappings = {['table_mappings']='0'}
+end
+
+function config.sessions()
+  require('auto-session').setup{
+    auto_session_enable_last_session = false,
+    auto_session_enable = true,
+    auto_session_root_dir = require('core.global').cache_dir.."sessions/",
+    auto_save_enabled = true,
+  }
 end
 
 return config
