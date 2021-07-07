@@ -153,7 +153,7 @@ table.insert(gls.right, {
       if tbl[vim.bo.filetype] then return false end
       return true
     end,
-    icon = '  ',
+    icon = ' ',
     highlight = {colors.grey, colors.bg},
     separator = '  ',
     separator_highlight = {colors.bg, colors.bg},
@@ -163,10 +163,14 @@ table.insert(gls.right, {
 table.insert(gls.right, {
   ShowEditorConfigApplied = {
     provider = function()
-      if vim.b.editorconfig_applied == 1 then return "Active" end
+      if vim.b.editorconfig_applied == 1 then
+        return "Active:"..vim.api.nvim_buf_get_option(0, "shiftwidth")
+      else
+        return vim.api.nvim_buf_get_option(0, "shiftwidth")
+      end
     end,
     condition = buffer_not_empty,
-    icon = '  ',
+    icon = ' ',
     highlight = {colors.grey, colors.bg},
     separator = '  ',
     separator_highlight = {colors.bg, colors.bg},

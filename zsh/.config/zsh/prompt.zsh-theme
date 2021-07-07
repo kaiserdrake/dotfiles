@@ -6,6 +6,7 @@ ZSHTHEME_PROMPT_SYMBOL="$"
 # Colors
 ZSHTHEME_COLORS_HOST_ME=green
 ZSHTHEME_COLORS_HOST_DOCKER=red
+ZSHTHEME_COLORS_HOST_DOCKER_INFO=blue
 ZSHTHEME_COLORS_VIMTERM=red
 ZSHTHEME_COLORS_CURRENT_DIR=blue
 ZSHTHEME_COLORS_RETURN_STATUS_TRUE=yellow
@@ -17,21 +18,30 @@ ZSHTHEME_COLORS_GIT_PROMPT_SHA=green
 ZSHTHEME_COLORS_BG_JOBS=yellow
 
 # Left Prompt
-PROMPT='$(zshtheme_host)$(zshtheme_current_dir)$(zshtheme_bg_jobs)$(zshtheme_return_status)'
+PROMPT='$(zshtheme_host)$(zshtheme_current_dir)$(zshtheme_git_status)$(zshtheme_bg_jobs)$(zshtheme_return_status)'
 
 # Right Prompt
-RPROMPT='$(zshtheme_vim_term) $(zshtheme_git_status)'
+RPROMPT='$(zshtheme_docker)$(zshtheme_vim_term)'
 
 # Host
 zshtheme_host() {
     me="%F{$ZSHTHEME_COLORS_HOST_ME}%n@%m%f"
     if [[ -n $me ]]; then
         if within_docker; then
-            echo "$me%{$reset_color%}#%F{$ZSHTHEME_COLORS_HOST_DOCKER}$META_IMAGEREF%f%{$reset_color%}:"
+            echo "$me%{$reset_color%}#%F{$ZSHTHEME_COLORS_HOST_DOCKER}docker%f%{$reset_color%}:"
         else
             echo "$me%{$reset_color%}:"
         fi
     fi
+}
+
+# Docker container meta info
+zshtheme_docker() {
+  if within_docker; then
+    if [ ! -z "$META_IMAGEREF" ]; then
+      echo "%F{$ZSHTHEME_COLORS_HOST_DOCKER_INFO}[$META_IMAGEREF]%f%{$reset_color%}"
+    fi
+  fi
 }
 
 # Current directory
@@ -61,7 +71,7 @@ zshtheme_git_status() {
 
     local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
     if [[ -n ${branch} ]]; then
-        message+="${message_color}${branch}%f"
+      message+="${message_color} (${branch})%f"
     fi
 
     echo -n "${message}"

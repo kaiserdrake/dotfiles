@@ -118,5 +118,9 @@ function docker-run(){
         DOCKOPTS=$(echo "$DOCKOPTS -e META_IMAGEREF=$IMAGENAME")
     fi
     DOCKOPTS=$(echo "$DOCKOPTS -w `pwd`")
-    ${DRYRUN} eval docker run $DOCKOPTS $IMAGENAME $COMMANDS
+    if [ -n "$ZSH_VERSION" ]; then
+      ${DRYRUN} eval docker run $DOCKOPTS $IMAGENAME /bin/zsh $COMMANDS
+    else
+      ${DRYRUN} eval docker run $DOCKOPTS $IMAGENAME $COMMANDS
+    fi
 }
