@@ -6,7 +6,7 @@ ZSHTHEME_PROMPT_SYMBOL="$"
 # Colors
 ZSHTHEME_COLORS_HOST_ME=green
 ZSHTHEME_COLORS_HOST_DOCKER=red
-ZSHTHEME_COLORS_HOST_DOCKER_INFO=blue
+ZSHTHEME_COLORS_HOST_DOCKER_INFO=yellow
 ZSHTHEME_COLORS_VIMTERM=red
 ZSHTHEME_COLORS_CURRENT_DIR=blue
 ZSHTHEME_COLORS_RETURN_STATUS_TRUE=yellow
@@ -21,7 +21,7 @@ ZSHTHEME_COLORS_BG_JOBS=yellow
 PROMPT='$(zshtheme_host)$(zshtheme_current_dir)$(zshtheme_git_status)$(zshtheme_bg_jobs)$(zshtheme_return_status)'
 
 # Right Prompt
-RPROMPT='$(zshtheme_docker)$(zshtheme_vim_term)'
+RPROMPT='$(zshtheme_vim_term)'
 
 # Host
 zshtheme_host() {
@@ -33,15 +33,6 @@ zshtheme_host() {
             echo "$me%{$reset_color%}:"
         fi
     fi
-}
-
-# Docker container meta info
-zshtheme_docker() {
-  if within_docker; then
-    if [ ! -z "$META_IMAGEREF" ]; then
-      echo "%F{$ZSHTHEME_COLORS_HOST_DOCKER_INFO}[$META_IMAGEREF]%f%{$reset_color%}"
-    fi
-  fi
 }
 
 # Current directory
