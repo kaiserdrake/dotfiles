@@ -307,6 +307,7 @@ function config.vimwiki()
                          ext='.md',
                          auto_diary_index=1}}
   vim.g.vimwiki_key_mappings = {['table_mappings']='0'}
+  vim.g.vimwiki_autowriteall = 1
 end
 
 function config.sessions()
