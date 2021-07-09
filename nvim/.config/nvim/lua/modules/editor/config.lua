@@ -63,13 +63,16 @@ function config.telescope()
       prompt_prefix = '> ',
       selection_caret = " ",
       sorting_strategy = 'descending',
-      layout_strategy = 'horizontal',
+      layout_strategy = 'flex',
       file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
       grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
       qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
       file_ignore_patterns = {
         'node_modules/.*',
         '.git/.*',
+      },
+      path_display = {
+        'shorten',
       },
     },
     pickers = {
