@@ -52,7 +52,6 @@ local load_core = function()
 
   pack.ensure_plugins()
   require('core.options')
-  require('core.mapping')
   require('keymap')
   require('core.event')
   pack.load_compile()
