@@ -70,6 +70,8 @@ local plug_map = {
   ["n|<C-x>f"]         = map_cu([[Telescope find_files find_command=rg,-uu,--files,--follow]]):with_noremap():with_silent(),
   ["n|<C-x>F"]         = map_cu([[Telescope find_files find_command=rg,-uu,--files,--follow cwd=]]..os.getenv("HOME")):with_noremap():with_silent(),
   -- quickfix
+  ["n|]c"]             = map_cu([[cn]]):with_noremap(),
+  ["n|[c"]             = map_cu([[cp]]):with_noremap(),
   ["i|<C-x>cn"]        = map_cmd([[cn]]):with_noremap():with_expr(),
   ["n|<C-x>cn"]        = map_cu([[cn]]):with_noremap():with_silent(),
   ["i|<C-x>cp"]        = map_cmd([[cp]]):with_noremap():with_expr(),

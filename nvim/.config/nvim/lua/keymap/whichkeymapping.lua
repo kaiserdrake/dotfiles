@@ -26,10 +26,23 @@ wk.register({
   },
   w = {
     name = "+VimWiki",
-    x = {"<cmd>VimwikiIndex<cr><cmd>VimwikiGoto Scratch<cr>", "VimWiki scratch"},
-    c = {"<cmd>VimwikiIndex<cr><cmd>VimwikiGoto commands<cr>", "VimWiki commands"},
+    x = {"<cmd>VimwikiIndex<cr><cmd>VimwikiGoto Scratch<cr>", "Scratch"},
+    c = {"<cmd>VimwikiIndex<cr><cmd>VimwikiGoto commands<cr>", "Commands"},
+    w = "Index",
+    i = "Diary index",
+    s = "Select",
+    r = "Rename file",
+    d = "Delete file",
+    n = "GoTo",
+    h = "Convert to HTML",
+    t = "which_key_ignore", -- tab not used making this command reduandant with "w"
     ["<space>"] = {
-      name = "+More..."
+      name = "+More...",
+      i = "Diary generate links",
+      w = "Diary entry",
+      m = "Diary for tomorrow",
+      y = "Diary entry from yesterday",
+      t = "which_key_ignore", -- tab not used making this command reduandant with "w"
     },
   },
   l = {
@@ -86,6 +99,7 @@ wk.register({
   g = "Next git hunk",
   b = "Next buffer",
   w = "Next whitespace",
+  c = "Next quickfix entry",
  }, { prefix = "]" })
 
 -- Register "[" (previous) mappings
@@ -93,6 +107,7 @@ wk.register({
   g = "Previous git hunk",
   b = "Previous buffer",
   w = "Previous whitespace",
+  c = "Previous quickfix entry",
 }, { prefix = "[" })
 
 -- Register <C-x> (shortcuts) mappings

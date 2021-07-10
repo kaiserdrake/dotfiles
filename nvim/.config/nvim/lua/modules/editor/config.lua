@@ -311,8 +311,8 @@ function config.vimwiki()
                          syntax='markdown',
                          ext='.md',
                          auto_diary_index=1}}
-  vim.g.vimwiki_key_mappings = {['table_mappings']='0'}
-  vim.g.vimwiki_autowriteall = 1
+  vim.g.vimwiki_key_mappings = {['table_mappings']='0'} -- disable backspace as back
+  vim.g.vimwiki_autowriteall = 1 -- enable auto save on vimwiki filetype
 end
 
 function config.sessions()
