@@ -106,6 +106,11 @@ editor['vimwiki/vimwiki'] = {
     config = conf.vimwiki
 }
 
+editor['terrortylor/nvim-comment'] = {
+    config = conf.nvim_comment,
+    opt = false
+}
+
 -- Session management
 editor['rmagatti/auto-session'] = {
     config = conf.sessions

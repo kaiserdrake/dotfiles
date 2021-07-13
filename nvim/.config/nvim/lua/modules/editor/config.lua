@@ -315,6 +315,10 @@ function config.vimwiki()
     vim.g.vimwiki_autowriteall = 1 -- enable auto save on vimwiki filetype
 end
 
+function config.nvim_comment()
+    require('nvim_comment').setup()
+end
+
 function config.sessions()
     require('auto-session').setup{
         auto_session_enable_last_session = false,
