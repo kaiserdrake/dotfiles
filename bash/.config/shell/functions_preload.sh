@@ -22,7 +22,7 @@ function get-history-lines(){
 # either # or ```.
 function get-stored-command-lines(){
     if [ -f "$1" ]; then
-      sed '/```/{n;:l N;/```/b; s/\n//; bl}' $1 | sed -n '/```/,/```/{//!p}' | sed 's/\\//g'
+        sed '/```/{n;:l N;/```/b; s/\n//; bl}' $1 | sed -n '/```/,/```/{//!p}' | sed 's/\\//g'
     fi
 }
 
@@ -49,8 +49,8 @@ function do-command(){
     # passed to this function
     args=(`echo ${ARGS}`)
     for ((i=0; i<${#args[@]}; i++)) do
-      pattern="\$"${i+1}
-      MY_FIND_COMMAND=${MY_FIND_COMMAND/$pattern/${args[i]}}
+        pattern="\$"${i+1}
+        MY_FIND_COMMAND=${MY_FIND_COMMAND/$pattern/${args[i]}}
     done
     ${DRYRUN} eval $MY_FIND_COMMAND
 }
@@ -119,8 +119,8 @@ function docker-run(){
     fi
     DOCKOPTS=$(echo "$DOCKOPTS -w `pwd`")
     if [ -n "$ZSH_VERSION" ]; then
-      ${DRYRUN} eval docker run $DOCKOPTS $IMAGENAME /bin/zsh $COMMANDS
+        ${DRYRUN} eval docker run $DOCKOPTS $IMAGENAME /bin/zsh $COMMANDS
     else
-      ${DRYRUN} eval docker run $DOCKOPTS $IMAGENAME $COMMANDS
+        ${DRYRUN} eval docker run $DOCKOPTS $IMAGENAME $COMMANDS
     fi
 }

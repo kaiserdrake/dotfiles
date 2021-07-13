@@ -10,15 +10,15 @@ onedark_visual_grey="#3e4452"
 onedark_comment_grey="#5c6370"
 
 set() {
-  local option=$1
-  local value=$2
-  tmux set-option -gq "$option" "$value"
+    local option=$1
+    local value=$2
+    tmux set-option -gq "$option" "$value"
 }
 
 setw() {
-  local option=$1
-  local value=$2
-  tmux set-window-option -gq "$option" "$value"
+    local option=$1
+    local value=$2
+    tmux set-window-option -gq "$option" "$value"
 }
 
 set "status" "on"
@@ -67,11 +67,11 @@ set "@prefix_highlight_copy_mode_attr" "fg=$onedark_black,bg=$onedark_green"
 set "@prefix_highlight_output_prefix" " > "
 
 if [ ! -z "$VIM_TERMINAL" ]; then
-  set "status-right" "#[fg=$onedark_red,bg=$onedark_visual_grey,nobold] VIMTERM #[fg=$onedark_yellow, bg=$onedark_visual_grey] $TERM #[fg=$onedark_black,bg=$onedark_purple,bold] #h "
+    set "status-right" "#[fg=$onedark_red,bg=$onedark_visual_grey,nobold] VIMTERM #[fg=$onedark_yellow, bg=$onedark_visual_grey] $TERM #[fg=$onedark_black,bg=$onedark_purple,bold] #h "
 elif [ ! -z "$META_IMAGEREF" ]; then
-  set "status-right" "#[fg=$onedark_yellow, bg=$onedark_visual_grey] $TERM #[fg=$onedark_black,bg=$onedark_green] ${META_IMAGEREF##*/} #[fg=$onedark_black,bg=$onedark_purple,bold] #h "
+    set "status-right" "#[fg=$onedark_yellow, bg=$onedark_visual_grey] $TERM #[fg=$onedark_black,bg=$onedark_green] ${META_IMAGEREF##*/} #[fg=$onedark_black,bg=$onedark_purple,bold] #h "
 else
-  set "status-right" "#[fg=$onedark_yellow, bg=$onedark_visual_grey] $TERM #[fg=$onedark_black,bg=$onedark_purple,bold] #h "
+    set "status-right" "#[fg=$onedark_yellow, bg=$onedark_visual_grey] $TERM #[fg=$onedark_black,bg=$onedark_purple,bold] #h "
 fi
 set "status-left" "#[fg=$onedark_black,bg=$onedark_green,bold] #S #{prefix_highlight}"
 set "window-status-format" "#[fg=$onedark_comment_grey,bg=$onedark_visual_grey,bold] [#I] #W "
