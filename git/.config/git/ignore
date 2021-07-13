@@ -1,0 +1,3 @@
+.clangd/
+tags
+compile_commands.json

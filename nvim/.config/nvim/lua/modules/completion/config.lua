@@ -10,6 +10,9 @@ function config.nvim_compe()
         debug = false;
         min_length = 2;
         preselect = 'disable';
+        max_abbr_width = 60;
+        max_kind_width = 60;
+        max_menu_width = 60;
         allow_prefix_unmatch = false;
         source = {
             path = true;

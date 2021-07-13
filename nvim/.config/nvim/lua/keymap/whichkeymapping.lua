@@ -100,6 +100,7 @@ wk.register({
     b = "Next buffer",
     w = "Next whitespace",
     c = "Next quickfix entry",
+    l = {"<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next LSP diagnostic"},
 }, { prefix = "]" })
 
 -- Register "[" (previous) mappings
@@ -108,6 +109,7 @@ wk.register({
     b = "Previous buffer",
     w = "Previous whitespace",
     c = "Previous quickfix entry",
+    l = {"<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Previous LSP diagnostic"},
 }, { prefix = "[" })
 
 -- Register <C-x> (shortcuts) mappings

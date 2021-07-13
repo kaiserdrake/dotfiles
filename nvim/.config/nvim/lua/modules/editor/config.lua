@@ -70,6 +70,7 @@ function config.telescope()
             file_ignore_patterns = {
                 'node_modules/.*',
                 '.git/.*',
+                '.clangd/.*',
             },
             path_display = {
                 'shorten',
