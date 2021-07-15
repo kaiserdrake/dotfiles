@@ -27,8 +27,12 @@ lsp.clangd.setup{
     on_attach = custom_attach,
     default_config = {
         cmd = {
-            "clangd", "--background-index", "--pch-storage=memory",
-            "--clang-tidy", "--suggest-missing-includes"
+            "clangd",
+            "--background-index",
+            "--compile-commands-dir=build",
+            "--pch-storage=memory",
+            "--clang-tidy",
+            "--suggest-missing-includes",
         },
         filetypes = {"c", "cpp", "objc", "objcpp"},
         root_dir = [[root_pattern("compile_commands.json", "compile_flags.txt", ".git/") or dirname]];
