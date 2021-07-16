@@ -117,7 +117,7 @@ function docker-run(){
         # set META_IMAGEREF (used in PS1 identifier) same as image name
         DOCKOPTS=$(echo "$DOCKOPTS -e META_IMAGEREF=$IMAGENAME")
     fi
-    DOCKOPTS=$(echo "$DOCKOPTS -w `pwd`")
+    DOCKOPTS=$(echo "$DOCKER_OPTIONS $DOCKOPTS -w `pwd`")
     if [ -n "$ZSH_VERSION" ]; then
         ${DRYRUN} eval docker run $DOCKOPTS $IMAGENAME /bin/zsh $COMMANDS
     else
