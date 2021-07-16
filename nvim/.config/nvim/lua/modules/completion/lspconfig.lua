@@ -47,33 +47,6 @@ lsp.clangd.setup{
     }
 }
 
-lsp.sumneko_lua.setup{
-    on_attach = custom_attach,
-    settings = {
-        Lua = {
-            runtime = { version = "LuaJIT", path = vim.split(package.path, ';'), },
-            completion = { keywordSnippet = "Disable", },
-            diagnostics = { enable = true, globals = {
-                "vim", "describe", "it", "before_each", "after_each" },
-            },
-            workspace = {
-                library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                }
-            }
-        }
-    },
-    handlers = {
-        ["textDocument/publishDiagnostics"] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics, {
-            -- Disable virtual_text
-            virtual_text = false
-        }
-        ),
-    }
-}
-
 lsp.bashls.setup{
     on_attach = custom_attach,
     handlers = {
@@ -98,8 +71,12 @@ lsp.dockerls.setup{
     }
 }
 
-lsp.pyls.setup{
+lsp.pylsp.setup{
     on_attach = custom_attach,
+    default_config = {
+        cmd = { "pylsp" },
+        filetypes = { "python" },
+    },
     handlers = {
         ["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics, {

@@ -12,7 +12,7 @@ packageList=(
 pipModules=(
     compiledb
     pynvim
-    python-language-server[all]
+    python-lsp-server[all]
 )
 
 npmModules=(
