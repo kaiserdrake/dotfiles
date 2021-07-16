@@ -57,10 +57,11 @@ wk.register({
         a = {"<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action"},
     },
     g = {
-        name = "+GitSigns",
+        name = "+Git",
         n = {"Next hunk"},
         p = {"Previous hunk"},
         b = {"Blame line"},
+        b = {"<cmd>Gitsigns toggle_current_line_blame<cr>", "Toggle blame line on hover"},
         u = {"Undo stage hunk"},
         v = {"Preview hunk"},
         r = {"Reset hunk"},
