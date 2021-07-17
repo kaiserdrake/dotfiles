@@ -336,6 +336,7 @@ end
 function config.markdownpreview()
     vim.g.mkdp_auto_start = 0 -- prevent auto preview
     vim.g.mkdp_filetypes = {'markdown','vimwiki'} -- include markdown and vimwiki filetypes
+    vim.g.mkdp_open_to_the_world = 1 -- enable external node to view the server
 end
 
 return config
