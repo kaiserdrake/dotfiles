@@ -116,4 +116,10 @@ editor['rmagatti/auto-session'] = {
     config = conf.sessions
 }
 
+-- Markdown filetype previewer
+editor['iamcco/markdown-preview.nvim'] = {
+    config = conf.markdown_preview,
+    run = 'cd app && yarn install'
+}
+
 return editor

@@ -83,6 +83,13 @@ wk.register({
             c = {"<cmd>GutentagsClearCache<cr>", "Clear cache"},
             u = {"<cmd>GutentagsUpdate<cr>", "Update tags"},
         },
+        m = {
+            name = "+MarkdownPreview",
+            s = {"<cmd>MarkdownPreview<cr>", "Preview"},
+            S = {"<cmd>MarkdownPreviewStop<cr>", "Preview stop"},
+            m = {"<cmd>MarkdownPreviewToggle<cr>", "Preview toggle"},
+        },
+
     },
     e = {
         name = "+Settings",

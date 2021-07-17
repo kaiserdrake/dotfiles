@@ -18,6 +18,7 @@ pipModules=(
 npmModules=(
     bash-language-server
     dockerfile-language-server-nodejs
+    yarn
 )
 
 install()

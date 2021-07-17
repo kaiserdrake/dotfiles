@@ -315,6 +315,7 @@ function config.vimwiki()
     syntax='markdown',
     ext='.md',
     auto_diary_index=1}}
+    vim.g.vimwiki_global_ext = 0
     vim.g.vimwiki_key_mappings = {['table_mappings']='0'} -- disable backspace as back
     vim.g.vimwiki_autowriteall = 1 -- enable auto save on vimwiki filetype
 end
@@ -330,6 +331,11 @@ function config.sessions()
         auto_session_root_dir = require('core.global').cache_dir.."sessions/",
         auto_save_enabled = true,
     }
+end
+
+function config.markdownpreview()
+    vim.g.mkdp_auto_start = 0 -- prevent auto preview
+    vim.g.mkdp_filetypes = {'markdown','vimwiki'} -- include markdown and vimwiki filetypes
 end
 
 return config
