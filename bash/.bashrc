@@ -110,7 +110,8 @@ PS1_NOTICE=''
 PS1_POST='\[\033[00m\]:\[\033[00;34m\]\w\[\033[01;33m\]$(__git_ps1)\[\033[00m\]\n$ '
 # Make subtle difference between container prompt as visual aid
 if within_docker; then
-    PS1_NOTICE+='\[\033[00m\]#\[\033[01;31m\]docker'
+    HOST_ARCH="`dpkg-architecture -q DEB_HOST_ARCH_OS`/`dpkg-architecture -q DEB_HOST_ARCH`"
+    PS1_NOTICE+='\[\033[00m\]#\[\033[01;31m\]${HOST_ARCH}'
 fi
 if [ ! -z "$VIM_TERMINAL" ] || [ ! -z "$NVIM_LISTEN_ADDRESS" ]; then
     PS1_NOTICE+='\[\033[00m\]#\[\033[0;31m\]VIMTERM'

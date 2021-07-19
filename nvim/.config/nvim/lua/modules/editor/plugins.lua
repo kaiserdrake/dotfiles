@@ -106,6 +106,7 @@ editor['vimwiki/vimwiki'] = {
     config = conf.vimwiki
 }
 
+-- Code block commenter
 editor['terrortylor/nvim-comment'] = {
     config = conf.nvim_comment,
     opt = false

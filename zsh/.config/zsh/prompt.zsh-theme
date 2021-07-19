@@ -28,7 +28,8 @@ zshtheme_host() {
     me="%F{$ZSHTHEME_COLORS_HOST_ME}%n@%m%f"
     if [[ -n $me ]]; then
         if within_docker; then
-            echo "$me%{$reset_color%}#%F{$ZSHTHEME_COLORS_HOST_DOCKER}docker%f%{$reset_color%}:"
+            archplat="`dpkg-architecture -q DEB_HOST_ARCH_OS`/`dpkg-architecture -q DEB_HOST_ARCH`"
+            echo "$me%{$reset_color%}#%F{$ZSHTHEME_COLORS_HOST_DOCKER}$archplat%f%{$reset_color%}:"
         else
             echo "$me%{$reset_color%}:"
         fi
