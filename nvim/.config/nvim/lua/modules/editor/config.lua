@@ -101,7 +101,6 @@ function config.telescope()
         },
     }
     require'telescope'.load_extension('dotfiles')
-    vim.cmd[[highlight link TelescopePromptPrefix Character]]
 end
 
 function config.nvim_treesitter()
@@ -164,9 +163,7 @@ function config.bufferline()
 end
 
 function config.onedark()
-    vim.g.onedark_terminal_italics=1
-    vim.g.onedark_hide_endofbuffer=1
-    vim.cmd [[colorscheme onedark]]
+    require('onedark').setup()
 end
 
 function config.gitsigns()
