@@ -36,6 +36,11 @@ editor['airblade/vim-rooter'] = {
     config = conf.vim_rooter,
 }
 
+-- Onedark theme
+editor['joshdick/onedark.vim'] = {
+    config = conf.onedark
+}
+
 -- Fuzzy search of files, buffers, etc
 editor['nvim-telescope/telescope.nvim'] = {
     opt = false,
@@ -116,11 +121,6 @@ editor['rmagatti/auto-session'] = {
 editor['iamcco/markdown-preview.nvim'] = {
     config = conf.markdown_preview,
     run = 'cd app && yarn install'
-}
-
--- Onedark theme
-editor['navarasu/onedark.nvim'] = {
-    config = conf.onedark
 }
 
 return editor
