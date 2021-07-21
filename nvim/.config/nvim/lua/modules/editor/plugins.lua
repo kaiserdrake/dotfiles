@@ -37,7 +37,7 @@ editor['airblade/vim-rooter'] = {
 }
 
 -- Onedark theme
-editor['joshdick/onedark.vim'] = {
+editor['navarasu/onedark.nvim'] = {
     config = conf.onedark
 }
 

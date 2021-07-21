@@ -101,7 +101,6 @@ function config.telescope()
         },
     }
     require'telescope'.load_extension('dotfiles')
-    vim.cmd[[highlight link TelescopePromptPrefix Character]]
 end
 
 function config.nvim_treesitter()
@@ -164,9 +163,11 @@ function config.bufferline()
 end
 
 function config.onedark()
-    vim.g.onedark_terminal_italics=1
-    vim.g.onedark_hide_endofbuffer=1
-    vim.cmd [[colorscheme onedark]]
+    vim.g.disable_toggle_style = 1
+    require('onedark').setup()
+    local c = require('onedark.colors')
+    -- telescope highlight override
+    vim.cmd[[highlight TelescopeBorder guifg=c.grey]]
 end
 
 function config.gitsigns()
@@ -303,18 +304,19 @@ function config.which_key()
         },
     }
     require('keymap.whichkeymapping')
-    vim.api.nvim_command[[autocmd ColorScheme * highlight link WhichKey Statement]]
-    vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeySeparator ctermfg=114 guifg=#98C379]]
-    vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyDesc ctermfg=39 guifg=#61AFEF]]
-    vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyGroup cterm=italic ctermfg=39 gui=bold guifg=#61AFEF]]
+    -- Disable customization of highlights here, let the colorscheme do it
+    -- vim.api.nvim_command[[autocmd ColorScheme * highlight link WhichKey Statement]]
+    -- vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeySeparator ctermfg=114 guifg=#98C379]]
+    -- vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyDesc ctermfg=39 guifg=#61AFEF]]
+    -- vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyGroup cterm=italic ctermfg=39 gui=bold guifg=#61AFEF]]
 end
 
 function config.vimwiki()
     wikipath = require('core.global').filestore..'/wikinotes'
     vim.g.vimwiki_list = {{path=wikipath,
-    syntax='markdown',
-    ext='.md',
-    auto_diary_index=1}}
+        syntax='markdown',
+        ext='.md',
+        auto_diary_index=1}}
     vim.g.vimwiki_global_ext = 0
     vim.g.vimwiki_key_mappings = {['table_mappings']='0'} -- disable backspace as back
     vim.g.vimwiki_autowriteall = 1 -- enable auto save on vimwiki filetype
