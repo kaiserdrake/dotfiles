@@ -61,7 +61,7 @@ wk.register({
         n = {"Next hunk"},
         p = {"Previous hunk"},
         b = {"Blame line"},
-        b = {"<cmd>Gitsigns toggle_current_line_blame<cr>", "Toggle blame line on hover"},
+        B = {"<cmd>Gitsigns toggle_current_line_blame<cr>", "Blame current line blame line on hover"},
         u = {"Undo stage hunk"},
         v = {"Preview hunk"},
         r = {"Reset hunk"},
