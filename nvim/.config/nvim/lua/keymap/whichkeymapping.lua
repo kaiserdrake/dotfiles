@@ -91,14 +91,11 @@ wk.register({
         },
 
     },
-    e = {
-        name = "+Settings",
-        n = {
-            name = "+Line number",
-            n = {"<cmd>lua require('core.global'):set_linenumber('on')<cr>", "Show number"},
-            r = {"<cmd>lua require('core.global'):set_linenumber('relative')<cr>", "Show relative number"},
-            h = {"<cmd>lua require('core.global'):set_linenumber('off')<cr>", "Hide number"},
-        },
+    n = {
+        name = "+Line number",
+        n = {"<cmd>lua require('core.global'):set_linenumber('on')<cr>", "Show number"},
+        r = {"<cmd>lua require('core.global'):set_linenumber('relative')<cr>", "Show relative number"},
+        h = {"<cmd>lua require('core.global'):set_linenumber('off')<cr>", "Hide number"},
     },
 }, { prefix = "<leader>" })
 

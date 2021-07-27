@@ -73,7 +73,7 @@ function config.telescope()
                 '.clangd/.*',
             },
             path_display = {
-                'shorten',
+                'absolute',
             },
         },
         pickers = {
@@ -167,7 +167,7 @@ function config.onedark()
     require('onedark').setup()
     local c = require('onedark.colors')
     -- telescope highlight override
-    vim.cmd[[highlight TelescopeBorder guifg=c.grey]]
+    vim.api.nvim_command[[autocmd ColorScheme * highlight TelescopeBorder guifg=c.grey]]
 end
 
 function config.gitsigns()
