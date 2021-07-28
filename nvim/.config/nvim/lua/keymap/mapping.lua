@@ -43,16 +43,14 @@ local def_map = {
     ["c|<C-t>"]      = map_cmd([[<C-R>=expand("%:p:h") . "/" <CR>]]):with_noremap(),
 }
 
--- Core mapping not registered in interactive keymaps
-local plug_map = {
+-- custom mapping not registered in interactive keymaps
+local custom_map = {
     ["i|<TAB>"]          = map_cmd([[v:lua.tab_complete()]]):with_expr():with_silent(),
     ["i|<S-TAB>"]        = map_cmd([[v:lua.s_tab_complete()]]):with_silent():with_expr(),
     ["i|<CR>"]           = map_cmd([[compe#confirm({ 'keys': "\<Plug>delimitMateCR", 'mode': '' })]]):with_noremap():with_expr():with_nowait(),
     -- acceleratedjk
     ["n|j"]              = map_cmd([[v:lua.enhance_jk_move("j")]]):with_silent():with_expr(),
     ["n|k"]              = map_cmd([[v:lua.enhance_jk_move("k")]]):with_silent():with_expr(),
-    -- Remove highlight
-    ["n|<ESC><ESC>"]     = map_cr([[noh]]):with_noremap():with_silent(),
     -- vim-eft
     ["n|;"]              = map_cmd([[v:lua.enhance_ft_move(';')]]):with_expr(),
     ["x|;"]              = map_cmd([[v:lua.enhance_ft_move(';')]]):with_expr(),
@@ -89,4 +87,4 @@ local plug_map = {
 };
 
 bind.nvim_load_mapping(def_map)
-bind.nvim_load_mapping(plug_map)
+bind.nvim_load_mapping(custom_map)

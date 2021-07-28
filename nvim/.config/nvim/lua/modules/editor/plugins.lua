@@ -75,6 +75,7 @@ editor['glepnir/galaxyline.nvim'] = {
 editor['akinsho/nvim-bufferline.lua'] = {
     requires = {'kyazdani42/nvim-web-devicons', opt = false},
     config = conf.bufferline,
+    after = 'onedark.nvim',
 }
 
 -- Git icons

@@ -130,6 +130,7 @@ function config.galaxyline()
 end
 
 function config.bufferline()
+    local c = require('onedark.colors')
     require("bufferline").setup {
         options = {
             indicator_icon = "▎",
@@ -154,9 +155,18 @@ function config.bufferline()
             diagnostics = false,
         },
         highlights = {
+            -- set tab fill to slightly darker color
             fill = {
-                guifg = { attribute = "fg", highlight = "Normal" },
-                guibg = { attribute = "bg", highlight = "StatusLineNC" },
+                guifg = c.grey,
+                guibg = c.bg_d,
+            },
+            background = {
+                guifg = c.grey,
+                guibg = c.bg_d,
+            },
+            separator = {
+                guifg = c.bg_d,
+                guibg = c.bg_d,
             },
         },
     }
@@ -176,10 +186,10 @@ function config.gitsigns()
     end
     require('gitsigns').setup {
         signs = {
-            add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-            change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-            delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-            topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+            add          = {hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+            change       = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+            delete       = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+            topdelete    = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
             changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
         },
         keymaps = {
