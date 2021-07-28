@@ -314,11 +314,6 @@ function config.which_key()
         },
     }
     require('keymap.whichkeymapping')
-    -- Disable customization of highlights here, let the colorscheme do it
-    -- vim.api.nvim_command[[autocmd ColorScheme * highlight link WhichKey Statement]]
-    -- vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeySeparator ctermfg=114 guifg=#98C379]]
-    -- vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyDesc ctermfg=39 guifg=#61AFEF]]
-    -- vim.api.nvim_command[[autocmd ColorScheme * highlight WhichKeyGroup cterm=italic ctermfg=39 gui=bold guifg=#61AFEF]]
 end
 
 function config.vimwiki()
