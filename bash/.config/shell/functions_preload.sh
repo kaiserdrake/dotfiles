@@ -13,7 +13,7 @@ function within_docker() {
 # change of the offset where the actual command starts.
 # This is not done automatically in the function.
 function get-history-lines(){
-    history 0 | sed  's .\{7\}  ' | sed -e '/do-command/d;/doco /d'
+    history | sed  's .\{7\}  ' | sed -e '/do-command/d;/doco /d'
 }
 
 # Command list generator using "commands.md" as source.
@@ -49,7 +49,7 @@ function do-command(){
     # passed to this function
     args=(`echo ${ARGS}`)
     for ((i=1; i<=${#args[@]}; i++)) do
-        pattern="\$"${i}
+        pattern="\$"$i
         MY_FIND_COMMAND=${MY_FIND_COMMAND/$pattern/${args[$i]}}
     done
     # Automatically put command into clipboard
