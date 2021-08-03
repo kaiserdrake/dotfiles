@@ -52,8 +52,6 @@ function do-command(){
         pattern="\$"$(($i+1))
         MY_FIND_COMMAND=${MY_FIND_COMMAND/$pattern/${args[$i]}}
     done
-    # Automatically put command into clipboard
-    print -s -- $MY_FIND_COMMAND
     ${DRYRUN} eval $MY_FIND_COMMAND
 }
 
