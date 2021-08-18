@@ -176,8 +176,6 @@ function config.onedark()
     vim.g.disable_toggle_style = 1
     require('onedark').setup()
     local c = require('onedark.colors')
-    -- telescope highlight override
-    vim.api.nvim_command[[autocmd ColorScheme * highlight TelescopeBorder guifg=c.grey]]
 end
 
 function config.gitsigns()
