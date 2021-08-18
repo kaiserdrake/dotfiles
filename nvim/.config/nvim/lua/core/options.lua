@@ -108,7 +108,7 @@ local function load_options()
         foldenable = true;
         signcolumn = "yes";
         conceallevel = 2;
-        concealcursor = "niv";
+        concealcursor = "nvc";
     }
 
     if global.is_mac then
