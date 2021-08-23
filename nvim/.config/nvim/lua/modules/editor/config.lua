@@ -211,8 +211,6 @@ function config.gitsigns()
             ['x ih'] = ':<C-U>lua require"gitsigns".text_object()<CR>'
         },
         current_line_blame = false,
-        current_line_blame_delay = 750,
-        current_line_blame_position = 'eol',
     }
 end
 

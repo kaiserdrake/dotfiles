@@ -39,6 +39,7 @@ wk.register({
         i = {"<cmd>LspInfo<cr>", "LspInfo"},
         ["="] = {"<cmd>lua vim.lsp.buf.formatting()<cr>", "Formatting"},
         d = {"<cmd>lua vim.lsp.buf.document_symbol()<cr>", "Document symbol"},
+        k = {"<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>", "Show diagnostic message"},
         w = {"<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", "Workspace symbol"},
         a = {"<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action"},
     },

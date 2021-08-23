@@ -20,7 +20,7 @@ local custom_attach = function(client)
     map('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
     map('n','gt','<cmd>lua vim.lsp.buf.type_definition()<CR>')
 
-    api.nvim_command('autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()')
+    --api.nvim_command('autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()')
 end
 
 lsp.clangd.setup{
