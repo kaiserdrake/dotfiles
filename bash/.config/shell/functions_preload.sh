@@ -52,6 +52,7 @@ function do-command(){
         pattern="\$"$(($i+1))
         MY_FIND_COMMAND=${MY_FIND_COMMAND/$pattern/${args[$i]}}
     done
+    echo -n $MY_FIND_COMMAND | xclip -sel clip
     ${DRYRUN} eval $MY_FIND_COMMAND
 }
 
