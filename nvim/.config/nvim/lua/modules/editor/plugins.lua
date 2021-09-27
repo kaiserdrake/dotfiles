@@ -85,6 +85,11 @@ editor['lewis6991/gitsigns.nvim'] = {
     requires = {'nvim-lua/plenary.nvim', opt = true}
 }
 
+-- Visual markers
+editor['kshenoy/vim-signature'] = {
+    opt = false
+}
+
 -- Indent markers on blank lines
 editor['lukas-reineke/indent-blankline.nvim'] = {
     event = 'BufRead',

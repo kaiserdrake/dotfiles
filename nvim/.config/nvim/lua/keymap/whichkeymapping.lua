@@ -107,6 +107,10 @@ wk.register({
     g = "Next git hunk",
     l = {"<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next LSP diagnostic"},
     w = "Next whitespace",
+   ["`"] = "Next ` mark",
+   ["'"] = "Next ' mark",
+   ["-"] = "Next mark (same type)",
+   ["="] = "Next mark",
 }, { prefix = "]" })
 
 -- Register "[" (previous) mappings
@@ -116,6 +120,10 @@ wk.register({
     g = "Previous git hunk",
     l = {"<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Previous LSP diagnostic"},
     w = "Previous whitespace",
+   ["`"] = "Previous ` mark",
+   ["'"] = "Previous ' mark",
+   ["-"] = "Previous mark (same type)",
+   ["="] = "Previous mark",
 }, { prefix = "[" })
 
 -- Register <C-x> (shortcuts) mappings
