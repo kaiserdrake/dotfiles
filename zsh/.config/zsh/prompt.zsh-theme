@@ -18,7 +18,8 @@ ZSHTHEME_COLORS_GIT_PROMPT_SHA=green
 ZSHTHEME_COLORS_BG_JOBS=yellow
 
 # Left Prompt
-PROMPT='$(zshtheme_host)$(zshtheme_current_dir)$(zshtheme_git_status)$(zshtheme_bg_jobs)$(zshtheme_return_status)'
+#PROMPT='$(zshtheme_host)$(zshtheme_current_dir)$(zshtheme_git_status)$(zshtheme_bg_jobs)$(zshtheme_return_status)'
+PROMPT='$(zshtheme_host)$(zshtheme_current_dir)$(zshtheme_bg_jobs)$(zshtheme_return_status)'
 
 # Right Prompt
 RPROMPT='$(zshtheme_vim_term)'
