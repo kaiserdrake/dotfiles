@@ -21,7 +21,7 @@ load_symlink()
         # loop through all directories
         if [[ -d "$f" && ! -L "$f" ]]; then
             # skip metascripts
-            if [ "$f" == "metascripts" ]; then
+            if [ "$f" = "metascripts" ]; then
                 continue
             fi
             echo "Linking $f..."
@@ -38,7 +38,7 @@ unload_symlink()
         # loop through all directories
         if [[ -d "$f" && ! -L "$f" ]]; then
             # skip metascripts
-            if [ "$f" == "metascripts" ]; then
+            if [ "$f" = "metascripts" ]; then
                 continue
             fi
             echo "Removing link for $f..."
@@ -48,7 +48,7 @@ unload_symlink()
     popd > /dev/null
 }
 
-if [ "$1" == "uninstall" ]; then
+if [ "$1" = "uninstall" ]; then
     preconfigure
     unalias rm mv vim 2>dev/null
     unload_symlink

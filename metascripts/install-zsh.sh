@@ -27,7 +27,7 @@ uninstall()
     rm -rf $HOME/.local/share/zsh
 }
 
-if [ "$1" == "uninstall" ]; then
+if [ "$1" = "uninstall" ]; then
     uninstall
 else
     install
