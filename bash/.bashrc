@@ -110,8 +110,23 @@ PS1_NOTICE=''
 PS1_POST='\[\033[00m\]:\[\033[00;34m\]\w\[\033[01;33m\]$(__git_ps1)\[\033[00m\]\n$ '
 # Make subtle difference between container prompt as visual aid
 if within_docker; then
-    HOST_ARCH="docker[`uname -m`]"
-    PS1_NOTICE+='\[\033[00m\]#\[\033[01;31m\]${HOST_ARCH}'
+    if [ ! -z "$DOCK_IMAGE_NAME" ]; then
+        # Get last two identifiers of the docker image
+        IMAGE_DETAILS=`dirname ${DOCK_IMAGE_NAME}`
+        IMAGE_DETAILS=`basename ${IMAGE_DETAILS}`
+        if [ "$IMAGE_DETAILS" == "." ]; then
+            IMAGE_DETAILS = ""
+        else
+            IMAGE_DETAILS+="/"
+        fi
+        IMAGE_DETAILS+=`basename ${DOCK_IMAGE_NAME}`
+        if [ ! -z "$DOCK_IMAGE_TAG" ]; then
+            IMAGE_DETAILS+=":"$DOCK_IMAGE_TAG
+        fi
+    else
+        IMAGE_DETAILS="docker"
+    fi
+    PS1_NOTICE+='\[\033[00m\]#\[\033[01;31m\]${IMAGE_DETAILS}'
 fi
 if [ ! -z "$VIM_TERMINAL" ] || [ ! -z "$NVIM_LISTEN_ADDRESS" ]; then
     PS1_NOTICE+='\[\033[00m\]#\[\033[0;31m\]VIMTERM'
