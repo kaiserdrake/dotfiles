@@ -4,6 +4,7 @@ local wk = require('which-key')
 wk.register({
     b = {"<cmd>Telescope buffers<cr>", "Buffers"},
     c = {"<cmd>noh<cr>", "Clear highlights"},
+    A = {"ggVG", "Select all"},
     f = {
         name = "+Find",
         f = {"<cmd>Telescope find_files find_command=rg,-uu,--files,--follow<cr>",
