@@ -7,6 +7,7 @@ packageList=(
     ripgrep
     build-essential
     curl
+    bash-completion
 )
 
 install()
