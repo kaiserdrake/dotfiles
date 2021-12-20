@@ -113,15 +113,11 @@ function docker-run(){
     DOCKOPTS=$(echo "$DOCKOPTS $DOCKER_DEFOPTIONS" | tr -s " ")
     if [ ! -z "$DOCKHOST" ]; then
         # do not use docker generated hostname
-        DOCKOPTS=$(echo "$DOCKOPTS -h $DOCKHOST -e META_IMAGEREF=$IMAGENAME")
+        DOCKOPTS=$(echo "$DOCKOPTS -h $DOCKHOST -e DOCK_IMAGE_NAME=$IMAGENAME")
     else
-        # set META_IMAGEREF (used in PS1 identifier) same as image name
-        DOCKOPTS=$(echo "$DOCKOPTS -e META_IMAGEREF=$IMAGENAME")
+        # set DOCK_IMAGE_NAME (used in PS1 identifier) same as image name
+        DOCKOPTS=$(echo "$DOCKOPTS -e DOCK_IMAGE_NAME=$IMAGENAME")
     fi
     DOCKOPTS=$(echo "$DOCKER_OPTIONS $DOCKOPTS -w `pwd`")
-    if [ -n "$ZSH_VERSION" ]; then
-        ${DRYRUN} eval docker run $DOCKOPTS $IMAGENAME /bin/zsh $COMMANDS
-    else
-        ${DRYRUN} eval docker run $DOCKOPTS $IMAGENAME $COMMANDS
-    fi
+    ${DRYRUN} eval docker run $DOCKOPTS $IMAGENAME $COMMANDS
 }
