@@ -176,6 +176,7 @@ function config.onedark()
     vim.g.disable_toggle_style = 1
     require('onedark').setup()
     local c = require('onedark.colors')
+    require('onedark').load()
 end
 
 function config.gitsigns()
