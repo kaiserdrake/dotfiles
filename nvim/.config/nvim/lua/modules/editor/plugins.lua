@@ -65,7 +65,7 @@ editor['nvim-treesitter/nvim-treesitter-textobjects'] = {
 }
 
 -- Customization on status line
-editor['glepnir/galaxyline.nvim'] = {
+editor['NTBBloodbath/galaxyline.nvim'] = {
     config = conf.galaxyline,
     requires = {'kyazdani42/nvim-web-devicons', opt = false},
     requires = {'ryanoasis/vim-devicons', opt = true}

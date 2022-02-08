@@ -1,5 +1,5 @@
 local gl = require('galaxyline')
-local fileinfo = require('galaxyline.provider_fileinfo')
+local fileinfo = require('galaxyline.providers.fileinfo')
 
 local downcase = function(fn)
     return function()
@@ -70,7 +70,7 @@ table.insert(gls.left, {
     FileIcon = {
         provider = 'FileIcon',
         condition = buffer_not_empty,
-        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.bg},
+        highlight = {fileinfo.get_file_icon_color,colors.bg},
     }
 })
 
