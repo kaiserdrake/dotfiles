@@ -173,8 +173,9 @@ function config.bufferline()
 end
 
 function config.onedark()
-    vim.g.disable_toggle_style = 1
-    require('onedark').setup()
+    require('onedark').setup{
+        toggle_style_key = '<leader>tos',
+    }
     local c = require('onedark.colors')
     require('onedark').load()
 end

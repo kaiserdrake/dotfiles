@@ -77,6 +77,10 @@ wk.register({
             d = {"<cmd>PackerClean<cr>", "Clean"},
             s = {"<cmd>PackerSync<cr>", "Sync"},
         },
+        o = {
+            name = "+Theme",
+            s = "Toggle style",
+        },
     },
     w = {
         name = "+VimWiki",
