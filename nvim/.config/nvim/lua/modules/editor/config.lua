@@ -46,6 +46,7 @@ function config.telescope()
     if not packer_plugins['plenary.nvim'].loaded then
         vim.cmd [[packadd plenary.nvim]]
         vim.cmd [[packadd popup.nvim]]
+        vim.cmd [[packadd telescope-file-browser.nvim]]
         vim.cmd [[packadd telescope-fzy-native.nvim]]
     end
     require('telescope').setup {
@@ -98,8 +99,12 @@ function config.telescope()
                 override_generic_sorter = false,
                 override_file_sorter = true,
             },
+            file_browser = {
+                theme = "ivy",
+            },
         },
     }
+    require'telescope'.load_extension('file_browser')
     require'telescope'.load_extension('dotfiles')
 end
 

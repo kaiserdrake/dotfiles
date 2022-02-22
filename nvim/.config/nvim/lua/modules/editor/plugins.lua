@@ -48,6 +48,7 @@ editor['nvim-telescope/telescope.nvim'] = {
     requires = {
         {'nvim-lua/popup.nvim', opt = false},
         {'nvim-lua/plenary.nvim', opt = false},
+        {'nvim-telescope/telescope-file-browser.nvim', opt = false},
         {'nvim-telescope/telescope-fzy-native.nvim', opt = false},
     }
 }
