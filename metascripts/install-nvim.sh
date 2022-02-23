@@ -42,6 +42,8 @@ install()
         sudo npm i -g --silent $i 2> /dev/null
     done
 
+    # Install plugins
+    ln -nfs ~/.dotfiles/artifacts/nvim-lua/custom ~/.config/nvim/lua/custom
     nvim -c "autocmd User PackerComplete quitall" -c "PackerSync"
 }
 
