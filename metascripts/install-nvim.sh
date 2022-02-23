@@ -41,6 +41,8 @@ install()
         echo "Installing '$i'..."
         sudo npm i -g --silent $i 2> /dev/null
     done
+
+    nvim -c "autocmd User PackerComplete quitall" -c "PackerSync"
 }
 
 uninstall()

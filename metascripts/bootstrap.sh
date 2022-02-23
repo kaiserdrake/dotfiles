@@ -11,6 +11,12 @@ preconfigure()
     echo "Updating package library..."
     sudo apt-get --yes update > /dev/null
     sudo DEBIAN_FRONTEND=noninteractive apt-get --yes upgrade > /dev/null
+
+    echo "Updating submodule configs..."
+    pushd $SRCLOC/../ > /dev/null
+    git submodule init
+    git submodule update --remote --merge
+    popd > /dev/null
 }
 
 # create symbolic link
