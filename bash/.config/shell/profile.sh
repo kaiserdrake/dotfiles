@@ -11,7 +11,7 @@ if [ -f ~/.config/shell/functions_preload.sh ]; then
 fi
 
 if within_docker; then
-    . $DEFAULT_FILESTORE_PATH/profiles/shell/profile.docker.sh
-elif [ -f $DEFAULT_FILESTORE_PATH/profiles/shell/profile.$OSTYPE.sh ]; then
-    . $DEFAULT_FILESTORE_PATH/profiles/shell/profile.$OSTYPE.sh
+    . ~/.config/shell/profiles/profile.docker.sh
+elif [ -f ~/.config/shell/profiles/profile.$OSTYPE.sh ]; then
+    . ~/.config/shell/profiles/profile.$OSTYPE.sh
 fi
