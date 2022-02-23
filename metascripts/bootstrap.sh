@@ -14,8 +14,7 @@ preconfigure()
 
     echo "Updating submodule configs..."
     pushd $SRCLOC/../ > /dev/null
-    git submodule init
-    git submodule update --remote --merge
+    git submodule update --init --recursive
     popd > /dev/null
 }
 

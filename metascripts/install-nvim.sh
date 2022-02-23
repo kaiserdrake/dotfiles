@@ -43,6 +43,7 @@ install()
     done
 
     # Install plugins
+    ( cd ~/.config/nvim; git checkout main; git pull; )
     ln -nfs ~/.dotfiles/artifacts/nvim-lua/custom ~/.config/nvim/lua/custom
     nvim -c "autocmd User PackerComplete quitall" -c "PackerSync"
 }
