@@ -25,16 +25,14 @@ M.ui = {
 
 M.mappings = {
   custom = {
-    norman = "test"
+    insert_date = "<C-x>d"
   }
 }
 
 M.mappings.plugins = {
   telescope = {
-    file_browser = "<leader>fb",
+    file_browser = "<leader>fe",
     buffers = "<C-x>b",
-    find_files = "<C-x>f",
-    find_hiddenfiles = "<leader>ff"
   }
 }
 
