@@ -4,6 +4,13 @@ local userPlugins = require "custom.plugins"
 local plugin_conf = require "custom.plugins.configs"
 
 M.plugins = {
+
+  options = {
+    lspconfig = {
+      setup_lspconf = "custom.plugins.lspconfig",
+    },
+  },
+
   default_plugin_config_replace = {
     nvim_treesitter = plugin_conf.treesitter,
     nvim_tree = plugin_conf.nvimtree,
