@@ -8,6 +8,9 @@ preconfigure()
     echo dash dash/sh boolean false | sudo debconf-set-selections
     sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 
+    echo "Backing-up and deleting .bashrc..."
+    mv ~/.bashrc ~/.bashrc_bk
+
     echo "Updating package library..."
     sudo apt-get --yes update > /dev/null
     sudo DEBIAN_FRONTEND=noninteractive apt-get --yes upgrade > /dev/null
