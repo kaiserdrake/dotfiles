@@ -13,6 +13,16 @@ return {
     end,
   },
   {
+    "nvim-orgmode/orgmode",
+    config = function()
+      require('orgmode').setup_ts_grammar()
+      require("orgmode").setup {
+        org_agenda_files = {'~/.filestore/orgs/*'},
+        org_default_notes_file = '~/.filestore/orgs/refile.org',
+      }
+    end,
+  },
+  {
     "jedi2610/nvim-rooter.lua",
     config = function()
       require("nvim-rooter").setup()
@@ -20,5 +30,8 @@ return {
   },
   {
     "kshenoy/vim-signature"
+  },
+  {
+    "editorconfig/editorconfig-vim"
   },
 }
