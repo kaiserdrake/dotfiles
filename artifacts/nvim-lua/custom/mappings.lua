@@ -8,8 +8,8 @@ local maps = config.mappings
 local plugin_maps = maps.plugins
 
 -- custom
-map("n", maps.custom.insert_date, ":normal a<C-R>=strftime('[%Y-%m-%d %a]')<CR><CR>")
-map("i", maps.custom.insert_date, "<C-R>=strftime('[%Y-%m-%d %a]')<CR>")
+map("n", maps.custom.diag_prev, ":lua vim.lsp.diagnostic.goto_prev()<CR>")
+map("n", maps.custom.diag_next, ":lua vim.lsp.diagnostic.goto_next()<CR>")
 
 -- Telescope
 map("n", plugin_maps.telescope.file_browser, ":Telescope file_browser<CR>")

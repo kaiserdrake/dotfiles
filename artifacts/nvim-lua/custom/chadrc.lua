@@ -3,6 +3,9 @@ local M = {}
 local userPlugins = require "custom.plugins"
 local plugin_conf = require "custom.plugins.configs"
 
+M.options = {
+}
+
 M.plugins = {
 
   options = {
@@ -25,14 +28,14 @@ M.ui = {
 
 M.mappings = {
   custom = {
-    insert_date = "<C-x>d"
+    diag_next = "]l",
+    diag_prev = "[l",
   }
 }
 
 M.mappings.plugins = {
   telescope = {
     file_browser = "<leader>fe",
-    buffers = "<C-x>b",
   }
 }
 
