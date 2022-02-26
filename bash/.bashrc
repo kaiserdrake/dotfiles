@@ -95,6 +95,9 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# language servers aliases
+alias luamake=/home/norman/.lua/sumneko_lua/3rd/luamake/luamake
+
 # -----------------------------------------------------------------------------
 # Prompt
 # -----------------------------------------------------------------------------
@@ -132,3 +135,4 @@ if [ ! -z "$VIM_TERMINAL" ] || [ ! -z "$NVIM_LISTEN_ADDRESS" ]; then
     PS1_NOTICE+='\[\033[00m\]#\[\033[0;31m\]VIMTERM'
 fi
 export PS1="$PS1_PRE$PS1_NOTICE$PS1_POST"
+

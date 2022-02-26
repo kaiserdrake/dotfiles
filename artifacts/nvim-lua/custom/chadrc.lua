@@ -4,6 +4,7 @@ local userPlugins = require "custom.plugins"
 local plugin_conf = require "custom.plugins.configs"
 
 M.options = {
+  timeoutlen = 800, -- make shortcuts timeout more forgiving
 }
 
 M.plugins = {
