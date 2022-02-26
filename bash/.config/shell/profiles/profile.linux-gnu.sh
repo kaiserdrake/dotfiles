@@ -74,6 +74,7 @@ export DOCKER_DEFOPTIONS="--rm -it \
     -e DISPLAY=${DISPLAY} \
     -e TERM=xterm-256color \
     -v /mnt:/mnt \
+    -v /var/lib/lxc:/var/lib/lxc \
     $DOCKER_HOSTOPTIONS
     "
 

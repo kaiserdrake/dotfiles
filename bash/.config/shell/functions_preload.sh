@@ -13,7 +13,7 @@ function within_docker() {
 # change of the offset where the actual command starts.
 # This is not done automatically in the function.
 function get-history-lines(){
-    history | sed  's .\{7\}  ' | sed -e '/do-command/d;/doco /d'
+    history | sed  's .\{7\}  ' | sed '/do-command/d;/doco/d'
 }
 
 # Command list generator using "commands.md" as source.
@@ -22,7 +22,7 @@ function get-history-lines(){
 # either # or ```.
 function get-stored-command-lines(){
     if [ -f "$1" ]; then
-        sed '/```/{n;:l N;/```/b; s/\n//; bl}' $1 | sed -n '/```/,/```/{//!p}' | sed 's/\\//g'
+        sed '/#+BEGIN_SRC/{n;:l N;/#+END_SRC/b; s/\n//; bl}' $1 | sed -n '/#+BEGIN_SRC/,/#+END_SRC/{//!p}' | sed 's/\\//g'
     fi
 }
 
@@ -39,7 +39,11 @@ function get-code-size(){
 # Sample usage: ARGS="file1 file2" DRYRUN=echo do-command "command"
 function do-command(){
     unset MY_FIND_COMMAND
-    COMFILE="$FILESTORE_PATH/wikinotes/commands.md"
+    if [[ -z "${CONTEXT}" ]]; then
+        COMFILE="$FILESTORE_PATH/orgs/commands.org"
+    else
+        COMFILE="$FILESTORE_PATH/orgs/commands/${CONTEXT}_commands.org"
+    fi
     if [ -z "$1" ]; then
         MY_FIND_COMMAND=`(get-history-lines && get-stored-command-lines $COMFILE) | sort -u | fzf`
     else
@@ -87,7 +91,7 @@ function docker-run(){
     fi
 
     # Fetch run command configuration through the docker_mapping.md file.
-    COMFILE="$FILESTORE_PATH/wikinotes/docker_mapping.md"
+    COMFILE="$FILESTORE_PATH/orgs/docker_mapping.org"
     if [ -f "$COMFILE" ]; then
         if [ -z "$IMAGENAME" ]; then
             ABODE=`get-stored-command-lines $COMFILE | fzf --prompt=Pattern: --header "HOSTNAME | IMAGE | OPTIONS | COMMAND" -1 -0`
