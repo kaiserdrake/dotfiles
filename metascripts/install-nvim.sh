@@ -7,6 +7,7 @@ packageList=(
     clangd
     python3-pip
     npm
+    ninja-build
 )
 
 pipModules=(
@@ -41,6 +42,18 @@ install()
         echo "Installing '$i'..."
         sudo npm i -g --silent $i 2> /dev/null
     done
+
+    # install sumneko language server
+    if [ ! -d "~/.lua/sumneko_lua" ]; then
+        mkdir -p ~/.lua
+        ( cd ~/.lua; git clone https://github.com/sumneko/lua-language-server sumneko_lua --recursive; )
+    fi
+    pushd ~/.lua/sumneko_lua > /dev/null
+    cd 3rd/luamake
+    ./compile/install.sh
+    cd ../..
+    ./3rd/luamake/luamake rebuild
+    popd > /dev/null
 
     # Install plugins
     ( cd ~/.config/nvim; git checkout main; git pull; )

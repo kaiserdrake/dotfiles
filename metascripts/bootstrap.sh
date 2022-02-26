@@ -59,12 +59,12 @@ unload_symlink()
 if [ "$1" = "uninstall" ]; then
     preconfigure
     unalias rm mv vim 2>dev/null
-    unload_symlink
     sh $SRCLOC/install-nvim.sh uninstall
+    unload_symlink
     sh $SRCLOC/install-gentools.sh uninstall
 else
     preconfigure
     sh $SRCLOC/install-gentools.sh
-    sh $SRCLOC/install-nvim.sh
     load_symlink
+    sh $SRCLOC/install-nvim.sh
 fi
