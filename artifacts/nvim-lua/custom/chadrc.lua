@@ -5,6 +5,7 @@ local plugin_conf = require "custom.plugins.configs"
 
 M.options = {
   timeoutlen = 800, -- make shortcuts timeout more forgiving
+  relativenumber = true,
 }
 
 M.plugins = {
@@ -18,6 +19,7 @@ M.plugins = {
   default_plugin_config_replace = {
     nvim_treesitter = plugin_conf.treesitter,
     nvim_tree = plugin_conf.nvimtree,
+    nvim_cmp = plugin_conf.nvimcmp,
   },
 
   install = userPlugins,

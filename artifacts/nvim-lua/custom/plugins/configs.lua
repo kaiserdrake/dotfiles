@@ -1,5 +1,7 @@
 local M = {}
 
+local cmp = require "cmp"
+
 -- overriding default plugin configs
 M.treesitter = {
   highlight = {
@@ -31,6 +33,15 @@ M.nvimtree = {
     enable = true,
     update_cwd = true
   },
+}
+
+M.nvimcmp = {
+  mapping = {
+      ["<CR>"] = cmp.mapping.confirm {
+         behavior = cmp.ConfirmBehavior.Replace,
+         select = false,
+      },
+   },
 }
 
 return M
