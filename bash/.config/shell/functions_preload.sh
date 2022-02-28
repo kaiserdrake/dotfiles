@@ -13,7 +13,7 @@ function within_docker() {
 # change of the offset where the actual command starts.
 # This is not done automatically in the function.
 function get-history-lines(){
-    history | sed  's .\{7\}  ' | sed '/do-command/d;/doco/d'
+    history | sed  's .\{7\}  ' | sed '/do-command/d;/doco/d;/ls/d;/cd */d;/rm/d;/exit/d;/pwd/d;/clear/d;/history */d'
 }
 
 # Command list generator using "commands.md" as source.
@@ -22,7 +22,7 @@ function get-history-lines(){
 # either # or ```.
 function get-stored-command-lines(){
     if [ -f "$1" ]; then
-        sed '/#+BEGIN_SRC/{n;:l N;/#+END_SRC/b; s/\n//; bl}' $1 | sed -n '/#+BEGIN_SRC/,/#+END_SRC/{//!p}' | sed 's/\\//g'
+        sed '/#+BEGIN_SRC bash/{n;:l N;/#+END_SRC/b; s/\n//; bl}' $1 | sed -n '/#+BEGIN_SRC bash/,/#+END_SRC/{//!p}' | sed 's/\\//g'
     fi
 }
 
@@ -42,7 +42,7 @@ function do-command(){
     if [[ -z "${CONTEXT}" ]]; then
         COMFILE="$FILESTORE_PATH/orgs/commands.org"
     else
-        COMFILE="$FILESTORE_PATH/orgs/commands/${CONTEXT}_commands.org"
+        COMFILE="$HOME/WORKSPACE/${CONTEXT}/DEVNOTES.org"
     fi
     if [ -z "$1" ]; then
         MY_FIND_COMMAND=`(get-history-lines && get-stored-command-lines $COMFILE) | sort -u | fzf`
