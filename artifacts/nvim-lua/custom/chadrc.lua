@@ -30,15 +30,16 @@ M.ui = {
 }
 
 M.mappings = {
-  custom = {
+  shortcuts = {
     diag_next = "]l",
     diag_prev = "[l",
-  }
+  },
 }
 
 M.mappings.plugins = {
   telescope = {
     file_browser = "<leader>fe",
+    find_notes = "<leader>fn",
   }
 }
 
