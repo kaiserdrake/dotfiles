@@ -24,6 +24,7 @@ return {
           n = { description = 'Note', template = '\n*** %<%Y-%m-%d> %<%A>\n**** %U\n\n%?', target = '~/sync/org/notes.org' },
         }
       }
+      vim.cmd('language en_US.utf8')
     end,
   },
   {
