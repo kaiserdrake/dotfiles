@@ -27,6 +27,8 @@ local function load_options()
     showmode = false;
     showbreak = "↳  ";
     listchars = "tab:» ,nbsp:+,trail:·,extends:→,precedes:←";
+
+    swapfile = true;
   }
 
   local bw_local  = {
