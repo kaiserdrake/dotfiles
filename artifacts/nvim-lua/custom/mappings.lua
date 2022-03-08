@@ -13,6 +13,7 @@ map("n", maps.shortcuts.diag_next, ":lua vim.lsp.diagnostic.goto_next()<CR>")
 -- Telescope
 map("n", plugin_maps.telescope.file_browser, ":Telescope file_browser<CR>")
 map("n", plugin_maps.telescope.find_notes, ":Telescope find_files find_command=rg,-uu,--files,--follow cwd="..os.getenv("FILESTORE_PATH").."/orgs<CR>")
+map("n", plugin_maps.telescope.grep_string, ":Telescope grep_string<CR>")
 
 -- Gitsigns
 map("n", plugin_maps.gitsigns.next_hunk, ":Gitsigns next_hunk<CR>")

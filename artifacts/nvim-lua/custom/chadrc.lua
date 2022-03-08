@@ -40,6 +40,7 @@ M.mappings.plugins = {
   telescope = {
     file_browser = "<leader>fe",
     find_notes = "<leader>fn",
+    grep_string = "<leader>fW",
   },
   gitsigns = {
     next_hunk = "[g",
