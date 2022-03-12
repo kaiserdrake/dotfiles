@@ -1,10 +1,9 @@
 local M = {}
 
-local map = require("core.utils").map
-local utils = require "core.utils"
-
 local userPlugins = require "custom.plugins"
 local plugin_conf = require "custom.plugins.configs"
+
+local defined = require "custom.defines"
 
 M.options = {
   timeoutlen = 800, -- make shortcuts timeout more forgiving
@@ -33,49 +32,12 @@ M.ui = {
 }
 
 M.mappings = {
-  shortcuts = {
-    diag_next = "]l",
-    diag_prev = "[l",
-  },
+  shortcuts = defined.umap.shortcuts,
 }
 
 M.mappings.plugins = {
-  telescope = {
-    file_browser = "<leader>fe",
-    find_notes = "<leader>fn",
-    grep_string = "<leader>fW",
-  },
-  gitsigns = {
-    next_hunk = "[g",
-    prev_hunk = "]g",
-    stage_hunk = "<leader>gs",
-    undo_stage_hunk = "<leader>gu",
-    reset_hunk = "<leader>gr",
-    preview_hunk = "<leader>gv",
-    blame_line = "<leader>gb",
-    toggle_blame = "<leader>gB",
-    toggle_signs = "<leader>gT",
-  }
+  telescope = defined.umap.telescope,
+  gitsigns = defined.umap.gitsigns,
 }
-
--- shortcuts
-map("n", M.mappings.shortcuts.diag_prev, ":lua vim.lsp.diagnostic.goto_prev()<CR>")
-map("n", M.mappings.shortcuts.diag_next, ":lua vim.lsp.diagnostic.goto_next()<CR>")
-
--- Telescope
-map("n", M.mappings.plugins.telescope.file_browser, ":Telescope file_browser<CR>")
-map("n", M.mappings.plugins.telescope.find_notes, ":Telescope find_files find_command=rg,-uu,--files,--follow cwd="..os.getenv("FILESTORE_PATH").."/orgs<CR>")
-map("n", M.mappings.plugins.telescope.grep_string, ":Telescope grep_string<CR>")
-
--- Gitsigns
-map("n", M.mappings.plugins.gitsigns.next_hunk, ":Gitsigns next_hunk<CR>")
-map("n", M.mappings.plugins.gitsigns.prev_hunk, ":Gitsigns prev_hunk<CR>")
-map("n", M.mappings.plugins.gitsigns.stage_hunk, ":Gitsigns stage_hunk<CR>")
-map("n", M.mappings.plugins.gitsigns.undo_stage_hunk, ":Gitsigns undo_stage_hunk<CR>")
-map("n", M.mappings.plugins.gitsigns.preview_hunk, ":Gitsigns preview_hunk<CR>")
-map("n", M.mappings.plugins.gitsigns.reset_hunk, ":Gitsigns reset_hunk<CR>")
-map("n", M.mappings.plugins.gitsigns.blame_line, ":Gitsigns blame_line<CR>")
-map("n", M.mappings.plugins.gitsigns.toggle_blame, ":Gitsigns toggle_current_line_blame<CR>")
-map("n", M.mappings.plugins.gitsigns.toggle_signs, ":Gitsigns toggle_signs<CR>")
 
 return M
