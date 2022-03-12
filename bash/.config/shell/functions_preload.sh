@@ -39,10 +39,10 @@ function get-code-size(){
 # Sample usage: ARGS="file1 file2" DRYRUN=echo do-command "command"
 function do-command(){
     unset MY_FIND_COMMAND
-    if [[ -z "${CONTEXT}" ]]; then
+    if [[ -z "${CTX}" ]]; then
         COMFILE="$FILESTORE_PATH/orgs/commands.org"
     else
-        COMFILE="$HOME/WORKSPACE/${CONTEXT}/DEVNOTES.org"
+        COMFILE="$HOME/WORKSPACE/${CTX}/DEVNOTES.org"
     fi
     if [ -z "$1" ]; then
         MY_FIND_COMMAND=`(get-history-lines && get-stored-command-lines $COMFILE) | sort -u | fzf`
