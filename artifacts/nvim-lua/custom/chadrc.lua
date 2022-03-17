@@ -38,6 +38,7 @@ M.mappings = {
 M.mappings.plugins = {
   telescope = defined.umap.telescope,
   gitsigns = defined.umap.gitsigns,
+  orgmode = defined.umap.orgmode,
 }
 
 return M

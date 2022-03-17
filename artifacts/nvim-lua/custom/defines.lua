@@ -20,7 +20,10 @@ M.umap = {
     blame_line = "<leader>gb",
     toggle_blame = "<leader>gB",
     toggle_signs = "<leader>gT",
-  }
+  },
+  orgmode = {
+    open_help = "g?",
+  },
 }
 
 return M
