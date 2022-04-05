@@ -30,7 +30,11 @@ return {
   {
     "jedi2610/nvim-rooter.lua",
     config = function()
-      require("nvim-rooter").setup()
+      require("nvim-rooter").setup {
+        rooter_patterns = { '.git', '.editorconfig', 'compile_commands.json' },
+        trigger_patterns = { '*' },
+        manual = false,
+      }
     end,
   },
   {
