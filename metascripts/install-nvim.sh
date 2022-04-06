@@ -25,7 +25,7 @@ npmModules=(
 install()
 {
     # Add neovim PPA
-    sudo add-apt-repository -y ppa:neovim-ppa/unstable
+    sudo add-apt-repository -y ppa:neovim-ppa/stable
     sudo apt-get update
 
     for i in "${packageList[@]}"; do
