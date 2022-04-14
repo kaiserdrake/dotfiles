@@ -57,6 +57,10 @@ function do-command(){
         MY_FIND_COMMAND=${MY_FIND_COMMAND/$pattern/${args[$i]}}
     done
     echo -n $MY_FIND_COMMAND | xclip -sel clip
+    echo "---------------------------------------------------------------------"
+    echo $MY_FIND_COMMAND
+    echo "---------------------------------------------------------------------"
+    read -p "Press enter to continue"
     ${DRYRUN} eval $MY_FIND_COMMAND
 }
 
