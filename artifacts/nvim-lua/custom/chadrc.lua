@@ -12,6 +12,10 @@ M.options = {
 
 M.plugins = {
 
+  status = {
+    colorizer = true,
+  },
+
   options = {
     lspconfig = {
       setup_lspconf = "custom.plugins.lspconfig",
@@ -21,7 +25,6 @@ M.plugins = {
   default_plugin_config_replace = {
     nvim_treesitter = plugin_conf.treesitter,
     nvim_tree = plugin_conf.nvimtree,
-    nvim_cmp = plugin_conf.nvimcmp,
   },
 
   install = userPlugins,
