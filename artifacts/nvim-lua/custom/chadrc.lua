@@ -12,22 +12,22 @@ M.options = {
 
 M.plugins = {
 
-  status = {
-    colorizer = true,
-  },
-
   options = {
     lspconfig = {
       setup_lspconf = "custom.plugins.lspconfig",
     },
+
+    statusline = {
+      style = "slant"
+    },
   },
 
-  default_plugin_config_replace = {
-    nvim_treesitter = plugin_conf.treesitter,
-    nvim_tree = plugin_conf.nvimtree,
+  override = {
+    ["kyazdani42/nvim-tree.lua"] = plugin_conf.nvimtree,
+    ["nvim-treesitter/nvim-treesitter"] = plugin_conf.treesitter,
   },
 
-  install = userPlugins,
+  user = userPlugins,
 }
 
 M.ui = {

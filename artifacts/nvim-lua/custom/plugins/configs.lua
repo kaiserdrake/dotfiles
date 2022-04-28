@@ -8,7 +8,6 @@ M.treesitter = {
     additional_vim_regex_highlighting = {'org'}, -- Required since TS highlighter doesn't support all syntax features (conceal)
   },
   ensure_installed = {
-    "lua",
     "vim",
     "html",
     "css",
@@ -18,6 +17,7 @@ M.treesitter = {
     "markdown",
     "c",
     "bash",
+    "lua",
     "org",
   },
 }
