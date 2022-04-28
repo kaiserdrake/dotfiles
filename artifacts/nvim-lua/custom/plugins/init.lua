@@ -1,6 +1,5 @@
 return {
-  {
-    "nvim-telescope/telescope-file-browser.nvim",
+  ["nvim-telescope/telescope-file-browser.nvim"] = {
     after = "telescope.nvim",
     config = function()
       require("telescope").setup {
@@ -12,8 +11,7 @@ return {
       require("telescope").load_extension "file_browser"
     end,
   },
-  {
-    "nvim-orgmode/orgmode",
+  ["nvim-orgmode/orgmode"] = {
     config = function()
       require('orgmode').setup_ts_grammar()
       require("orgmode").setup {
@@ -27,8 +25,7 @@ return {
       vim.cmd('language en_US.utf8')
     end,
   },
-  {
-    "jedi2610/nvim-rooter.lua",
+  ["jedi2610/nvim-rooter.lua"] = {
     config = function()
       require("nvim-rooter").setup {
         rooter_patterns = { '.git', '.editorconfig', 'compile_commands.json' },
@@ -37,10 +34,6 @@ return {
       }
     end,
   },
-  {
-    "kshenoy/vim-signature"
-  },
-  {
-    "editorconfig/editorconfig-vim"
-  },
+  ["kshenoy/vim-signature"] = {},
+  ["editorconfig/editorconfig-vim"] = {},
 }
