@@ -4,7 +4,7 @@
 
 # Check function if execution context is within a docker container
 function within_docker() {
-    (awk -F/ '$2 == "docker"' /proc/self/cgroup | read dummy)
+    [[ ! -z "${DOCK_IMAGE_NAME}" ]] || (awk -F/ '$2 == "docker"' /proc/self/cgroup | read dummy)
 }
 
 # Command list generator using 'history' as source.

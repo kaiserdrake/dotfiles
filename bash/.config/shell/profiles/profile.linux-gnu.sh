@@ -47,6 +47,9 @@ case $HOSTN in
     vanaheim)
         # fallthrough
         ;&
+    midgard)
+        # fallthrough
+        ;&
     muspelheim)
         export PRIMARY_WORKSPACE=$HOME/WORKSPACE
         export FILESTORE_PATH=$HOME/.filestore
