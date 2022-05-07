@@ -99,5 +99,5 @@ if [ "$KERNEL_RELEASE" = "microsoft" ]; then
     # fi
 else
     # Set display for X11 forwarding
-    [ -z $DISPLAY ] && DISPLAY=alfheim:0.0 && export DISPLAY
+    [ -z $DISPLAY ] && DISPLAY=:0 && export DISPLAY
 fi
