@@ -56,12 +56,14 @@ function do-command(){
         pattern="\$"$(($i+1))
         MY_FIND_COMMAND=${MY_FIND_COMMAND/$pattern/${args[$i]}}
     done
-    echo -n $MY_FIND_COMMAND | xclip -sel clip
-    echo "---------------------------------------------------------------------"
-    echo $MY_FIND_COMMAND
-    echo "---------------------------------------------------------------------"
-    read -p "Press enter to continue"
-    ${DRYRUN} eval $MY_FIND_COMMAND
+    if [[ ! -z "$MY_FIND_COMMAND" ]]; then
+        echo -n $MY_FIND_COMMAND | xclip -sel clip
+        echo "---------------------------------------------------------------------"
+        echo $MY_FIND_COMMAND
+        echo "---------------------------------------------------------------------"
+        read -p "Press any key to continue"
+        ${DRYRUN} eval $MY_FIND_COMMAND
+    fi
 }
 
 # Alias to shorten call to do-command
