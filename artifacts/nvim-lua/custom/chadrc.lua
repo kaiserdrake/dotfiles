@@ -1,14 +1,7 @@
 local M = {}
 
 local userPlugins = require "custom.plugins"
-local plugin_conf = require "custom.plugins.configs"
-
-local defined = require "custom.defines"
-
-M.options = {
-  timeoutlen = 800, -- make shortcuts timeout more forgiving
-  relativenumber = true,
-}
+local override = require "custom.plugins.override"
 
 M.plugins = {
 
@@ -18,13 +11,13 @@ M.plugins = {
     },
 
     statusline = {
-      style = "slant"
+      separator_style = "round"
     },
   },
 
   override = {
-    ["kyazdani42/nvim-tree.lua"] = plugin_conf.nvimtree,
-    ["nvim-treesitter/nvim-treesitter"] = plugin_conf.treesitter,
+    ["kyazdani42/nvim-tree.lua"] = override.nvimtree,
+    ["nvim-treesitter/nvim-treesitter"] = override.treesitter,
   },
 
   user = userPlugins,
@@ -34,14 +27,6 @@ M.ui = {
   theme = "onedark",
 }
 
-M.mappings = {
-  shortcuts = defined.umap.shortcuts,
-}
-
-M.mappings.plugins = {
-  telescope = defined.umap.telescope,
-  gitsigns = defined.umap.gitsigns,
-  orgmode = defined.umap.orgmode,
-}
+M.mappings = require "custom.mappings"
 
 return M

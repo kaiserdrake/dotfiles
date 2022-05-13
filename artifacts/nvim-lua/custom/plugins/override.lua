@@ -1,6 +1,7 @@
+-- overriding default plugin configs
+
 local M = {}
 
--- overriding default plugin configs
 M.treesitter = {
   highlight = {
     enable = true,
@@ -18,6 +19,7 @@ M.treesitter = {
     "c",
     "bash",
     "lua",
+    "norg",
     "org",
   },
 }

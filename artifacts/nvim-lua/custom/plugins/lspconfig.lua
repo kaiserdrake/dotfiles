@@ -3,23 +3,12 @@ local M = {}
 M.setup_lsp = function(attach, capabilities)
    local lspconfig = require "lspconfig"
 
-   lspconfig.tsserver.setup {
-      on_attach = function(client, bufnr)
-         client.server_capabilities.document_formatting = false
-         vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", {})
-      end,
-   }
-
-   -- lspservers with default config
-   local servers = { "html", "cssls", "bashls", "clangd", "emmet_ls" }
+   local servers = { "html", "cssls", "bashls", "emmet_ls", "tsserver", "clangd" }
 
    for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup {
          on_attach = attach,
          capabilities = capabilities,
-         flags = {
-            debounce_text_changes = 150,
-         },
       }
    end
 
@@ -55,6 +44,7 @@ M.setup_lsp = function(attach, capabilities)
         ),
       }
     }
+
 end
 
 return M

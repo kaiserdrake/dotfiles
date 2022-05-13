@@ -57,12 +57,15 @@ function do-command(){
         MY_FIND_COMMAND=${MY_FIND_COMMAND/$pattern/${args[$i]}}
     done
     if [[ ! -z "$MY_FIND_COMMAND" ]]; then
-        echo -n $MY_FIND_COMMAND | xclip -sel clip
-        echo "---------------------------------------------------------------------"
-        echo $MY_FIND_COMMAND
-        echo "---------------------------------------------------------------------"
-        read -p "Press any key to continue"
-        ${DRYRUN} eval $MY_FIND_COMMAND
+        if [[ -z $DRYRUN ]]; then
+            echo "---------------------------------------------------------------------"
+            echo $MY_FIND_COMMAND
+            echo "---------------------------------------------------------------------"
+            read -p "Press any key to continue"
+            eval $MY_FIND_COMMAND
+        else
+            ${DRYRUN} $MY_FIND_COMMAND
+        fi
     fi
 }
 
