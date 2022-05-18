@@ -61,7 +61,11 @@ function do-command(){
             echo "---------------------------------------------------------------------"
             echo $MY_FIND_COMMAND
             echo "---------------------------------------------------------------------"
-            read -p "Press any key to continue"
+            if [[ -z "$ZSH_VERSION" ]]; then
+                read -p "Press any key to continue"
+            else
+                echo "Press any key to continue"; read -k1 -s
+            fi
             eval $MY_FIND_COMMAND
         else
             ${DRYRUN} $MY_FIND_COMMAND

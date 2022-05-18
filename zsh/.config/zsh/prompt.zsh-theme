@@ -29,7 +29,23 @@ zshtheme_host() {
     me="%F{$ZSHTHEME_COLORS_HOST_ME}%n@%m%f"
     if [[ -n $me ]]; then
         if within_docker; then
-            archplat="`dpkg-architecture -q DEB_HOST_ARCH_OS`/`dpkg-architecture -q DEB_HOST_ARCH`"
+            if [[ -n "$DOCK_IMAGE_NAME" ]]; then
+                # Get last two identifiers of the docker IMAGE_DETAILS
+                IMAGE_DETAILS=`dirname ${DOCK_IMAGE_NAME}`
+                IMAGE_DETAILS=`basename ${IMAGE_DETAILS}`
+                if [ "$IMAGE_DETAILS" = "." ]; then
+                    IMAGE_DETAILS = ""
+                else
+                    IMAGE_DETAILS+="/"
+                fi
+                IMAGE_DETAILS+=`basename ${DOCK_IMAGE_NAME}`
+                if [[ -n "$DOCK_IMAGE_TAG" ]]; then
+                    IMAGE_DETAILS+=":"$DOCK_IMAGE_TAG
+                fi
+            else
+                IMAGE_DETAILS="docker"
+            fi
+            archplat="$IMAGE_DETAILS"
             echo "$me%{$reset_color%}#%F{$ZSHTHEME_COLORS_HOST_DOCKER}$archplat%f%{$reset_color%}:"
         else
             echo "$me%{$reset_color%}:"
