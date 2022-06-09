@@ -8,7 +8,7 @@ return {
           },
         },
       }
-      require("telescope").load_extension "file_browser"
+      require("telescope").load_extension('file_browser')
     end,
   },
   ["nvim-orgmode/orgmode"] = {
@@ -25,13 +25,16 @@ return {
       vim.cmd('language en_US.utf8')
     end,
   },
-  ["jedi2610/nvim-rooter.lua"] = {
+  ["ahmedkhalf/project.nvim"] = {
+    after = "telescope.nvim",
     config = function()
-      require("nvim-rooter").setup {
-        rooter_patterns = { '.git', '.editorconfig', 'compile_commands.json' },
-        trigger_patterns = { '*' },
-        manual = false,
+      require("project_nvim").setup {
+        detection_methods = { 'lsp', 'pattern'},
+        patterns = { '.git', '.git/' , '.editorconfig'},
+        exclude_dirs = { 'build' },
+        manual_mode = false,
       }
+      require('telescope').load_extension('projects')
     end,
   },
   ["kshenoy/vim-signature"] = {},
