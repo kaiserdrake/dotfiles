@@ -22,7 +22,7 @@ function get-history-lines(){
 # either # or ```.
 function get-stored-command-lines(){
     if [ -f "$1" ]; then
-        sed '/#+BEGIN_SRC bash/{n;:l N;/#+END_SRC/b; s/\n//; bl}' $1 | sed -n '/#+BEGIN_SRC bash/,/#+END_SRC/{//!p}' | sed 's/\\//g'
+        sed '/#+BEGIN_SRC bash/{n;:l N;/#+END_SRC/b; s/\\//; s/\n//; bl}' $1 | sed -n '/#+BEGIN_SRC bash/,/#+END_SRC/{//!p}'
     fi
 }
 
