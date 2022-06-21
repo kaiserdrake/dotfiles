@@ -27,8 +27,6 @@ export EDITOR="$VISUAL"
 # -----------------------------------------------------------------------------
 alias ls='ls --color=always'                          # file listing
 alias ssh='TERM=xterm-256color ssh'                   # ssh to use xterm
-alias vim='nvim'                                      # use neovim
-alias vimdiff='nvim -d'                               # use neovim also for vimdiff
 alias pbcopy="xclip -selection c"                     # put into clipboard
 alias pbpaste="xclip -selection clipboard -o"         # get from clipboard
 
@@ -48,6 +46,8 @@ case $HOSTN in
         # fallthrough
         ;&
     midgard)
+        alias vim='nvim'                              # use neovim
+        alias vimdiff='nvim -d'                       # use neovim also for vimdiff
         # fallthrough
         ;&
     muspelheim)
