@@ -3,11 +3,6 @@
 local M = {}
 
 M.treesitter = {
-  highlight = {
-    enable = true,
-    disable = {'org'}, -- Remove this to use TS highlighter for some of the highlights (Experimental)
-    additional_vim_regex_highlighting = {'org'}, -- Required since TS highlighter doesn't support all syntax features (conceal)
-  },
   ensure_installed = {
     "vim",
     "html",
@@ -19,7 +14,6 @@ M.treesitter = {
     "c",
     "bash",
     "lua",
-    "norg",
     "org",
   },
 }

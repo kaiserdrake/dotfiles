@@ -12,8 +12,10 @@ return {
     end,
   },
   ["nvim-orgmode/orgmode"] = {
+    module = "orgmode",
+    ft = "org",
+    after = "nvim-treesitter",
     config = function()
-      require('orgmode').setup_ts_grammar()
       require("orgmode").setup {
         org_agenda_files = {'~/.filestore/orgs/*'},
         org_default_notes_file = '~/.filestore/orgs/notes.org',
@@ -22,6 +24,7 @@ return {
           n = { description = 'Note', template = '\n*** %<%Y-%m-%d> %<%A>\n**** %U\n\n%?', target = '~/sync/org/notes.org' },
         }
       }
+      require('orgmode').setup_ts_grammar()
       vim.cmd('language en_US.utf8')
     end,
   },
