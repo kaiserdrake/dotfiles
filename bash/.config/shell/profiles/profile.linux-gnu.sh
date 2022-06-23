@@ -54,27 +54,22 @@ case $HOSTN in
     muspelheim)
         export PRIMARY_WORKSPACE=$HOME/WORKSPACE
         export FILESTORE_PATH=$HOME/.filestore
-
-        export DOCKER_USEROPTIONS="--user $(id -u ${USER}):$(id -g ${USER}) \
-            -v /tmp/.X11-unix:/tmp/.X11-unix \
-            -v /etc/passwd:/etc/passwd:ro \
-            -v /etc/shadow:/etc/shadow:ro \
-            -v /etc/group:/etc/group:ro \
-            "
         ;;
     *)
         # default for unknown clients
         export PRIMARY_WORKSPACE=$HOME/WORKSPACE
         export FILESTORE_PATH=$HOME/.filestore
-
-        export DOCKER_USEROPTIONS="--user ${USER}"
         ;;
 esac
 
 # Docker run default option - mandatory configuration items for all images.
-export DOCKER_USEROPTIONS="$DOCKER_USEROPTIONS \
-    -v $HOME:/home/${USER} \
+export DOCKER_USEROPTIONS="--user $(id -u ${USER}):$(id -g ${USER}) \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v /etc/passwd:/etc/passwd:ro \
+    -v /etc/shadow:/etc/shadow:ro \
+    -v /etc/group:/etc/group:ro \
     "
+
 export DOCKER_DEFOPTIONS="--rm -it \
     --privileged \
     --network host \
