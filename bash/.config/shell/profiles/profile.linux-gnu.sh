@@ -49,22 +49,25 @@ case $HOSTN in
         alias vim='nvim'                              # use neovim
         alias vimdiff='nvim -d'                       # use neovim also for vimdiff
 
+        # fallthrough
+        ;&
+    muspelheim)
+        export PRIMARY_WORKSPACE=$HOME/WORKSPACE
+        export FILESTORE_PATH=$HOME/.filestore
+
         export DOCKER_USEROPTIONS="--user $(id -u ${USER}):$(id -g ${USER}) \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
             -v /etc/passwd:/etc/passwd:ro \
             -v /etc/shadow:/etc/shadow:ro \
             -v /etc/group:/etc/group:ro \
             "
-                    # fallthrough
-        ;&
-    muspelheim)
-        export PRIMARY_WORKSPACE=$HOME/WORKSPACE
-        export FILESTORE_PATH=$HOME/.filestore
         ;;
     *)
         # default for unknown clients
         export PRIMARY_WORKSPACE=$HOME/WORKSPACE
         export FILESTORE_PATH=$HOME/.filestore
+
+        export DOCKER_USEROPTIONS="--user ${USER}"
         ;;
 esac
 
