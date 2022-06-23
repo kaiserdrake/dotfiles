@@ -48,7 +48,14 @@ case $HOSTN in
     midgard)
         alias vim='nvim'                              # use neovim
         alias vimdiff='nvim -d'                       # use neovim also for vimdiff
-        # fallthrough
+
+        export DOCKER_USEROPTIONS="--user $(id -u ${USER}):$(id -g ${USER}) \
+            -v /tmp/.X11-unix:/tmp/.X11-unix \
+            -v /etc/passwd:/etc/passwd:ro \
+            -v /etc/shadow:/etc/shadow:ro \
+            -v /etc/group:/etc/group:ro \
+            "
+                    # fallthrough
         ;&
     muspelheim)
         export PRIMARY_WORKSPACE=$HOME/WORKSPACE
@@ -62,13 +69,7 @@ case $HOSTN in
 esac
 
 # Docker run default option - mandatory configuration items for all images.
-# This variable is placed in host specific profile due to the dependency
-# on PRIMARY_WORKSPACE environment variable.
-export DOCKER_USEROPTIONS="--user $(id -u ${USER}):$(id -g ${USER}) \
-    -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v /etc/passwd:/etc/passwd:ro \
-    -v /etc/shadow:/etc/shadow:ro \
-    -v /etc/group:/etc/group:ro \
+export DOCKER_USEROPTIONS="$DOCKER_USEROPTIONS \
     -v $HOME:/home/${USER} \
     "
 export DOCKER_DEFOPTIONS="--rm -it \
