@@ -34,7 +34,7 @@ zshtheme_host() {
                 IMAGE_DETAILS=`dirname ${DOCK_IMAGE_NAME}`
                 IMAGE_DETAILS=`basename ${IMAGE_DETAILS}`
                 if [ "$IMAGE_DETAILS" = "." ]; then
-                    IMAGE_DETAILS = ""
+                    IMAGE_DETAILS=""
                 else
                     IMAGE_DETAILS+="/"
                 fi

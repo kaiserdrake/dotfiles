@@ -38,3 +38,5 @@ autoload -U bashcompinit && bashcompinit
 
 # Set prompt
 source $ZSHCFGDIR/prompt.zsh-theme
+
+alias luamake=$HOME/.lua/sumneko_lua/3rd/luamake/luamake

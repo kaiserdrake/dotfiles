@@ -68,6 +68,7 @@ export DOCKER_USEROPTIONS="--user $(id -u ${USER}):$(id -g ${USER}) \
     -v /etc/passwd:/etc/passwd:ro \
     -v /etc/shadow:/etc/shadow:ro \
     -v /etc/group:/etc/group:ro \
+    -v $HOME:/home/${USER} \
     "
 
 export DOCKER_DEFOPTIONS="--rm -it \
