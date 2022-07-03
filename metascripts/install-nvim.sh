@@ -2,7 +2,6 @@
 # requires version >= 5.0
 
 packageList=(
-    neovim
     universal-ctags
     clangd
     python3-pip
@@ -22,12 +21,20 @@ npmModules=(
     yarn
 )
 
+download()
+{
+    # Download neovim via appimage
+    echo "Download neovim appimage..."
+    mkdir -p ~/.bin
+    # release: v0.7.2
+    NVIM_URL=https://github.com/neovim/neovim/releases/download/v0.7.2/nvim.appimage
+    wget $NVIM_URL -P ~/.bin --quiet
+    chmod u+x ~/.bin/nvim.appimage
+}
+
 install()
 {
-    # Add neovim PPA
-    sudo add-apt-repository -y ppa:neovim-ppa/unstable
-    sudo apt-get update
-
+    download
     for i in "${packageList[@]}"; do
         echo "Installing '$i'..."
         sudo apt-get install --yes $i > /dev/null
@@ -58,7 +65,7 @@ install()
     # Install plugins
     ( cd ~/.config/nvim; git checkout main; git pull; )
     ln -nfs ~/.dotfiles/artifacts/nvim-lua/custom ~/.config/nvim/lua/custom
-    nvim -c "autocmd User PackerComplete quitall" -c "PackerSync"
+    ~/.bin/nvim.appimage -c "autocmd User PackerComplete quitall" -c "PackerSync"
 }
 
 uninstall()
@@ -79,6 +86,8 @@ uninstall()
 
 if [ "$1" = "uninstall" ]; then
     uninstall
+elif [ "$1" = "download" ]; then
+    download
 else
     install
 fi

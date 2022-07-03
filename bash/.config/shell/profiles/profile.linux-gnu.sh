@@ -46,6 +46,7 @@ case $HOSTN in
         # fallthrough
         ;&
     midgard)
+        alias nvim="~/.bin/nvim.appimage"             # nvim from appimage
         alias vim='nvim'                              # use neovim
         alias vimdiff='nvim -d'                       # use neovim also for vimdiff
 

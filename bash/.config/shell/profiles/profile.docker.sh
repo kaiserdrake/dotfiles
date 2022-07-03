@@ -22,6 +22,7 @@ export EDITOR="$VISUAL"
 # -----------------------------------------------------------------------------
 alias ls='ls --color=always'           # file listing
 alias ssh='TERM=xterm-256color ssh'    # ssh to use xterm
+alias nvim='~/.bin/nvim.appimage'      # alis neovim appimage
 alias vim='nvim'                       # use neovim
 
 # When using Docker Desktop, containers within WSL2 are not able to access
