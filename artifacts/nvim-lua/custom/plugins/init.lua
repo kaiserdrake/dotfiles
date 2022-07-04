@@ -12,9 +12,6 @@ return {
     end,
   },
   ["nvim-orgmode/orgmode"] = {
-    module = "orgmode",
-    ft = "org",
-    after = "nvim-treesitter",
     config = function()
       require("orgmode").setup {
         org_agenda_files = {'~/.filestore/orgs/*'},
@@ -25,6 +22,14 @@ return {
         }
       }
       require('orgmode').setup_ts_grammar()
+      require'nvim-treesitter.configs'.setup {
+        highlight = {
+          enable = true,
+          disable = {'org'}, -- Remove this to use TS highlighter for some of the highlights (Experimental)
+          additional_vim_regex_highlighting = {'org'}, -- Required since TS highlighter doesn't support all syntax features (conceal)
+        },
+        ensure_installed = {'org'}, -- Or run :TSUpdate org
+      }
       vim.cmd('language en_US.utf8')
     end,
   },
