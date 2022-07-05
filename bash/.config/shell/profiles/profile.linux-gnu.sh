@@ -72,7 +72,7 @@ export DOCKER_USEROPTIONS="--user $(id -u ${USER}):$(id -g ${USER}) \
     -v $HOME:/home/${USER} \
     "
 
-export DOCKER_DEFOPTIONS="--rm -it \
+export DOCKER_DEFOPTIONS="-it \
     --privileged \
     --network host \
     -e DISPLAY=${DISPLAY} \

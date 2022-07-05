@@ -159,3 +159,24 @@ function docker-exec(){
     fi
     ${DRYRUN} eval docker exec -it $CONTAINERHASH $DOCKER_DEFCOMMAND
 }
+
+# docker attach
+function docker-attach(){
+    unset CONTAINERHASH
+    # Identify container hash through selection from the list of containers
+    # returned by 'docker container ls' command.
+    if [ -z "$1" ]; then
+        CONTAINERHASH=`docker container list | awk '{if(NR>1)print}'| fzf | awk '{printf "%s\n",$1}'`
+    else
+        CONTAINERHASH=`docker container list | awk '{if(NR>1)print}'| fzf -q $1 -1 -0 | awk '{printf "%s\n",$1}'`
+    fi
+
+    # Container search results to empty IMAGENAME, user probably pressed
+    # <Esc> during the selection.
+    # In such case, use the value initially provided by the user.
+    if [ -z "$CONTAINERHASH" ]; then
+        # revert value to original argument
+        CONTAINERHASH=$1
+    fi
+    ${DRYRUN} eval docker attach $CONTAINERHASH
+}

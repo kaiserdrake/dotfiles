@@ -15,7 +15,6 @@ M.treesitter = {
     "bash",
     "lua",
   },
-  sync_install = true,
 }
 
 M.nvimtree = {
