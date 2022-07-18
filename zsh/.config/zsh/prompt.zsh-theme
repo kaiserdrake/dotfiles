@@ -46,7 +46,8 @@ zshtheme_host() {
                 IMAGE_DETAILS="docker"
             fi
             archplat="$IMAGE_DETAILS"
-            echo "$me%{$reset_color%}#%F{$ZSHTHEME_COLORS_HOST_DOCKER}$archplat%f%{$reset_color%}:"
+            continfo=$(basename $(cat /proc/1/cpuset) | head -c 8)
+            echo "$me%{$reset_color%}#%F{$ZSHTHEME_COLORS_HOST_DOCKER}$archplat:$continfo%f%{$reset_color%}:"
         else
             echo "$me%{$reset_color%}:"
         fi
