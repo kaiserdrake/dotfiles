@@ -15,3 +15,8 @@ if within_docker; then
 elif [ -f ~/.config/shell/profiles/profile.$OSTYPE.sh ]; then
     . ~/.config/shell/profiles/profile.$OSTYPE.sh
 fi
+
+# override with local profile
+if [ -f ~/.profile.local ]; then
+    . ~/.profile.local
+fi
