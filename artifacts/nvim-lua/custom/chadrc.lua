@@ -6,10 +6,6 @@ local override = require "custom.plugins.override"
 M.plugins = {
 
   options = {
-    lspconfig = {
-      setup_lspconf = "custom.plugins.lspconfig",
-    },
-
     statusline = {
       separator_style = "round"
     },
