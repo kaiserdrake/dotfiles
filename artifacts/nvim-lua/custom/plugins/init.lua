@@ -1,4 +1,7 @@
 return {
+  ["folke/which-key.nvim"] = {
+    disable = false
+  },
   ["nvim-telescope/telescope-file-browser.nvim"] = {
     after = "telescope.nvim",
     config = function()
