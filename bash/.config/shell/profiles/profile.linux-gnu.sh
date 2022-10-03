@@ -64,11 +64,8 @@ case $HOSTN in
 esac
 
 # Docker run default option - mandatory configuration items for all images.
-export DOCKER_USEROPTIONS="--user $(id -u ${USER}):$(id -g ${USER}) \
+export DOCKER_USEROPTIONS=" \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v /etc/passwd:/etc/passwd:ro \
-    -v /etc/shadow:/etc/shadow:ro \
-    -v /etc/group:/etc/group:ro \
     -v $HOME:/home/${USER} \
     "
 

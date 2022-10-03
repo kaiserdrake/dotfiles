@@ -128,6 +128,10 @@ function docker-run(){
 
     # Append run configuration from docker_mapping.md and default.
     DOCKOPTS=$(echo "$DOCKOPTS $DOCKER_DEFOPTIONS $DOCKER_USEROPTIONS" | tr -s " ")
+    if [ -z "$COMMANDS" ]; then
+        COMMANDS=$(echo "$DOCKER_DEFCOMMAND")
+    fi
+
     if [ ! -z "$DOCKHOST" ]; then
         # do not use docker generated hostname
         DOCKOPTS=$(echo "$DOCKOPTS -h $DOCKHOST -e DOCK_IMAGE_NAME=$IMAGENAME")
