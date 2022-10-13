@@ -184,3 +184,26 @@ function docker-attach(){
     fi
     ${DRYRUN} eval docker attach $CONTAINERHASH
 }
+
+# docker create custom environment
+function docker-devenv(){
+    unset IMAGENAME BUILD_LABEL BASE_TAG TAG_APPEND USER_CREATE
+    # Fetch target docker image to customize
+    IMAGENAME=$(docker image list | awk '{if(NR>1)print}'| fzf --prompt="Base Image:" -0)
+    BUILD_LABEL=$(echo $IMAGENAME | awk '{print $1}')
+    BASE_TAG=$(echo $IMAGENAME | awk '{print $2}')
+    echo "Base Image: ${BUILD_LABEL}":"${BASE_TAG}"
+    read -k TAG_APPEND?"Prepend user to tag? [y/N]? " && echo
+    [[ "${(U)TAG_APPEND}" == "Y" ]] && RESTAG=${USER}-${BASE_TAG} || RESTAG=${BASE_TAG}
+    read -k USER_CREATE?"Create new user? [y/N]? " && echo
+    [[ "${(U)USER_CREATE}" == "Y" ]] && read -s DEV_ENV_PWD\?"Password: "|| echo "Skipping new user creation..."
+    ${DRYRUN} DOCKER_BUILDKIT=1 docker build \
+    --build-arg DEV_ENV_USR=${USER} \
+    --build-arg DEV_ENV_PWD=${DEV_ENV_PWD} \
+    --build-arg FROMIMAGE=${BUILD_LABEL} \
+    --build-arg TAG=${BASE_TAG} \
+    --build-arg USER_CREATE=${(U)USER_CREATE} \
+    -f ${FILESTORE_PATH}/dockerfiles/Dockerfile.devenv \
+    --ssh default -t ${BUILD_LABEL}:${RESTAG} .
+    unset DEV_ENV_PWD
+}
