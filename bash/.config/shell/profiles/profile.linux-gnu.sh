@@ -74,6 +74,7 @@ export DOCKER_DEFOPTIONS="-it \
     --network host \
     -e DISPLAY=${DISPLAY} \
     -e TERM=xterm-256color \
+    -e TZ=Asia/Tokyo \
     -v /mnt:/mnt \
     -v /var/lib/lxc:/var/lib/lxc \
     $DOCKER_HOSTOPTIONS

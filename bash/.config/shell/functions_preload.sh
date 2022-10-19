@@ -197,7 +197,7 @@ function docker-devenv(){
     [[ "${(U)TAG_APPEND}" == "Y" ]] && RESTAG=${USER}-${BASE_TAG} || RESTAG=${BASE_TAG}
     read -k USER_CREATE?"Create new user? [y/N]? " && echo
     [[ "${(U)USER_CREATE}" == "Y" ]] && read -s DEV_ENV_PWD\?"Password: "|| echo "Skipping new user creation..."
-    ${DRYRUN} DOCKER_BUILDKIT=1 docker build \
+    ${DRYRUN} eval DOCKER_BUILDKIT=1 docker build \
     --build-arg DEV_ENV_USR=${USER} \
     --build-arg DEV_ENV_PWD=${DEV_ENV_PWD} \
     --build-arg FROMIMAGE=${BUILD_LABEL} \

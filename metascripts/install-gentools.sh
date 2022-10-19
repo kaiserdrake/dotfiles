@@ -5,6 +5,7 @@ packageList=(
     xclip
     fzf
     ripgrep
+    picocom
     build-essential
     curl
     bash-completion
