@@ -200,6 +200,8 @@ function docker-devenv(){
     ${DRYRUN} eval DOCKER_BUILDKIT=1 docker build \
     --build-arg DEV_ENV_USR=${USER} \
     --build-arg DEV_ENV_PWD=${DEV_ENV_PWD} \
+    --build-arg DEV_ENV_UID=${UID} \
+    --build-arg DEV_ENV_GID=${GID} \
     --build-arg FROMIMAGE=${BUILD_LABEL} \
     --build-arg TAG=${BASE_TAG} \
     --build-arg USER_CREATE=${(U)USER_CREATE} \
