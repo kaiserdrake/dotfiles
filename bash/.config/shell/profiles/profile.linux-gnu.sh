@@ -76,6 +76,7 @@ export DOCKER_DEFOPTIONS="-it \
     -e TERM=xterm-256color \
     -e TZ=Asia/Tokyo \
     -v /mnt:/mnt \
+    -v /media/${USER}:/media/${USER} \
     -v /var/lib/lxc:/var/lib/lxc \
     $DOCKER_HOSTOPTIONS
     "
