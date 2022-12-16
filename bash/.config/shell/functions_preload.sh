@@ -206,6 +206,7 @@ function docker-devenv(){
     --build-arg TAG=${BASE_TAG} \
     --build-arg USER_CREATE=${(U)USER_CREATE} \
     -f ${FILESTORE_PATH}/dockerfiles/Dockerfile.devenv \
+    --network host \
     --ssh default -t ${BUILD_LABEL}:${RESTAG} .
     unset DEV_ENV_PWD
 }
