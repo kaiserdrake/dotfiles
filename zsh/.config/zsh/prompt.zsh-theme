@@ -46,7 +46,8 @@ zshtheme_host() {
                 IMAGE_DETAILS="docker"
             fi
             archplat="$IMAGE_DETAILS"
-            continfo=$(basename $(cat /proc/1/cpuset) | head -c 8)
+            # continfo=$(basename $(cat /proc/1/cpuset) | head -c 8)
+            continfo=$(cat /proc/self/mountinfo | grep "/docker/containers/" | head -1 | awk '{print $4}' | sed 's/\/var\/lib\/docker\/containers\///g' | sed 's/\/resolv.conf//g' | head -c 8)
             echo "$me%{$reset_color%}#%F{$ZSHTHEME_COLORS_HOST_DOCKER}$archplat:$continfo%f%{$reset_color%}:"
         else
             echo "$me%{$reset_color%}:"
