@@ -1,3 +1,4 @@
 [submodule "nvim/.config/nvim"]
 	path = nvim/.config/nvim
 	url = git@github.com:NvChad/NvChad.git
+  branch = v2.0
