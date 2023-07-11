@@ -63,9 +63,11 @@ install()
     popd > /dev/null
 
     # Install plugins
-    ( cd ~/.config/nvim; git checkout main; git pull; )
+    rm -rf ~/.config/nvim
+    rm -rf ~/.local/share/nvim
+    git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
     ln -nfs ~/.dotfiles/artifacts/nvim-lua/custom ~/.config/nvim/lua/custom
-    ~/.bin/nvim.appimage -c "autocmd User PackerComplete quitall" -c "PackerSync"
+    ~/.bin/nvim.appimage
 }
 
 uninstall()
