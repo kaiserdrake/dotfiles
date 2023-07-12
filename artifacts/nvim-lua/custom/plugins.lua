@@ -109,7 +109,9 @@ return {
   {
     "nvim-telescope/telescope-file-browser.nvim",
     lazy = false,
-    after = "telescope.nvim",
+    dependencies = {
+      "telescope.nvim"
+    },
     config = function()
       require("telescope").setup {
         extensions = {
@@ -150,7 +152,9 @@ return {
   {
     "ahmedkhalf/project.nvim",
     lazy = false,
-    after = "telescope.nvim",
+    dependencies = {
+      "telescope.nvim"
+    },
     config = function()
       require("project_nvim").setup {
         detection_methods = { 'lsp', 'pattern'},
@@ -164,11 +168,6 @@ return {
 
   {
     "kshenoy/vim-signature",
-    lazy = false,
-  },
-
-  {
-    "editorconfig/editorconfig-vim",
     lazy = false,
   },
 }

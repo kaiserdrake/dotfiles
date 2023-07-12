@@ -3,7 +3,7 @@ local M = {}
 M.plugins = "custom.plugins"
 
 M.ui = {
-  theme = "vscode_dark",
+  theme = "github_dark",
   hl_override = {
     Comment = { italic = true },
   },

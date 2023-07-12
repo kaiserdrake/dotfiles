@@ -5,6 +5,7 @@ packageList=(
     xclip
     fzf
     ripgrep
+    fd-find
     picocom
     build-essential
     curl
