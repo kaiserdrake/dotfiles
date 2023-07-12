@@ -15,7 +15,6 @@ M.treesitter = {
     "bash",
     "lua",
     "dockerfile",
-    "org",
   },
 }
 
