@@ -1,23 +1,6 @@
 local M = {}
 
-local userPlugins = require "custom.plugins"
-local override = require "custom.plugins.override"
-
-M.plugins = {
-
-  options = {
-    statusline = {
-      separator_style = "round"
-    },
-  },
-
-  override = {
-    ["kyazdani42/nvim-tree.lua"] = override.nvimtree,
-    ["nvim-treesitter/nvim-treesitter"] = override.treesitter,
-  },
-
-  user = userPlugins,
-}
+M.plugins = "custom.plugins"
 
 M.ui = {
   theme = "onedark",

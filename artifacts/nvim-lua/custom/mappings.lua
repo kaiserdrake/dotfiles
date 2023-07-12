@@ -1,5 +1,15 @@
 local M = {}
 
+-- General mappings
+M.general = {
+  n = {
+    [";"] = { ":", "command mode", opts = { nowait = true } },
+  },
+  i = {
+    ["jk"] = { "<ESC>", "escape insert mode" },
+  },
+}
+
 -- Telescope
 M.telescope = {
   n = {
@@ -12,6 +22,19 @@ M.telescope = {
     ["<C-x>b"] = {"<cmd> Telescope buffers<CR>", "  buffers"},
     ["<C-x>f"] = {"<cmd> Telescope find_files find_command=rg,--hidden,--files,--follow<CR>", "  files"},
   }
+}
+
+-- nvterm
+M.nvterm = {
+  n = {
+    ["<leader>gc"] = {
+      function()
+        require("nvterm.terminal").send("clear && g++ -o out " .. vim.fn.expand "%" .. " && ./out", "vertical")
+      end,
+
+      "compile & run a cpp file",
+    },
+  },
 }
 
 return M
