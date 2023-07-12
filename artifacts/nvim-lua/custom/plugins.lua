@@ -4,23 +4,6 @@ return {
 
   ----------------------------------------- default plugins ------------------------------------------
   {
-    "hrsh7th/nvim-cmp",
-    opts = {
-      completion = {
-          completeopt = "menu,menuone,noselect"
-      },
-      sources = {
-        -- trigger_characters is for unocss lsp
-        { name = "nvim_lsp", trigger_characters = { "-" } },
-        { name = "luasnip" },
-        { name = "buffer" },
-        { name = "nvim_lua" },
-        { name = "path" },
-      },
-    },
-  },
-
-  {
     "neovim/nvim-lspconfig",
     dependencies = {
       {

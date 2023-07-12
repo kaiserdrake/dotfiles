@@ -32,7 +32,7 @@ M.nvterm = {
         require("nvterm.terminal").send("clear && g++ -o out " .. vim.fn.expand "%" .. " && ./out", "vertical")
       end,
 
-      "compile & run a cpp file",
+      "Compile (g++) current buffer",
     },
   },
 }
@@ -57,8 +57,8 @@ M.gitsigns = {
 -- lspconfig
 M.lspconfig = {
   n = {
-    ["]d"] = {function() vim.diagnostic.goto_next() end, "ﰚ next hunk"},
-    ["[d"] = {function() vim.diagnostic.goto_prev() end, "ﰜ prev hunk"},
+    ["]d"] = {function() vim.diagnostic.goto_next() end, "  next hunk"},
+    ["[d"] = {function() vim.diagnostic.goto_prev() end, "  prev hunk"},
 
     ["<leader>l"] = {"+LspConfig"},
     ["<leader>la"] = {function() vim.lsp.buf.code_action() end, "  code action"},

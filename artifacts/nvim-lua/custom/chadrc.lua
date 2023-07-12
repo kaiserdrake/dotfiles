@@ -7,6 +7,12 @@ M.ui = {
   hl_override = {
     Comment = { italic = true },
   },
+  statusline = {
+    theme = "vscode_colored"
+  },
+  cheatsheet = {
+    theme = "simple"
+  },
 }
 
 M.mappings = require "custom.mappings"
