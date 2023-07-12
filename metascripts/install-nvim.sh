@@ -4,7 +4,7 @@
 packageList=(
     universal-ctags
     clangd
-    python3.10-venv
+    python3-venv
     python3-pip
     npm
     ninja-build
