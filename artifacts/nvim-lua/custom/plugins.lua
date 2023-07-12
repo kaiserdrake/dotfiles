@@ -6,6 +6,9 @@ return {
   {
     "hrsh7th/nvim-cmp",
     opts = {
+      completion = {
+          completeopt = "menu,menuone,noselect"
+      },
       sources = {
         -- trigger_characters is for unocss lsp
         { name = "nvim_lsp", trigger_characters = { "-" } },
