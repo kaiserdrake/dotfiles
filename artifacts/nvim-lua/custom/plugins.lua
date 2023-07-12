@@ -105,6 +105,7 @@ return {
 
   {
     "nvim-telescope/telescope-file-browser.nvim",
+    lazy = false,
     after = "telescope.nvim",
     config = function()
       require("telescope").setup {
@@ -120,6 +121,7 @@ return {
 
   {
    "nvim-orgmode/orgmode",
+    lazy = false,
     config = function()
       require("orgmode").setup {
         org_agenda_files = {'~/.filestore/orgs/*'},
@@ -144,6 +146,7 @@ return {
 
   {
     "ahmedkhalf/project.nvim",
+    lazy = false,
     after = "telescope.nvim",
     config = function()
       require("project_nvim").setup {
@@ -157,10 +160,12 @@ return {
   },
 
   {
-    "kshenoy/vim-signature"
+    "kshenoy/vim-signature",
+    lazy = false,
   },
 
   {
-    "editorconfig/editorconfig-vim"
+    "editorconfig/editorconfig-vim",
+    lazy = false,
   },
 }
