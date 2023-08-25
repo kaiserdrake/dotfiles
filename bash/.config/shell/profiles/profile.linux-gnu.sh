@@ -36,7 +36,6 @@ alias pbpaste="xclip -selection clipboard -o"         # get from clipboard
 HOSTN=`echo $HOSTNAME | awk '{print tolower($0)}'`
 case $HOSTN in
     alfheim)
-        export DOCKER_HOSTOPTIONS="-h $HOSTN"
         # fallthrough
         ;&
     niflheim)
@@ -55,11 +54,13 @@ case $HOSTN in
     muspelheim)
         export PRIMARY_WORKSPACE=$HOME/WORKSPACE
         export FILESTORE_PATH=$HOME/.filestore
+        export DOCKER_HOSTOPTIONS="-h $HOSTN --network host"
         ;;
     *)
         # default for unknown clients
         export PRIMARY_WORKSPACE=$HOME/WORKSPACE
         export FILESTORE_PATH=$HOME/.filestore
+        export DOCKER_HOSTOPTIONS="-h $HOSTN --network host"
         ;;
 esac
 
@@ -71,14 +72,12 @@ export DOCKER_USEROPTIONS=" \
 
 export DOCKER_DEFOPTIONS="-it \
     --privileged \
-    --network host \
     -e DISPLAY=${DISPLAY} \
     -e TERM=xterm-256color \
     -e TZ=Asia/Tokyo \
     -v /mnt:/mnt \
     -v /media/${USER}:/media/${USER} \
-    -v /var/lib/lxc:/var/lib/lxc \
-    $DOCKER_HOSTOPTIONS
+    -v /var/lib/lxc:/var/lib/lxc
     "
 
 export DOCKER_DEFCOMMAND="/bin/zsh"
