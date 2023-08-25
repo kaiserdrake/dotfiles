@@ -129,10 +129,14 @@ function docker-run(){
 
     if [ "$NETHOST" = "0" ]; then
         # do not use HOSTOPTIONS
-        DOCKOPTS=$(echo "$DOCKOPTS -h $DOCKHOST -e DOCK_IMAGE_NAME=$IMAGENAME")
+        if [ -n "$DOCKHOST" ]; then
+            DOCKOPTS=$(echo "$DOCKOPTS -h $DOCKHOST -e DOCK_IMAGE_NAME=$IMAGENAME")
+        else
+            DOCKOPTS=$(echo "$DOCKOPTS -e DOCK_IMAGE_NAME=$IMAGENAME")
+        fi
     else
         # set DOCK_IMAGE_NAME (used in PS1 identifier) same as image name
-        DOCKOPTS=$(echo "$DOCKER_HOSTOPTIONS $DOCKOPTS -h $DOCKHOST -e DOCK_IMAGE_NAME=$IMAGENAME")
+        DOCKOPTS=$(echo "$DOCKER_HOSTOPTIONS $DOCKOPTS -e DOCK_IMAGE_NAME=$IMAGENAME")
     fi
 
     DOCKOPTS=$(echo "$DOCKER_OPTIONS $DOCKOPTS -w `pwd` $EXTRAOPTS")
