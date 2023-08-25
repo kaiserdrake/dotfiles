@@ -103,47 +103,36 @@ function docker-run(){
         IMAGENAME=$1
     fi
 
-    # Fetch run command configuration through the docker_mapping.md file.
-    COMFILE="$FILESTORE_PATH/orgs/docker_mapping.org"
-    if [ -f "$COMFILE" ]; then
-        if [ -z "$IMAGENAME" ]; then
-            ABODE=`get-stored-command-lines $COMFILE | fzf --prompt=Pattern: --header "HOSTNAME | IMAGE | OPTIONS | COMMAND" -1 -0`
-        else
-            ABODE=`get-stored-command-lines $COMFILE | grep $IMAGENAME | fzf --prompt=Pattern: --header "HOSTNAME | IMAGE | OPTIONS | COMMAND" -1 -0`
-        fi
+    # Fetch run command configuration through the docker_context.org file.
+    COMFILE="$FILESTORE_PATH/orgs/docker_contexts.org"
+    if [ -f "$COMFILE" ] && [ -n "$CTX" ]; then
+        ABODE=`get-stored-command-lines $COMFILE | grep $CTX | fzf --prompt=Context: --header "CTXID | NETHOST | OPTIONS | COMMAND" -1 -0`
     fi
-
     # Found a corresponding configuration, tokenize it and set to approriate variables.
-    if [ ! -z "$ABODE" ]; then
+    if [ -n "$ABODE" ]; then
         ABODE=$(echo $ABODE | tr -s " ")
         OLDIFS=$IFS
         IFS='|'
         tokens=($ABODE)
         IFS=$OLDIFS
         DOCKHOST=$(echo ${tokens[0]} | tr -s " ")
-        IMAGENAME=$(echo ${tokens[1]} | tr -s " ")
+        NETHOST=$(echo ${tokens[1]} | tr -s " ")
         DOCKOPTS=${tokens[2]}
         COMMANDS=${tokens[3]}
     fi
 
     # Append run configuration from docker_mapping.md and default.
-    DOCKOPTS=$(echo "$DOCKOPTS $DOCKER_DEFOPTIONS $DOCKER_USEROPTIONS" | tr -s " ")
+    DOCKOPTS=$(echo "$DOCKER_DEFOPTIONS $DOCKER_USEROPTIONS $DOCKOPTS" | tr -s " ")
     if [ -z "$COMMANDS" ]; then
         COMMANDS=$(echo "$DOCKER_DEFCOMMAND")
     fi
 
-    if [ ! -z "$DOCKHOST" ]; then
-        # do not use docker generated hostname
+    if [ "$NETHOST" = "0" ]; then
+        # do not use HOSTOPTIONS
         DOCKOPTS=$(echo "$DOCKOPTS -h $DOCKHOST -e DOCK_IMAGE_NAME=$IMAGENAME")
     else
-        if [ "$NETHOST" = "0" ]; then
-            # do not use HOSTOPTIONS
-            DOCKOPTS=$(echo "$DOCKOPTS -e DOCK_IMAGE_NAME=$IMAGENAME")
-        else
-            # set DOCK_IMAGE_NAME (used in PS1 identifier) same as image name
-            DOCKOPTS=$(echo "$DOCKER_HOSTOPTIONS $DOCKOPTS -e DOCK_IMAGE_NAME=$IMAGENAME")
-        fi
-
+        # set DOCK_IMAGE_NAME (used in PS1 identifier) same as image name
+        DOCKOPTS=$(echo "$DOCKER_HOSTOPTIONS $DOCKOPTS -h $DOCKHOST -e DOCK_IMAGE_NAME=$IMAGENAME")
     fi
 
     DOCKOPTS=$(echo "$DOCKER_OPTIONS $DOCKOPTS -w `pwd` $EXTRAOPTS")
