@@ -34,7 +34,11 @@ indent_size = 4
 indent_style = space
 indent_size = 2
 
-[*.{xml,yaml,arxml,json}]
+[*.xml]
+indent_style = tab
+indent_size = 2
+
+[*.{yaml,arxml,json}]
 indent_style = space
 indent_size = 2
 
