@@ -34,6 +34,10 @@ indent_size = 4
 indent_style = space
 indent_size = 2
 
+[*.{xml,yaml,arxml,json}]
+indent_style = space
+indent_size = 2
+
 [*.org]
 indent_style = space
 indent_size = 4
