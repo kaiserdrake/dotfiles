@@ -115,7 +115,7 @@ return {
         org_agenda_files = {'~/.filestore/orgs/*'},
         org_default_notes_file = '~/.filestore/orgs/notes.org',
         org_agenda_templates = {
-          t = { description = 'Task', template = '* TODO %?\n  - %u', target = '~/.filestore/orgs/todo.org' },
+          t = { description = 'Task', template = '* TODO %?\n  - %u', target = '~/.filestore/orgs/notes.org' },
           n = { description = 'Note', template = '\n*** %<%Y-%m-%d> %<%A>\n**** %U\n\n%?', target = '~/sync/org/notes.org' },
         }
       }
