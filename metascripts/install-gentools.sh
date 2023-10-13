@@ -10,6 +10,7 @@ packageList=(
     build-essential
     curl
     bash-completion
+    libfuse2
 )
 
 install()
