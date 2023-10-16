@@ -71,6 +71,6 @@ else
     preconfigure
     sh $SRCLOC/install-gentools.sh
     load_symlink
-    sh $SRCLOC/install-nvim.sh
     sh $SRCLOC/install-zsh.sh
+    # sh $SRCLOC/install-nvim.sh
 fi
