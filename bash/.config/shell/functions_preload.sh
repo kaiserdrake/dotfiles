@@ -164,27 +164,6 @@ function docker-exec(){
     ${DRYRUN} eval docker exec -it $CONTAINERHASH $DOCKER_DEFCOMMAND
 }
 
-# docker attach
-function docker-attach(){
-    unset CONTAINERHASH
-    # Identify container hash through selection from the list of containers
-    # returned by 'docker container ls' command.
-    if [ -z "$1" ]; then
-        CONTAINERHASH=`docker container list | awk '{if(NR>1)print}'| fzf | awk '{printf "%s\n",$1}'`
-    else
-        CONTAINERHASH=`docker container list | awk '{if(NR>1)print}'| fzf -q $1 -1 -0 | awk '{printf "%s\n",$1}'`
-    fi
-
-    # Container search results to empty IMAGENAME, user probably pressed
-    # <Esc> during the selection.
-    # In such case, use the value initially provided by the user.
-    if [ -z "$CONTAINERHASH" ]; then
-        # revert value to original argument
-        CONTAINERHASH=$1
-    fi
-    ${DRYRUN} eval docker attach $CONTAINERHASH
-}
-
 # docker create custom environment
 function docker-devenv(){
     unset IMAGENAME BUILD_LABEL BASE_TAG TAG_APPEND USER_CREATE
@@ -209,4 +188,38 @@ function docker-devenv(){
     --network host \
     --ssh default -t ${BUILD_LABEL}:${RESTAG} .
     unset DEV_ENV_PWD
+}
+
+# docker attach
+function docker-image-command(){
+    unset IMAGENAME IAMGE_LABEL IMAGE_TAG
+    # Fetch target docker image to customize
+    if [ -z "$2" ]; then
+        IMAGENAME=$(docker image list | awk '{if(NR>1)print}'| fzf --prompt="Image:" -0)
+    else
+        IMAGENAME=$(docker image list | awk '{if(NR>1)print}'| fzf --prompt="Image:" -q $2 -0)
+    fi
+
+    if [ -n "$IMAGENAME" ]; then
+        IMAGE_LABEL=$(echo "$IMAGENAME" | awk '{print $1}')
+        IMAGE_TAG=$(echo "$IMAGENAME" | awk '{print $2}')
+        ${DRYRUN} eval docker "$1" "$IMAGE_LABEL":"$IMAGE_TAG"
+    fi
+}
+
+# docker command alias
+function dockercl(){
+    if [ -n "$1" ]; then
+        if [ "$1" = "devenv" ]; then
+            docker-devenv "$2"
+        elif [ "$1" = "run" ]; then
+            docker-run "$2"
+        elif [ "$1" = "exec" ]; then
+            docker-exec "$2"
+        elif [ "$1" = "attach" ]; then
+            docker-attach "$2"
+        else
+            docker-image-command "$@"
+        fi;
+    fi;
 }
