@@ -16,6 +16,7 @@ M.treesitter = {
     "lua",
     "dockerfile",
     "xml",
+    "yaml",
     "yang"
   },
 }
