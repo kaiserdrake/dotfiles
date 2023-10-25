@@ -44,9 +44,6 @@ case $HOSTN in
     vanaheim)
         # fallthrough
         ;&
-    muspelheim)
-        # fallthrough
-        ;&
     midgard)
         alias nvim="~/.bin/nvim.appimage"             # nvim from appimage
         alias vim='nvim'                              # use neovim
@@ -55,6 +52,15 @@ case $HOSTN in
         export PRIMARY_WORKSPACE=$HOME/WORKSPACE
         export FILESTORE_PATH=$HOME/.filestore
         export DOCKER_HOSTOPTIONS="-h $HOSTN --network host"
+        ;;
+    muspelheim)
+        alias nvim="~/.bin/nvim.appimage"             # nvim from appimage
+        alias vim='nvim'                              # use neovim
+        alias vimdiff='nvim -d'                       # use neovim also for vimdiff
+
+        export PRIMARY_WORKSPACE=$HOME/WORKSPACE
+        export FILESTORE_PATH=$HOME/.filestore
+        export DOCKER_HOSTOPTIONS="-h $HOSTN --network host --cpus=6"
         ;;
     *)
         # default for unknown clients
