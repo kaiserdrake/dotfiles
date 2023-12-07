@@ -11,6 +11,7 @@ Manual installation procedure:
 ```
 git clone https://github.com/kaiserdrake/dotfiles.git .dotfiles
 sh .dotfiles/metascripts/bootstrap.sh
+sh .dotfiles/metascripts/bootstrap.sh nvim
 ```
 
 ## How to uninstall

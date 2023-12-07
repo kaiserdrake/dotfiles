@@ -67,10 +67,11 @@ elif [ "$1" = "unsymlink" ]; then
     unload_symlink
 elif [ "$1" = "symlink" ]; then
     load_symlink
+elif [ "$1" = "nvim" ]; then
+    sh $SRCLOC/install-nvim.sh
 else
     preconfigure
     sh $SRCLOC/install-gentools.sh
     load_symlink
     sh $SRCLOC/install-zsh.sh
-    # sh $SRCLOC/install-nvim.sh
 fi

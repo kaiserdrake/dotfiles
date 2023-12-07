@@ -31,4 +31,5 @@ if [ "$1" = "uninstall" ]; then
     uninstall
 else
     install
+    zsh
 fi

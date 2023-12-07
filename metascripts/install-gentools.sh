@@ -11,6 +11,7 @@ packageList=(
     curl
     bash-completion
     libfuse2
+    nfs-common
 )
 
 install()
