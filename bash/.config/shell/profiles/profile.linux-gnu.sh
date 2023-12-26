@@ -44,6 +44,9 @@ case $HOSTN in
     vanaheim)
         # fallthrough
         ;&
+    midgard-pve)
+        # fallthrough
+        ;&
     midgard)
         alias nvim="~/.bin/nvim.appimage"             # nvim from appimage
         alias vim='nvim'                              # use neovim
