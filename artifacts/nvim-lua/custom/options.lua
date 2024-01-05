@@ -29,6 +29,8 @@ local function load_options()
     listchars = "tab:» ,nbsp:+,trail:·,extends:→,precedes:←";
 
     swapfile = true;
+
+    shell = "/usr/bin/zsh";
   }
 
   local bw_local  = {
