@@ -37,10 +37,11 @@ M.nvimtree = {
     enable = true,
     update_cwd = true
   },
+
   view = {
     adaptive_size = false,
-    side = "right",
-    width = 32,
+    side = "left",
+    width = 24,
   },
 
   renderer = {
