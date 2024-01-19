@@ -20,7 +20,7 @@ M.ui = {
         text = (current_line == 1 and "Top") or text
         text = (current_line == total_line and "Bot") or text
 
-        return vim.o.columns > 80 and ("%#StText# Lp " .. text .. ", Col %c  ") or (text .. " ")
+        return vim.o.columns > 80 and ("%#StText#  " .. text .. ", Col %c  ") or ("%#StText# " .. text .. " ")
       end)()
     end,
   },
