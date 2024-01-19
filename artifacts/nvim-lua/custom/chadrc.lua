@@ -16,12 +16,11 @@ M.ui = {
         local current_line = fn.line(".", vim.g.statusline_winid)
         local total_line = fn.line("$", vim.g.statusline_winid)
         local text = math.modf((current_line / total_line) * 100) .. tostring "%%"
-        text = string.format("%4s", text)
 
         text = (current_line == 1 and "Top") or text
         text = (current_line == total_line and "Bot") or text
 
-        return vim.o.columns > 80 and ("%#StText# Ln " .. text .. ", Col %c  ") or (text .. " ")
+        return vim.o.columns > 80 and ("%#StText# Lp " .. text .. ", Col %c  ") or (text .. " ")
       end)()
     end,
   },
