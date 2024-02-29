@@ -11,9 +11,7 @@ ZSHTHEME_COLORS_VIMTERM=red
 ZSHTHEME_COLORS_CURRENT_DIR=blue
 ZSHTHEME_COLORS_RETURN_STATUS_TRUE=yellow
 ZSHTHEME_COLORS_RETURN_STATUS_FALSE=red
-ZSHTHEME_COLORS_GIT_STATUS_DEFAULT=green
-ZSHTHEME_COLORS_GIT_STATUS_STAGED=red
-ZSHTHEME_COLORS_GIT_STATUS_UNSTAGED=yellow
+ZSHTHEME_COLORS_GIT_INFO=yellow
 ZSHTHEME_COLORS_GIT_PROMPT_SHA=green
 ZSHTHEME_COLORS_BG_JOBS=yellow
 
@@ -68,18 +66,7 @@ zshtheme_return_status() {
 # Git status
 zshtheme_git_status() {
     local message=""
-    local message_color="%F{$ZSHTHEME_COLORS_GIT_STATUS_DEFAULT}"
-
-    # https://git-scm.com/docs/git-status#_short_format
-    local staged=$(git status --porcelain 2>/dev/null | grep -e "^[MADRCU]")
-    local unstaged=$(git status --porcelain 2>/dev/null | grep -e "^[MADRCU? ][MADRCU?]")
-
-    if [[ -n ${staged} ]]; then
-        message_color="%F{$ZSHTHEME_COLORS_GIT_STATUS_STAGED}"
-    elif [[ -n ${unstaged} ]]; then
-        message_color="%F{$ZSHTHEME_COLORS_GIT_STATUS_UNSTAGED}"
-    fi
-
+    local message_color="%F{$ZSHTHEME_COLORS_GIT_INFO}"
     local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
     if [[ -n ${branch} ]]; then
       message+="${message_color} (${branch})%f"
