@@ -29,7 +29,7 @@ load_symlink()
         # loop through all directories
         if [[ -d "$f" && ! -L "$f" ]]; then
             # skip metascripts
-            if [[ "$f" = "metascripts" || "$f" = "artifacts" ]]; then
+            if [[ "$f" = "metascripts" || "$f" = "not_linked_dir" ]]; then
                 continue
             fi
             echo "Linking $f..."

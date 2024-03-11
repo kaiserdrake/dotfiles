@@ -27,8 +27,8 @@ download()
     # Download neovim via appimage
     echo "Download neovim appimage..."
     mkdir -p ~/.bin
-    # release: v0.9.1
-    NVIM_URL=https://github.com/neovim/neovim/releases/download/v0.9.1/nvim.appimage
+    # release: v0.9.5
+    NVIM_URL=https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
     wget $NVIM_URL -P ~/.bin --quiet
     chmod u+x ~/.bin/nvim.appimage
 }
@@ -64,10 +64,7 @@ install()
     popd > /dev/null
 
     # Install plugins
-    rm -rf ~/.config/nvim
     rm -rf ~/.local/share/nvim
-    git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-    ln -nfs ~/.dotfiles/artifacts/nvim-lua/custom ~/.config/nvim/lua/custom
     ~/.bin/nvim.appimage
 }
 

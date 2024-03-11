@@ -1,3 +1,5 @@
+require "nvchad.options"
+
 -- Set nvim options outside of chadrc
 -- Currently it is troublesome to memorize which option is included and not
 -- included in core.utils.config.options, it is highliy likely that overlap
