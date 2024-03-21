@@ -2,7 +2,7 @@ local M = {}
 local fn = vim.fn
 
 M.ui = {
-  --theme = "onedark",
+  --theme = "github_dark",
   theme = "github_dark",
   hl_override = {
     Comment = { italic = true },
