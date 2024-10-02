@@ -1,7 +1,7 @@
 local M = {}
 local fn = vim.fn
 
-M.ui = {
+M.base46 = {
   --theme = "github_dark",
   theme = "github_dark",
   hl_override = {
@@ -25,17 +25,6 @@ M.ui = {
   },
   cheatsheet = {
     theme = "simple"
-  },
-}
-
-M.lazy_nvim = {
-  performance = {
-    rtp = {
-      disabled_plugins = vim.tbl_filter(function(plug)
-        return not vim.tbl_contains({ "editorconfig" }, plug)
-      end,
-      require("nvchad.configs.lazy_nvim").performance.rtp.disabled_plugins),
-    },
   },
 }
 
