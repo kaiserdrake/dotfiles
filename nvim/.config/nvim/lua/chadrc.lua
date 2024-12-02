@@ -2,7 +2,6 @@ local M = {}
 local fn = vim.fn
 
 M.base46 = {
-  --theme = "github_dark",
   theme = "github_dark",
   hl_override = {
     Comment = { italic = true },
@@ -24,7 +23,8 @@ M.base46 = {
     end,
   },
   cheatsheet = {
-    theme = "simple"
+    theme = "grid",
+    excluded_groups = { "terminal (t)", "autopairs", "Nvim", "Opens" },
   },
 }
 

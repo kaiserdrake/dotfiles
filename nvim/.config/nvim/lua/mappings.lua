@@ -18,18 +18,16 @@ map({ "i", "n" }, "<C-x>f", ":Telescope find_files find_command=rg,--hidden,--fi
 
 
 -- Gitsigns
-map("n", "]g", ":Gitsigns next_hunk<CR>", { desc = " next hunk"})
-map("n", "[g", ":Gitsigns prev_hunk<CR>", { desc = " prev hunk"})
-map("n", "<leader>gs", ":Gitsigns stage_hunk<CR>", { desc = "  stage hunk"})
-map("n", "<leader>gu", ":Gitsigns undu_stage_hunk<CR>", { desc = "  undo stage hunk"})
-map("n", "<leader>gv", ":Gitsigns preview_hunk<CR>", { desc = "  preview hunk"})
-map("n", "<leader>gr", ":Gitsigns reset_hunk<CR>", { desc = "  reset hunk"})
-map("n", "<leader>gb", ":Gitsigns blame_line<CR>", { desc = "  blame line"})
-map("n", "<leader>gB", ":Gitsigns toggle_current_line_blame<CR>", { desc = "⏼  toggle line blame"})
-map("n", "<leader>gT", ":Gitsigns toggle_signs<CR>", { desc = "⏼  toggle signs"})
+map("n", "]g", ":Gitsigns next_hunk<CR>", { desc = "next hunk"})
+map("n", "[g", ":Gitsigns prev_hunk<CR>", { desc = "prev hunk"})
+map("n", "<leader>gs", ":Gitsigns stage_hunk<CR>", { desc = "stage hunk"})
+map("n", "<leader>gu", ":Gitsigns undu_stage_hunk<CR>", { desc = "undo stage hunk"})
+map("n", "<leader>gv", ":Gitsigns preview_hunk<CR>", { desc = "preview hunk"})
+map("n", "<leader>gr", ":Gitsigns reset_hunk<CR>", { desc = "reset hunk"})
+map("n", "<leader>gb", ":Gitsigns blame_line<CR>", { desc = "blame line"})
+map("n", "<leader>gB", ":Gitsigns toggle_current_line_blame<CR>", { desc = "toggle line blame"})
+map("n", "<leader>gT", ":Gitsigns toggle_signs<CR>", { desc = "toggle signs"})
 
 -- lspconfig
-map("n", "]d", function() vim.diagnostic.goto_next() end, { desc = "  next hunk"})
-map("n", "[d", function() vim.diagnostic.goto_prev() end, { desc = "  prev hunk"})
-map("n", "<leader>la", function() vim.lsp.buf.code_action() end, { desc = "  code action"})
-map("n", "<leader>lo", function() vim.lsp.buf.open_float() end, { desc = "  floating diagnostic"})
+map("n", "]d", function() vim.diagnostic.goto_next() end, { desc = "next hunk"})
+map("n", "[d", function() vim.diagnostic.goto_prev() end, { desc = "prev hunk"})
