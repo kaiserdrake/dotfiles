@@ -110,17 +110,8 @@ return {
   {
     "nvim-orgmode/orgmode",
     lazy = false,
-    commit = "4f9448c", -- use old version to avoid CR map issue
+    -- commit = "4f9448c", -- use old version to avoid CR map issue
     config = function()
-      require('orgmode').setup_ts_grammar()
-      require'nvim-treesitter.configs'.setup {
-        highlight = {
-          enable = true,
-          -- disable = {'org'}, -- Remove this to use TS highlighter for some of the highlights (Experimental)
-          additional_vim_regex_highlighting = {'org'}, -- Required since TS highlighter doesn't support all syntax features (conceal)
-        },
-        ensure_installed = {'org'}, -- Or run :TSUpdate org
-      }
       require("orgmode").setup {
         org_agenda_files = {'~/.filestore/orgs/*'},
         org_default_notes_file = '~/.filestore/orgs/notes.org',
