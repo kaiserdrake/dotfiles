@@ -40,7 +40,11 @@ function get-code-size(){
 function do-command(){
     unset MY_FIND_COMMAND
     if [[ -z "${CTX}" ]]; then
-        COMFILE="$FILESTORE_PATH/orgs/commands.org"
+        if [[ -z "${DOCOFILE}" ]]; then
+            COMFILE="$FILESTORE_PATH/orgs/commands.org"
+        else
+            COMFILE=$DOCOFILE
+        fi
     else
         COMFILE="$HOME/WORKSPACE/${CTX}/DEVNOTES.org"
     fi
