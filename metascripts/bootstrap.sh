@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # dotfiles boostrap
 SRCLOC=`dirname $0`
 
@@ -59,19 +61,19 @@ unload_symlink()
 if [ "$1" = "uninstall" ]; then
     preconfigure
     unalias rm mv vim 2>dev/null
-    sh $SRCLOC/install-zsh.sh uninstall
-    sh $SRCLOC/install-nvim.sh uninstall
+    $SRCLOC/install-zsh.sh uninstall
+    $SRCLOC/install-nvim.sh uninstall
     unload_symlink
-    sh $SRCLOC/install-gentools.sh uninstall
+    $SRCLOC/install-gentools.sh uninstall
 elif [ "$1" = "unsymlink" ]; then
     unload_symlink
 elif [ "$1" = "symlink" ]; then
     load_symlink
 elif [ "$1" = "nvim" ]; then
-    sh $SRCLOC/install-nvim.sh
+    $SRCLOC/install-nvim.sh
 else
     preconfigure
-    sh $SRCLOC/install-gentools.sh
+    $SRCLOC/install-gentools.sh
     load_symlink
-    sh $SRCLOC/install-zsh.sh
+    $SRCLOC/install-zsh.sh
 fi

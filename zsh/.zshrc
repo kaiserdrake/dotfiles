@@ -32,6 +32,7 @@ antigen apply
 # Load common shell configurations.
 # Since the configurations were written for sh/bash, run in emulation.
 [[ -e ~/.config/shell/profile.sh ]] && emulate sh -c 'source ~/.config/shell/profile.sh'
+[[ -e ~/.bash_aliases ]] && emulate sh -c 'source ~/.bash_aliases'
 
 autoload -U compinit && compinit -d $ZSHLCFGDIR/zcompdump
 autoload -U bashcompinit && bashcompinit

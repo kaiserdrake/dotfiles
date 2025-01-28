@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # neovim installation
 # requires version >= 5.0
 
