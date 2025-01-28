@@ -43,7 +43,7 @@ function do-command(){
         if [[ -z "${DOCOFILE}" ]]; then
             COMFILE="$FILESTORE_PATH/orgs/commands.org"
         else
-            COMFILE=$DOCOFILE
+            COMFILE="$DOCOFILE"
         fi
     else
         COMFILE="$HOME/WORKSPACE/${CTX}/DEVNOTES.org"
