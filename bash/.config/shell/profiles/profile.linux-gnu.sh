@@ -22,6 +22,7 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 # Set editor to vim (bye emacs)
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export GIT_EDITOR=vi
 # -----------------------------------------------------------------------------
 # Aliases
 # -----------------------------------------------------------------------------
