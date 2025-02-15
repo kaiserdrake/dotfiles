@@ -23,6 +23,10 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export GIT_EDITOR=vi
+
+# node workaround to avoid broken IPv6 networks on npm install
+export NODE_OPTIONS=--dns-result-order=ipv4first
+
 # -----------------------------------------------------------------------------
 # Aliases
 # -----------------------------------------------------------------------------
@@ -36,19 +40,16 @@ alias pbpaste="xclip -selection clipboard -o"         # get from clipboard
 # subtle changes  (e.g. PRIMARY_WORKSPACE location difference).
 HOSTN=`echo $HOSTNAME | awk '{print tolower($0)}'`
 case $HOSTN in
-    alfheim)
+    alfheim*)
         # fallthrough
         ;&
-    niflheim)
+    niflheim*)
         # fallthrough
         ;&
-    vanaheim)
+    vanaheim*)
         # fallthrough
         ;&
-    midgard-pve)
-        # fallthrough
-        ;&
-    midgard)
+    midgard*)
         alias nvim="~/.bin/nvim.appimage"             # nvim from appimage
         alias vim='nvim'                              # use neovim
         alias vimdiff='nvim -d'                       # use neovim also for vimdiff
@@ -57,7 +58,7 @@ case $HOSTN in
         export FILESTORE_PATH=$HOME/.filestore
         export DOCKER_HOSTOPTIONS="-h $HOSTN --network host"
         ;;
-    muspelheim)
+    muspelheim*)
         alias nvim="~/.bin/nvim.appimage"             # nvim from appimage
         alias vim='nvim'                              # use neovim
         alias vimdiff='nvim -d'                       # use neovim also for vimdiff

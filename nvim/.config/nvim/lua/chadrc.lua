@@ -28,4 +28,6 @@ M.base46 = {
   },
 }
 
+M.lsp = {signature = false} -- signature is handled by noice
+
 return M

@@ -14,6 +14,7 @@ packageList=(
     bash-completion
     libfuse2
     nfs-common
+    luarocks
 )
 
 install()
