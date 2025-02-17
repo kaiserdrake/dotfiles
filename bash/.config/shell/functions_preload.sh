@@ -7,6 +7,19 @@ function within_docker() {
     [[ ! -z "${DOCK_IMAGE_NAME}" ]] || (awk -F/ '$2 == "docker"' /proc/self/cgroup | read dummy)
 }
 
+# Prompt to press any key except ESC
+function prompt_anykey_else_esc() {
+    local key
+    echo -n "Press any key to continue..."
+    read -k1 key # Read a single keypress
+
+    # Check if the key is ESC (ASCII 27)
+    if [[ $key == $'\e' ]]; then
+        return -1
+    fi
+    return 0
+}
+
 # Command list generator using 'history' as source.
 # It truncates the first 7 characters in each line.
 # Thus adding timestamp via HISTTIMEFORMAT in the history entry requires
@@ -53,6 +66,12 @@ function do-command(){
     else
         MY_FIND_COMMAND=`(get-history-lines && get-stored-command-lines $COMFILE) | sort -u | fzf -q "$1" -1 -0`
     fi
+    # Append arguments pass to the function to this function,
+    # first shift the arguments list to skip first argument
+    shift
+    for arg in "$@"; do
+        MY_FIND_COMMAND="$MY_FIND_COMMAND $arg"
+    done
     # Replace all positional parameters in found command with the parameters
     # passed to this function
     args=(`echo ${ARGS}`)
@@ -60,17 +79,15 @@ function do-command(){
         pattern="\$"$(($i+1))
         MY_FIND_COMMAND=${MY_FIND_COMMAND/$pattern/${args[$i]}}
     done
+
     if [[ ! -z "$MY_FIND_COMMAND" ]]; then
         if [[ -z $DRYRUN ]]; then
             echo "---------------------------------------------------------------------"
             echo $MY_FIND_COMMAND
             echo "---------------------------------------------------------------------"
-            if [[ -z "$ZSH_VERSION" ]]; then
-                read -p "Press any key to continue"
-            else
-                echo "Press any key to continue"; read -k1 -s
+            if prompt_anykey_else_esc; then
+                eval $MY_FIND_COMMAND
             fi
-            eval $MY_FIND_COMMAND
         else
             ${DRYRUN} $MY_FIND_COMMAND
         fi

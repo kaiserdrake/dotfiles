@@ -36,6 +36,6 @@ map("n", "[d", function() vim.diagnostic.goto_prev() end, { desc = "prev hunk"})
 map("n", "<C-h>", ":TmuxNavigateLeft<CR>", { desc = "switch window left" })
 map("n", "<C-l>", ":TmuxNavigateRight<CR>", { desc = "switch window right" })
 map("n", "<C-j>", ":TmuxNavigateDown<CR>", { desc = "switch window down" })
-map("n", "<C-k>", ":TmuxNvaigateUp<CR>", { desc = "switch window up" })
+map("n", "<C-k>", ":TmuxNavigateUp<CR>", { desc = "switch window up" })
 map("n", "<C-\\>", ":TmuxNavigatePrevious<CR>", { desc = "switch window left" })
 
