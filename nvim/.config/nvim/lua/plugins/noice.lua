@@ -6,7 +6,6 @@ return {
     },
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
     },
     config = function()
       require("noice").setup({
@@ -22,19 +21,19 @@ return {
           bottom_search = false, -- use a classic bottom cmdline for search
           command_palette = true, -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = true, -- enables an input dialog for inc-rename.nvim
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
           lsp_doc_border = false, -- add a border to hover docs and signature help
         },
+
         views = {
           -- Clean cmdline_popup + palette
           cmdline_popup = {
             position = {
-              row = "70%",
+              row = 32,
               col = "50%",
             },
             border = {
               style = "rounded",
-              padding = { 1, 1 },
             },
             size = {
               min_width = 60,
@@ -48,7 +47,7 @@ return {
           cmdline_popupmenu = {
             relative = "editor",
             position = {
-              row = "70%",
+              row = 35,
               col = "50%",
             },
             size = {
@@ -58,7 +57,7 @@ return {
             },
             border = {
               style = "rounded",
-              padding = { 1, 1 },
+              padding = { 0, 1 },
             },
             win_options = {
               winhighlight = { NormalFloat = "NormalFloat", FloatBorder = "NoiceCmdlinePopupBorder" },
