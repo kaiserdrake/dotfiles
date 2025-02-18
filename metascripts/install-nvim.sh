@@ -6,7 +6,8 @@
 packageList=(
     universal-ctags
     clangd
-    python3-venv
+    python3
+    python3-virtualenv
     python3-pip
     npm
     ninja-build
@@ -29,10 +30,10 @@ download()
     # Download neovim via appimage
     echo "Download neovim appimage..."
     mkdir -p ~/.bin
-    # release: v0.10.1
-    NVIM_URL=https://github.com/neovim/neovim-releases/releases/download/v0.10.1/nvim.appimage
+    # release: v0.10.4
+    NVIM_URL=https://github.com/neovim/neovim-releases/releases/download/v0.10.4/nvim-linux-x86_64.appimage
     wget $NVIM_URL -P ~/.bin --quiet
-    chmod u+x ~/.bin/nvim.appimage
+    chmod u+x ~/.bin/nvim-linux-x86_64.appimage
 }
 
 install()
@@ -42,11 +43,13 @@ install()
         echo "Installing '$i'..."
         sudo apt-get install --yes $i > /dev/null
     done
+
     # Install python3 pip modules
     for i in "${pipModules[@]}"; do
         echo "Installing '$i'..."
-        yes | pip3 install $i 2> /dev/null
+        yes | pip3 install --break-system-packages $i 2> /dev/null
     done
+
     # install npm modules
     for i in "${npmModules[@]}"; do
         echo "Installing '$i'..."
@@ -67,7 +70,7 @@ install()
 
     # Install plugins
     rm -rf ~/.local/share/nvim
-    ~/.bin/nvim.appimage
+    ~/.bin/nvim-linux-x86_64.appimage
 }
 
 uninstall()

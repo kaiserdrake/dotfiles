@@ -50,16 +50,16 @@ case $HOSTN in
         # fallthrough
         ;&
     midgard*)
-        alias nvim="~/.bin/nvim.appimage"             # nvim from appimage
-        alias vim='nvim'                              # use neovim
-        alias vimdiff='nvim -d'                       # use neovim also for vimdiff
+        alias nvim="~/.bin/nvim-linux-x86_64.appimage"  # nvim from appimage
+        alias vim='nvim'                                # use neovim
+        alias vimdiff='nvim -d'                         # use neovim also for vimdiff
 
         export PRIMARY_WORKSPACE=$HOME/WORKSPACE
         export FILESTORE_PATH=$HOME/.filestore
         export DOCKER_HOSTOPTIONS="-h $HOSTN --network host"
         ;;
     muspelheim*)
-        alias nvim="~/.bin/nvim.appimage"             # nvim from appimage
+        alias nvim="~/.bin/nvim-linux-x86_64.appimage"  # nvim from appimage
         alias vim='nvim'                              # use neovim
         alias vimdiff='nvim -d'                       # use neovim also for vimdiff
 
