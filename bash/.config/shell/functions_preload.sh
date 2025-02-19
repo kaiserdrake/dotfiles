@@ -66,6 +66,10 @@ function do-command(){
     else
         MY_FIND_COMMAND=`(get-history-lines && get-stored-command-lines $COMFILE) | sort -u | fzf -q "$1" -1 -0`
     fi
+
+    if [[ -z "$MY_FIND_COMMAND" ]]; then
+        return 0
+    fi
     # Append arguments pass to the function to this function,
     # first shift the arguments list to skip first argument
     shift
