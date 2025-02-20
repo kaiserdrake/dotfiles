@@ -15,6 +15,7 @@ packageList=(
     libfuse2
     nfs-common
     luarocks
+    zoxide
 )
 
 install()
