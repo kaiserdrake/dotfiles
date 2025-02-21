@@ -7,6 +7,7 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
 
 -- Telescope
+map("n", "<leader>ff", ":Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>", { desc = "Telescope find file"})
 map("n", "<leader>fe", ":Telescope file_browser<CR>", { desc = "Telescope file browser"})
 map("n", "<leader>fn", ":Telescope find_files find_command=rg,-uu,--files,--follow cwd="..os.getenv("FILESTORE_PATH").."/orgs<CR>", { desc = "Telescope find notes"})
 

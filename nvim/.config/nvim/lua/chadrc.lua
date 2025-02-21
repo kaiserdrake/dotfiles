@@ -26,6 +26,4 @@ M.ui = {
   },
 }
 
-M.lsp = {signature = false} -- signature is handled by noice
-
 return M

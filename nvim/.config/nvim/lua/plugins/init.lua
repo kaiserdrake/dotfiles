@@ -1,4 +1,5 @@
 return {
+  -- signature
   {
     "kshenoy/vim-signature",
     lazy = false,

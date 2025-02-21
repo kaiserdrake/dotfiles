@@ -13,7 +13,7 @@ export PATH=$PATH:~/.local/bin
 export GTAGSLABEL=ctags # default gtags tag provider
 
 # fzf/ripgrep
-export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g !.git/'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=dark
