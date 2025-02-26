@@ -64,6 +64,7 @@ if [ "$1" = "uninstall" ]; then
     $SRCLOC/install-zsh.sh uninstall
     $SRCLOC/install-nvim.sh uninstall
     unload_symlink
+    $SRCLOC/install-tmux.sh uninstall
     $SRCLOC/install-gentools.sh uninstall
 elif [ "$1" = "unsymlink" ]; then
     unload_symlink
@@ -74,6 +75,7 @@ elif [ "$1" = "nvim" ]; then
 else
     preconfigure
     $SRCLOC/install-gentools.sh
+    $SRCLOC/install-tmux.sh
     load_symlink
     $SRCLOC/install-zsh.sh
 fi

@@ -1,32 +1,21 @@
 #!/bin/bash
 
 packageList=(
-    tree
-    stow
-    xclip
-    fzf
-    ripgrep
-    fd-find
-    picocom
-    build-essential
-    curl
-    bash-completion
-    libfuse2
-    nfs-common
-    luarocks
-    zoxide
-    todotxt-cli
+    tmux
 )
 
 install()
 {
-    # Install common development tools
-    # Refrain from installing all tools natively to the host,
-    # consider creating build-environment containers
+    # Install tmux related applications and libraries
     for i in "${packageList[@]}"; do
         echo "Installing '$i'..."
         sudo apt-get install --yes $i > /dev/null
     done
+    # Install TPM
+    if [ ! -d '~/.tmux/plugins/tpm' ]; then
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    fi
+
 }
 
 uninstall()
@@ -35,6 +24,7 @@ uninstall()
         echo "Removing '$i'..."
         sudo apt-get remove --yes $i > /dev/null
     done
+    rm -rf ~/.tmux/plugins/tpm
 }
 
 if [ "$1" = "uninstall" ]; then
