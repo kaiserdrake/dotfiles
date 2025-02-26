@@ -34,6 +34,7 @@ alias ls='ls --color=always'                          # file listing
 alias ssh='TERM=xterm-256color ssh'                   # ssh to use xterm
 alias pbcopy="xclip -selection c"                     # put into clipboard
 alias pbpaste="xclip -selection clipboard -o"         # get from clipboard
+alias t='todo-txt'
 
 # Apply host specific overrides from this section.
 # This is useful when the configuration is used in multiple machines with

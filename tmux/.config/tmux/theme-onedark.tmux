@@ -81,5 +81,5 @@ else
          #[fg=$onedark_yellow, bg=$onedark_visual_grey]  $(basename $SHELL) #[fg=$onedark_black,bg=$onedark_purple,bold] #h "
 fi
 set "status-left" "#[fg=$onedark_black,bg=$onedark_green,bold] #S #{prefix_highlight}"
-set "window-status-format" "#[fg=$onedark_comment_grey,bg=$onedark_visual_grey,bold] [#I] #W "
+set "window-status-format" "#[fg=$onedark_comment_grey,bg=$onedark_visual_grey,nobold] [#I] #W "
 set "window-status-current-format" "#[fg=$onedark_white,bg=$onedark_black,nobold] [#I] #W "
