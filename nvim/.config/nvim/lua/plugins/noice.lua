@@ -32,7 +32,7 @@ return {
           -- Clean cmdline_popup + palette
           cmdline_popup = {
             position = {
-              row = 32,
+              row = 5,
               col = "50%",
             },
             border = {
@@ -50,7 +50,7 @@ return {
           cmdline_popupmenu = {
             relative = "editor",
             position = {
-              row = 35,
+              row = 8,
               col = "50%",
             },
             size = {
