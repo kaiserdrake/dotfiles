@@ -9,14 +9,13 @@ map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
 -- Telescope
 map("n", "<leader>ff", ":Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>", { desc = "Telescope find file"})
 map("n", "<leader>fe", ":Telescope file_browser<CR>", { desc = "Telescope file browser"})
-map("n", "<leader>fn", ":Telescope find_files find_command=rg,-uu,--files,--follow cwd="..os.getenv("FILESTORE_PATH").."/orgs<CR>", { desc = "Telescope find notes"})
+map("n", "<leader>fn", ":Telescope find_files find_command=rg,-uu,--files,--follow cwd="..os.getenv("FILESTORE_PATH").."/notes<CR>", { desc = "Telescope find notes"})
 
 map("n", "<leader>fW", ":Telescope grep_string<CR>", { desc = "Telescope grep string"})
 map("n", "<leader>fp", ":Telescope projects<CR>", { desc = "Telescope projects"})
 -- muscle memory fallthrough
 map({ "i", "n" }, "<C-x>b", ":Telescope buffers<CR>", { desc = "Telescope buffers"})
 map({ "i", "n" }, "<C-x>f", ":Telescope find_files find_command=rg,--hidden,--files,--follow<CR>", { desc = "Telescope files"})
-
 
 -- Gitsigns
 map("n", "]g", ":Gitsigns next_hunk<CR>", { desc = "next hunk"})
@@ -33,3 +32,9 @@ map("n", "<leader>gT", ":Gitsigns toggle_signs<CR>", { desc = "toggle signs"})
 map("n", "]d", function() vim.diagnostic.goto_next() end, { desc = "next hunk"})
 map("n", "[d", function() vim.diagnostic.goto_prev() end, { desc = "prev hunk"})
 
+-- NvimTmuxNavigate
+map("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>", { desc = "navigate left"})
+map("n", "<C-j>", ":NvimTmuxNavigateDown<CR>", { desc = "navigate down"})
+map("n", "<C-k>", ":NvimTmuxNavigateUp<CR>", { desc = "navigate up"})
+map("n", "<C-l>", ":NvimTmuxNavigateRight<CR>", { desc = "navigate right"})
+map("n", "<C-\\>", ":NvimTmuxNavigateLastActive<CR>", { desc = "navigate last active"})
