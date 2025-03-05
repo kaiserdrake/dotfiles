@@ -4,7 +4,6 @@ packageList=(
     tree
     stow
     xclip
-    fzf
     ripgrep
     fd-find
     picocom
@@ -18,7 +17,7 @@ packageList=(
     todotxt-cli
 )
 
-install()
+install_apt()
 {
     # Install common development tools
     # Refrain from installing all tools natively to the host,
@@ -27,6 +26,20 @@ install()
         echo "Installing '$i'..."
         sudo apt-get install --yes $i > /dev/null
     done
+}
+
+install_fzf()
+{
+    # Install fzf from source
+    echo "Download fzf binary release..."
+    mkdir -p ~/.bin
+    # release: v0.60.3
+    BIN_URL=https://github.com/junegunn/fzf/releases/download/v0.60.3/fzf-0.60.3-linux_amd64.tar.gz
+    wget $BIN_URL -P ~/.bin --quiet
+    tar zxvf ~/.bin/$(basename $BIN_URL) -C ~/.bin/
+    chmod u+x ~/.bin/fzf
+    rm ~/.bin/$(basename $BIN_URL)
+    sudo ln -sf ~/.bin/fzf /usr/bin/fzf
 }
 
 uninstall()
@@ -40,5 +53,6 @@ uninstall()
 if [ "$1" = "uninstall" ]; then
     uninstall
 else
-    install
+    install_apt
+    install_fzf
 fi

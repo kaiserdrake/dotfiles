@@ -1,3 +1,5 @@
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -82,7 +84,7 @@ alias ls='ls --color'
 alias c='clear'
 
 # Shell integrations
-#eval "$(fzf --zsh)"
+eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 # General configurations
