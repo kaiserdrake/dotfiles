@@ -10,12 +10,14 @@ map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
 map("n", "<leader>ff", ":Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>", { desc = "Telescope find file"})
 map("n", "<leader>fe", ":Telescope file_browser<CR>", { desc = "Telescope file browser"})
 map("n", "<leader>fn", ":Telescope find_files find_command=rg,-uu,--files,--follow cwd="..os.getenv("FILESTORE_PATH").."/notes<CR>", { desc = "Telescope find notes"})
-
 map("n", "<leader>fW", ":Telescope grep_string<CR>", { desc = "Telescope grep string"})
-map("n", "<leader>fp", ":Telescope projects<CR>", { desc = "Telescope projects"})
+map("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", { desc = "Telescope projects"})
 -- muscle memory fallthrough
-map({ "i", "n" }, "<C-x>b", ":Telescope buffers<CR>", { desc = "Telescope buffers"})
-map({ "i", "n" }, "<C-x>f", ":Telescope find_files find_command=rg,--hidden,--files,--follow<CR>", { desc = "Telescope files"})
+map("n", "<C-x>b", ":Telescope buffers<CR>", { desc = "Telescope buffers"})
+map("n", "<C-x>f", ":Telescope find_files find_command=rg,--hidden,--files,--follow<CR>", { desc = "Telescope files"})
+
+-- Oil
+map("n", "<C-x>o", ":Oil --float<CR>", { desc = "Open oil"})
 
 -- Gitsigns
 map("n", "]g", ":Gitsigns next_hunk<CR>", { desc = "next hunk"})
