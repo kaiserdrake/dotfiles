@@ -27,6 +27,8 @@ alias ssh='TERM=xterm-256color ssh'    # ssh to use xterm
 alias nvim='~/.bin/nvim-linux-x86_64.appimage'      # alis neovim appimage
 alias vim='nvim'                       # use neovim
 
+alias fzf='~/.bin/fzf'
+
 # When using Docker Desktop, containers within WSL2 are not able to access
 # to the host docker IP address as described here:https://docs.docker.com/network/
 KERNEL_RELEASE=$(cat /proc/sys/kernel/osrelease | sed -n 's/.*\( *Microsoft *\).*/\L\1/ip')

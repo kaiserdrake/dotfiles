@@ -34,6 +34,7 @@
     # =========================[ Line #1 ]=========================
     # os_icon               # os identifier
     context                 # user@hostname
+    docker_context          # personal docker context
     dir                     # current directory
     vcs                     # git status
     # =========================[ Line #2 ]=========================
@@ -86,7 +87,7 @@
     gcloud                  # google cloud cli account and project (https://cloud.google.com/)
     google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
     toolbox                 # toolbox name (https://github.com/containers/toolbox)
-    docker_context          # personal docker context
+    docker_container_context # personal docker container context
     #context                 # user@hostname
     nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
     ranger                  # ranger shell (https://github.com/ranger/ranger)
@@ -917,14 +918,25 @@
         else
             IMAGE_DETAILS="docker"
         fi
-        archplat=${IMAGE_DETAILS%%:*}
-        # continfo=$(basename $(cat /proc/1/cpuset) | head -c 8)
-        continfo=$(cat /proc/self/mountinfo | grep "/docker/containers/" | head -1 | awk '{print $4}' | sed 's/\/var\/lib\/docker\/containers\///g' | sed 's/\/resolv.conf//g' | head -c 8)
-        docker_context="$archplat:$continfo"
+        docker_context=${IMAGE_DETAILS%%:*}
     fi
 
     if [[ -n "$docker_context" ]]; then
       p10k segment -f 173 -t "$docker_context"
+    fi
+  }
+
+  function prompt_docker_container_context() {
+    local docker_container_context
+
+    if within_docker; then
+        # continfo=$(basename $(cat /proc/1/cpuset) | head -c 8)
+        continfo=$(cat /proc/self/mountinfo | grep "/docker/containers/" | head -1 | awk '{print $4}' | sed 's/\/var\/lib\/docker\/containers\///g' | sed 's/\/resolv.conf//g' | head -c 8)
+        docker_container_context="$continfo"
+    fi
+
+    if [[ -n "$docker_container_context" ]]; then
+      p10k segment -f 173 -t "$docker_container_context"
     fi
   }
 

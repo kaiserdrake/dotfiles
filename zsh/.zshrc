@@ -80,14 +80,6 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
 
-# Aliases
-alias ls='ls --color'
-alias c='clear'
-
-# Shell integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-
 # General configurations
 HOSTNAME=$(hostname)
 
@@ -95,5 +87,13 @@ HOSTNAME=$(hostname)
 # Since the configurations were written for sh/bash, run in emulation.
 [[ -e ~/.config/shell/profile.sh ]] && emulate sh -c 'source ~/.config/shell/profile.sh'
 [[ -e ~/.bash_aliases ]] && emulate sh -c 'source ~/.bash_aliases'
+
+# Aliases
+alias ls='ls --color'
+alias c='clear'
+
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
 alias luamake=$HOME/.lua/sumneko_lua/3rd/luamake/luamake
