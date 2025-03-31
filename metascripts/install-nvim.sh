@@ -30,8 +30,7 @@ download()
     # Download neovim via appimage
     echo "Download neovim appimage..."
     mkdir -p ~/.bin
-    # release: v0.10.4
-    NVIM_URL=https://github.com/neovim/neovim-releases/releases/download/v0.10.4/nvim-linux-x86_64.appimage
+    NVIM_URL=https://github.com/neovim/neovim/releases/download/v0.11.0/nvim-linux-x86_64.appimage
     wget $NVIM_URL -P ~/.bin --quiet
     chmod u+x ~/.bin/nvim-linux-x86_64.appimage
 }
