@@ -42,4 +42,7 @@ return {
       })
     end,
   },
+
+  -- nlink
+  { import = "nvchad.blink.lazyspec" },
 }

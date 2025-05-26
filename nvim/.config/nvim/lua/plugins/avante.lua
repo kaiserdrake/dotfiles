@@ -44,7 +44,7 @@ return {
   },
   opts = {
     hints = { enabled = false },
-    provider = "openai",
+    provider = "gemini",
     -- auto_suggestions_provider = "copilot", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
     behaviour = {
       auto_suggestions = false, -- Experimental stage
@@ -52,6 +52,12 @@ return {
       auto_set_keymaps = true,
       auto_apply_diff_after_generation = false,
       support_paste_from_clipboard = false,
+    },
+    gemini = {
+      -- @see https://ai.google.dev/gemini-api/docs/models/gemini
+      model = "gemini-1.5-flash",
+      temperature = 0,
+      max_tokens = 4096,
     },
     openai = {
       model = "gpt-4o",
