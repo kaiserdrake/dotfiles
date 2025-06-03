@@ -30,7 +30,7 @@ download()
     # Download neovim via appimage
     echo "Download neovim appimage..."
     mkdir -p ~/.bin
-    NVIM_URL=https://github.com/neovim/neovim/releases/download/v0.11.0/nvim-linux-x86_64.appimage
+    NVIM_URL=https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.appimage
     wget $NVIM_URL -P ~/.bin --quiet
     chmod u+x ~/.bin/nvim-linux-x86_64.appimage
 }
@@ -49,10 +49,16 @@ install()
         yes | pip3 install --break-system-packages $i 2> /dev/null
     done
 
+    # install nodejs
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    nvm install stable
     # install npm modules
     for i in "${npmModules[@]}"; do
         echo "Installing '$i'..."
-        sudo npm i -g --silent $i 2> /dev/null
+        sudo npm i -g $i 2> /dev/null
     done
 
     # install sumneko language server

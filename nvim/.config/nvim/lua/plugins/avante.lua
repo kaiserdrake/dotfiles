@@ -44,7 +44,7 @@ return {
   },
   opts = {
     hints = { enabled = false },
-    provider = "gemini",
+    provider = "copilot",
     -- auto_suggestions_provider = "copilot", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
     behaviour = {
       auto_suggestions = false, -- Experimental stage
@@ -52,6 +52,13 @@ return {
       auto_set_keymaps = true,
       auto_apply_diff_after_generation = false,
       support_paste_from_clipboard = false,
+    },
+    copilot = {
+      endpoint = "https://api.githubcopilot.com",
+      model = "claude-3.7-sonnet",
+      timeout = 30000,
+      temperature = 0,
+      max_tokens = 4096,
     },
     gemini = {
       -- @see https://ai.google.dev/gemini-api/docs/models/gemini

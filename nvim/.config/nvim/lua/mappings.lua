@@ -40,3 +40,6 @@ map("n", "<C-j>", ":NvimTmuxNavigateDown<CR>", { desc = "navigate down"})
 map("n", "<C-k>", ":NvimTmuxNavigateUp<CR>", { desc = "navigate up"})
 map("n", "<C-l>", ":NvimTmuxNavigateRight<CR>", { desc = "navigate right"})
 map("n", "<C-\\>", ":NvimTmuxNavigateLastActive<CR>", { desc = "navigate last active"})
+
+-- Copilot
+map('i', '<C-l>', function () vim.fn.feedkeys(vim.fn['copilot#Accept'](), '') end, { desc = 'Copilot Accept', noremap = true, silent = true })

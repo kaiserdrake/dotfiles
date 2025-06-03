@@ -3,6 +3,7 @@
 packageList=(
     tree
     stow
+    xauth
     xclip
     ripgrep
     fd-find

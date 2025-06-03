@@ -43,6 +43,6 @@ return {
     end,
   },
 
-  -- nlink
+  -- blink
   { import = "nvchad.blink.lazyspec" },
 }

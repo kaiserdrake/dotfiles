@@ -35,6 +35,7 @@ alias ssh='TERM=xterm-256color ssh'                   # ssh to use xterm
 alias pbcopy="xclip -selection c"                     # put into clipboard
 alias pbpaste="xclip -selection clipboard -o"         # get from clipboard
 alias t='todo-txt'
+alias npm='node --dns-result-order=ipv4first /usr/bin/npm'
 
 # Apply host specific overrides from this section.
 # This is useful when the configuration is used in multiple machines with
@@ -57,7 +58,7 @@ case $HOSTN in
 
         export PRIMARY_WORKSPACE=$HOME/WORKSPACE
         export FILESTORE_PATH=$HOME/.filestore
-        export DOCKER_HOSTOPTIONS="-h $HOSTN --network host"
+        export DOCKER_HOSTOPTIONS="-h $HOSTNAME --network host"
         ;;
     muspelheim*)
         alias nvim="~/.bin/nvim-linux-x86_64.appimage"  # nvim from appimage
@@ -66,13 +67,13 @@ case $HOSTN in
 
         export PRIMARY_WORKSPACE=$HOME/WORKSPACE
         export FILESTORE_PATH=$HOME/.filestore
-        export DOCKER_HOSTOPTIONS="-h $HOSTN --network host --cpus=6"
+        export DOCKER_HOSTOPTIONS="-h $HOSTNAME --network host --cpus=6"
         ;;
     *)
         # default for unknown clients
         export PRIMARY_WORKSPACE=$HOME/WORKSPACE
         export FILESTORE_PATH=$HOME/.filestore
-        export DOCKER_HOSTOPTIONS="-h $HOSTN --network host"
+        export DOCKER_HOSTOPTIONS="-h $HOSTNAME --network host"
         ;;
 esac
 
@@ -85,6 +86,7 @@ export DOCKER_USEROPTIONS=" \
 export DOCKER_DEFOPTIONS="-it \
     --privileged \
     -e DISPLAY=${DISPLAY} \
+    -e XAUTHORITY=$HOME/.Xauthority \
     -e TERM=xterm-256color \
     -e TZ=Asia/Tokyo \
     -v /mnt:/mnt \

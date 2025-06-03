@@ -17,8 +17,6 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-export DISPLAY=:0
-
 # -----------------------------------------------------------------------------
 # Aliases
 # -----------------------------------------------------------------------------
