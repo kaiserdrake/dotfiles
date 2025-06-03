@@ -43,3 +43,8 @@ map("n", "<C-\\>", ":NvimTmuxNavigateLastActive<CR>", { desc = "navigate last ac
 
 -- Copilot
 map('i', '<C-l>', function () vim.fn.feedkeys(vim.fn['copilot#Accept'](), '') end, { desc = 'Copilot Accept', noremap = true, silent = true })
+
+-- CodeCompanion
+map("n", "<C-x>c", ":CodeCompanionAction<CR>", { desc = "CodeCompanionAction"})
+map("n", "<C-x>cc", ":CodeCompanionChat<CR>", { desc = "CodeCompanionChat"})
+
