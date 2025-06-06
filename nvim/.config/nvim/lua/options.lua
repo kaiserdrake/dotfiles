@@ -38,6 +38,10 @@ local function load_options()
   local bw_local  = {
     colorcolumn = 80;
     concealcursor = "nvc";
+
+    foldmethod= "marker";
+    foldmarker="{{{,}}}";
+    foldenable = true;
   }
 
   for name, value in pairs(global_local) do

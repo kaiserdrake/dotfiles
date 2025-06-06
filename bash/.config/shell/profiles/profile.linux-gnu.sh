@@ -85,6 +85,7 @@ export DOCKER_USEROPTIONS=" \
 
 export DOCKER_DEFOPTIONS="-it \
     --privileged \
+    --group-add audio --device /dev/snd \
     -e DISPLAY=${DISPLAY} \
     -e XAUTHORITY=$HOME/.Xauthority \
     -e TERM=xterm-256color \

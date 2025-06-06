@@ -10,11 +10,15 @@ map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
 map("n", "<leader>ff", ":Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>", { desc = "Telescope find file"})
 map("n", "<leader>fe", ":Telescope file_browser<CR>", { desc = "Telescope file browser"})
 map("n", "<leader>fn", ":Telescope find_files find_command=rg,-uu,--files,--follow cwd="..os.getenv("FILESTORE_PATH").."/notes<CR>", { desc = "Telescope find notes"})
+map("n", "<leader>fN", ":Telescope find_files find_command=rg,-uu,--files,--follow cwd=~/Nextcloud/Notes<CR>", { desc = "Telescope find cloud notes"})
 map("n", "<leader>fW", ":Telescope grep_string<CR>", { desc = "Telescope grep string"})
 map("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", { desc = "Telescope projects"})
 -- muscle memory fallthrough
 map("n", "<C-x>b", ":Telescope buffers<CR>", { desc = "Telescope buffers"})
 map("n", "<C-x>f", ":Telescope find_files find_command=rg,--hidden,--files,--follow<CR>", { desc = "Telescope files"})
+-- scratch shortcut
+local scratch_pad = os.getenv("FILESTORE_PATH").."/notes/scratch.md"
+map("n", "<C-x>n", ":e "..scratch_pad.."<CR>", { desc = "Open scratch file"})
 
 -- Oil
 map("n", "<C-x>o", ":Oil --float<CR>", { desc = "Open oil"})
