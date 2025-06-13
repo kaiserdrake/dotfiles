@@ -11,6 +11,16 @@ return {
         chat = {
           adapter = "copilot",
           completion_provider = "blink", -- blink|cmp|coc|default
+          keymaps = {
+            close = {
+              modes = { n = "<C-c>", i = "<C-c>" },
+              index = 3,
+              callback = function()
+                require("codecompanion").toggle()
+              end,
+              description = "Toggle Chat",
+            }
+          }
         },
         inline = {
           adapter = "copilot",
