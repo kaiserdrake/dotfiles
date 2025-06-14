@@ -49,6 +49,6 @@ map("n", "<C-\\>", ":NvimTmuxNavigateLastActive<CR>", { desc = "navigate last ac
 map('i', '<C-l>', function () vim.fn.feedkeys(vim.fn['copilot#Accept'](), '') end, { desc = 'Copilot Accept', noremap = true, silent = true })
 
 -- CodeCompanion
-map("n", "<C-x>ca", ":CodeCompanionAction<CR>", { desc = "CodeCompanionAction"})
-map("n", "<C-x>c", "<cmd>lua require('codecompanion').toggle()<CR>", { desc = "CodeCompanionChat Toggle"})
+map("n", "<C-x>c", ":CodeCompanion<CR>", { desc = "CodeCompanionAction"})
+map("n", "<C-x>cc", "<cmd>lua require('codecompanion').toggle()<CR>", { desc = "CodeCompanionChat Toggle"})
 
