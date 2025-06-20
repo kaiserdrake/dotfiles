@@ -1,4 +1,12 @@
 return {
+  -- which-key (override default)
+  {
+    "folke/which-key.nvim",
+    opts = {
+      preset = "helix",
+    },
+  },
+
   -- signature
   {
     "kshenoy/vim-signature",
@@ -44,5 +52,5 @@ return {
   },
 
   -- blink
-  -- { import = "nvchad.blink.lazyspec" },
+  { import = "nvchad.blink.lazyspec" },
 }
