@@ -37,6 +37,7 @@ map("n", "<leader>gT", ":Gitsigns toggle_signs<CR>", { desc = "toggle signs"})
 -- lspconfig
 map("n", "]d", function() vim.diagnostic.goto_next() end, { desc = "next hunk"})
 map("n", "[d", function() vim.diagnostic.goto_prev() end, { desc = "prev hunk"})
+map({ "n", "i" }, "<C-x>s", function() vim.diagnostic.open_float(0, {scope='line'}) end, { desc = "Show diagnostic message"})
 
 -- NvimTmuxNavigate
 map("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>", { desc = "navigate left"})

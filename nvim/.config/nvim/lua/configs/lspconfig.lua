@@ -1,40 +1,31 @@
-
-local configs = require "nvchad.configs.lspconfig"
-local lspconfig = require "lspconfig"
+require("nvchad.configs.lspconfig").defaults()
 
 local servers = {
-  html = {},
-  cssls = {},
-  jsonls = {},
-  ts_ls = {},
-  bashls = {},
-  pyright = {
-    settings = {
-      python = {
-        analysis = {
-          autoSearchPaths = true,
-          typeCheckingMode = "basic",
-        },
-      },
-    },
-  },
-  clangd = {},
+  "html",
+  "cssls",
+  "jsonls",
+  "bashls",
+  "unocss",
+  "pylsp",
+  "clangd",
+  "lua_ls",
 }
 
-for name, opts in pairs(servers) do
-  opts.on_init = configs.on_init
-  opts.on_attach = configs.on_attach
-  opts.capabilities = configs.capabilities
+vim.lsp.enable(servers)
 
-  require("lspconfig")[name].setup(opts)
-end
+local lspconfig = require('lspconfig')
 
 -- clangd
-lspconfig.clangd.setup {
-  on_attach = configs.on_attach,
-  capabilities = configs.capabilities,
+lspconfig.clangd.setup({
   cmd = {
     "clangd",
     "--offset-encoding=utf-16",
   },
-}
+})
+
+-- Disable virtual_text because its too intrusive
+vim.diagnostic.config({
+  virtual_text = false,
+  underline = true,
+  update_in_insert = false,
+})
