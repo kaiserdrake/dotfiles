@@ -37,14 +37,9 @@ map("n", "<leader>gT", ":Gitsigns toggle_signs<CR>", { desc = "toggle signs"})
 -- lspconfig
 map("n", "]d", function() vim.diagnostic.goto_next() end, { desc = "next hunk"})
 map("n", "[d", function() vim.diagnostic.goto_prev() end, { desc = "prev hunk"})
-map({ "n", "i" }, "<C-x>s", function() vim.diagnostic.open_float(0, {scope='line'}) end, { desc = "Show diagnostic message"})
+map({ "n", "v" }, "<leader>da", ":lua vim.lsp.buf.code_action()<CR>", { desc = "LSP code action"})
+map({ "n", "i" }, "<C-k>", function() vim.diagnostic.open_float(0, {scope='line'}) end, { desc = "Show diagnostic message"})
 
--- NvimTmuxNavigate
-map("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>", { desc = "navigate left"})
-map("n", "<C-j>", ":NvimTmuxNavigateDown<CR>", { desc = "navigate down"})
-map("n", "<C-k>", ":NvimTmuxNavigateUp<CR>", { desc = "navigate up"})
-map("n", "<C-l>", ":NvimTmuxNavigateRight<CR>", { desc = "navigate right"})
-map("n", "<C-\\>", ":NvimTmuxNavigateLastActive<CR>", { desc = "navigate last active"})
 
 -- Copilot
 map('i', '<C-l>', function () vim.fn.feedkeys(vim.fn['copilot#Accept'](), '') end, { desc = 'Copilot Accept', noremap = true, silent = true })

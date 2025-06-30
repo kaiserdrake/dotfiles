@@ -51,6 +51,36 @@ return {
     end,
   },
 
+  -- Log highlighting
+  {
+    "MTDL9/vim-log-highlighting",
+    lazy = false,
+  },
+
   -- blink
   { import = "nvchad.blink.lazyspec" },
+  {
+    "giuxtaposition/blink-cmp-copilot",
+    lazy = false,
+  },
+  {
+    "Saghen/blink.cmp",
+    lazy = false,
+    opts = {
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer", "copilot" },
+        providers = {
+          copilot = {
+            name = "copilot",
+            module = "blink-cmp-copilot",
+            score_offset = 100,
+            async = true,
+          },
+        },
+      },
+      completion = {
+        ghost_text = { enabled = false },
+      },
+    },
+  },
 }

@@ -7,20 +7,18 @@ return {
       local hl = vim.api.nvim_get_hl(0, { name = 'Comment' })
       vim.api.nvim_set_hl(0, 'CopilotSuggestion', vim.tbl_extend('force', hl, { underline = true }))
       return {
-        panel = {
-          auto_refresh = true,
-          layout = {
-            position = "right",
-            ratio = 0.3,
-          },
-        },
         suggestion = {
+          enabled = not vim.g.ai_cmp,
           auto_trigger = true,
-          hide_during_completion = false,
+          hide_during_completion = vim.g.ai_cmp,
           keymap = {
+            -- accept = false, -- handled by nvim-cmp / blink.cmp
             accept = "<C-l>",
+            next = "<M-]>",
+            prev = "<M-[>",
           },
         },
+        panel = { enabled = false },
         filetypes = {
           markdown = true,
           gitcommit = true,
