@@ -40,6 +40,14 @@ map("n", "[d", function() vim.diagnostic.goto_prev() end, { desc = "prev hunk"})
 map({ "n", "v" }, "<leader>da", ":lua vim.lsp.buf.code_action()<CR>", { desc = "LSP code action"})
 map({ "n", "i" }, "<C-k>", function() vim.diagnostic.open_float(0, {scope='line'}) end, { desc = "Show diagnostic message"})
 
+-- Trouble 
+map("n", "<leader>tx", ":Trouble diagnostics toggle<CR>", { desc = "diagnostic toggle"})
+map("n", "<leader>tX", ":Trouble diagnostics toggle filter.buf=0<CR>", { desc = "buffer diagnostic toggle"})
+map("n", "<leader>ts", ":Trouble symbols toggle focus=false<CR>", { desc = "symbol list toggle"})
+map("n", "<leader>tl", ":Trouble lsp toggle focus=false win.position=right<CR>", { desc = "LSP definitions/reference toggle"})
+map("n", "<leader>tL", ":Trouble loclist toggle<CR>", { desc = "location list toggle"})
+map("n", "<leader>tQ", ":Trouble qflist toggle<CR>", { desc = "quickfix list toggle"})
+
 
 -- Copilot
 map('i', '<C-l>', function () vim.fn.feedkeys(vim.fn['copilot#Accept'](), '') end, { desc = 'Copilot Accept', noremap = true, silent = true })

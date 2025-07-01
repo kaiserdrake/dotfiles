@@ -1,10 +1,9 @@
 return {
   {
     'stevearc/oil.nvim',
-    opts = {},
-    -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
     lazy = false,
     opts = {
+      -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
       default_file_explorer = true,
       skip_confirm_for_simple_edits = true,
       view_options = {

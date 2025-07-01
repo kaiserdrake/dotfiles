@@ -13,16 +13,6 @@ local servers = {
 
 vim.lsp.enable(servers)
 
-local lspconfig = require('lspconfig')
-
--- clangd
-lspconfig.clangd.setup({
-  cmd = {
-    "clangd",
-    "--offset-encoding=utf-16",
-  },
-})
-
 -- Disable virtual_text because its too intrusive
 vim.diagnostic.config({
   virtual_text = false,
