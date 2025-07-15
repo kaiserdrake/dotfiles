@@ -13,6 +13,12 @@ return {
     lazy = false,
   },
 
+  -- fugitive
+  {
+    "tpope/vim-fugitive",
+    cmd = "Git"
+  },
+
   -- get highlight group under cursor
   {
     "nvim-treesitter/playground",

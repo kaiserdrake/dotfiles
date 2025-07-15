@@ -55,7 +55,26 @@ return {
         window = {
           width = 0.4,
         },
-
+        prompts = {
+          Align = {
+            prompt = 'Align the components of the selected code by adding whitespaces following recommended suggestion based on filetype.',
+            description = 'Align the selected code block by adding whitespaces',
+          },
+          Commit = {
+            prompt = 'Write a commit message for the change with commitizen convention.' ..
+              'Keep the title under 50 characters and wrap message at 72 characters.' ..
+              'Format as a gitcommit code block.' ..
+              'Add a commit git trailer with `Changelog; bugfix; feature; docs; chore; refactor; style; test` as needed.',
+            description = 'Write a commit entry for the change',
+            context = 'git:staged',
+          },
+          Docs = {
+            prompt = 'Please add documentation to the selected code.' ..
+              'Use the format of a code block with the language of the file.' ..
+              'Do not add documentation to self-evident code, especially where name of enumerations or variables are self-explanatory.',
+            description = 'Add documentation to the selected code.',
+          }
+        },
         mappings = {
           reset = {
             normal = '<C-b>',
