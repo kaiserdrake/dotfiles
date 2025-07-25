@@ -32,7 +32,7 @@ return {
           -- Clean cmdline_popup + palette
           cmdline_popup = {
             position = {
-              row = 15,
+              row = 24,
               col = "50%",
             },
             border = {
