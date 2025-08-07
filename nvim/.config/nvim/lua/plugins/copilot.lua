@@ -43,69 +43,71 @@ return {
     },
     build = "make tiktoken",
 
-    opts = function()
-      local user = vim.env.USER or "User"
-      user = user:sub(1, 1):upper() .. user:sub(2)
-      return {
-        model = "claude-sonnet-4",
-        agent = "copilot",
-        auto_insert_mode = true,
-        question_header = "  " .. user .. " ",
-        answer_header = "  Copilot ",
-        window = {
-          width = 0.4,
+    opts = {
+      model = "claude-sonnet-4",
+      agent = "copilot",
+      auto_insert_mode = true,
+      headers = {
+        user = '  You: ',
+        assistant = '  Copilot: ',
+        tool = '🔧 Tool: ',
+      },
+      separator = '━━',
+      window = {
+        width = 0.4,
+      },
+      prompts = {
+        Align = {
+          prompt = 'Align the components of the selected code by adding whitespaces following recommended suggestion based on filetype.',
+          description = 'Align the selected code block by adding whitespaces',
         },
-        prompts = {
-          Align = {
-            prompt = 'Align the components of the selected code by adding whitespaces following recommended suggestion based on filetype.',
-            description = 'Align the selected code block by adding whitespaces',
-          },
-          Commit = {
-            prompt = 'Write a commit message for the change with commitizen convention.' ..
-              'Keep the title under 50 characters and wrap message at 72 characters.' ..
-              'Remove the changelog category `<tag>:` from the beginning of the title line.' ..
-              'List the changes in the body of the commit message. use `-` as list indicator.' ..
-              'Format as a gitcommit code block.' ..
-              'Add a commit git trailer with `Changelog: bugfix; feature; docs; chore; refactor; style; test` as needed.',
-            description = 'Write a commit entry for the staged changes.',
-            context = 'git:staged',
-          },
-          Docs = {
-            prompt = 'Please add documentation to the selected code.' ..
-              'Use the format of a code block with the language of the file.' ..
-              'Do not add documentation to self-evident code, especially where name of enumerations or variables are self-explanatory.',
-            description = 'Add documentation to the selected code.',
-          },
-          MisraC = {
-            prompt = 'Check the code in #buffer:current for compliance with MISRA C:2012 rules.' ..
-              'If there are no violations, return "No violations found."' ..
-              'If there are any violations, list them in a code block with the language of the file group by rules.' ..
-              'Provide a brief explanation of each violation and how to fix it.' ..
-              'Use the format of a code block with the language of the file.' ..
-              'Exclude any rules that are included in the #file:.misra_c_exceptions.json.',
-            description = 'Check the selected code for compliance with MISRA C:2012 rules.',
-            context = 'buffer:current',
-          },
-          Tests = {
-            prompt = 'Write a test for the selected code.' ..
-              'Use the format of a code block with the language of the file.' ..
-              'If the code is self-evident, do not write a test.' ..
-              'When application, use cmocka for C code, and pytest for Python code.' ..
-              'If the code is a function, write a test for the function.',
-            description = 'Write a test for the selected code.',
-          },
+        Commit = {
+          prompt = 'Write a commit message for the change with commitizen-changelog convention.' ..
+            'Keep the title under 50 characters and wrap message at 72 characters.' ..
+            'Title should only contain the subject wihtout tag or category markers (e.g. `tag:` in the beginning).' ..
+            'List the changes in the body of the commit message. use `-` as list indicator.' ..
+            'Use the following categories sorted by priority: feature, bugfix, removed, security, performance, docs, other.' ..
+            'Addition in general are considered features, while cosmetic changes are considered other.' ..
+            'Format as a gitcommit code block.' ..
+            'Add a commit git trailer with `Changelog: <category>` as the last entry after a newline.',
+          description = 'Write a commit entry for the staged changes.',
+          context = 'git:staged',
         },
-        mappings = {
-          reset = {
-            normal = '<C-b>',
-            insert = '<C-b>',
-          },
-          show_diff = {
-            full_diff = true
-          },
-        }
+        Docs = {
+          prompt = 'Please add documentation to the selected code.' ..
+            'Use the format of a code block with the language of the file.' ..
+            'Do not add documentation to self-evident code, especially where name of enumerations or variables are self-explanatory.',
+          description = 'Add documentation to the selected code.',
+        },
+        MisraC = {
+          prompt = 'Check the code in #buffer:current for compliance with MISRA C:2012 rules.' ..
+            'If there are no violations, return "No violations found."' ..
+            'If there are any violations, list them in a code block with the language of the file group by rules.' ..
+            'Provide a brief explanation of each violation and how to fix it.' ..
+            'Use the format of a code block with the language of the file.' ..
+            'Exclude any rules that are included in the #file:.misra_c_exceptions.json.',
+          description = 'Check the selected code for compliance with MISRA C:2012 rules.',
+          context = 'buffer:current',
+        },
+        Tests = {
+          prompt = 'Write a test for the selected code.' ..
+            'Use the format of a code block with the language of the file.' ..
+            'If the code is self-evident, do not write a test.' ..
+            'When application, use cmocka for C code, and pytest for Python code.' ..
+            'If the code is a function, write a test for the function.',
+          description = 'Write a test for the selected code.',
+        },
+      },
+      mappings = {
+        reset = {
+          normal = '<C-b>',
+          insert = '<C-b>',
+        },
+        show_diff = {
+          full_diff = true
+        },
       }
-    end,
+    },
     keys = {
       { "<c-s>", "<CR>", ft = "copilot-chat", desc = "Submit Prompt", remap = true },
       { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },

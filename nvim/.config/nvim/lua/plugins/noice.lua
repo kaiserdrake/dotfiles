@@ -28,6 +28,13 @@ return {
           lsp_doc_border = false, -- add a border to hover docs and signature help
         },
 
+        routes = {
+          {
+            filter = { event = "msg_show", kind = "search_count" },
+            opts = { skip = true },
+          },
+        },
+
         views = {
           -- Clean cmdline_popup + palette
           cmdline_popup = {
