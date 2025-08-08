@@ -25,7 +25,7 @@ return {
           ['*'] = function()
             -- disable for files with specific names
             local fname = vim.fs.basename(vim.api.nvim_buf_get_name(0))
-            local disable_patterns = { 'env', 'conf', 'secret', 'private', 'license' }
+            local disable_patterns = { '.env', 'conf', 'secret', 'private', 'license' }
             return vim.iter(disable_patterns):all(function(pattern)
               return not string.match(fname, pattern)
             end)
@@ -44,8 +44,9 @@ return {
     build = "make tiktoken",
 
     opts = {
-      model = "claude-sonnet-4",
+      model = "gpt-4.1",
       agent = "copilot",
+      temperature = 0.1,           -- Lower = focused, higher = creative
       auto_insert_mode = true,
       headers = {
         user = '  You: ',

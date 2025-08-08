@@ -7,15 +7,17 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
 
 -- Telescope
-map("n", "<leader>ff", ":Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>", { desc = "Telescope find file"})
+map("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Telescope find file"})
 map("n", "<leader>fe", ":Telescope file_browser<CR>", { desc = "Telescope file browser"})
 map("n", "<leader>fn", ":Telescope find_files find_command=rg,-uu,--files,--follow cwd="..os.getenv("FILESTORE_PATH").."/notes<CR>", { desc = "Telescope find notes"})
 map("n", "<leader>fN", ":Telescope find_files find_command=rg,-uu,--files,--follow cwd=~/Nextcloud/Notes<CR>", { desc = "Telescope find cloud notes"})
 map("n", "<leader>fW", ":Telescope grep_string<CR>", { desc = "Telescope grep string"})
 map("n", "<leader>fp", ":lua require'telescope'.extensions.project.project{}<CR>", { desc = "Telescope projects"})
+map("n", "<leader>fm", ":Noice telescope<CR>", { desc = "Telescope messages"})
+
 -- muscle memory fallthrough
 map("n", "<C-x>b", ":Telescope buffers<CR>", { desc = "Telescope buffers"})
-map("n", "<C-x>f", ":Telescope find_files find_command=rg,--hidden,--files,--follow<CR>", { desc = "Telescope files"})
+map("n", "<C-x>f", ":Telescope find_files<CR>", { desc = "Telescope files"})
 -- scratch shortcut
 local scratch_pad = os.getenv("FILESTORE_PATH").."/notes/scratch.md"
 map("n", "<C-x>n", ":e "..scratch_pad.."<CR>", { desc = "Open scratch file"})
@@ -49,7 +51,7 @@ map("n", "<leader>tL", ":Trouble loclist toggle<CR>", { desc = "location list to
 map("n", "<leader>tQ", ":Trouble qflist toggle<CR>", { desc = "quickfix list toggle"})
 
 -- Noice
-map("n", "<leader>sh", ":NoiceHistory<CR>", { desc = "Noice messages history"})
+map("n", "<leader>sh", ":Noice telescope<CR>", { desc = "Noice messages history"})
 
 -- Copilot
 map("i", "<C-l>", function () vim.fn.feedkeys(vim.fn['copilot#Accept'](), '') end, { desc = 'Copilot Accept', noremap = true, silent = true })
