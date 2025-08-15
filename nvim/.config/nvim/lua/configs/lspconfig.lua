@@ -11,11 +11,24 @@ local servers = {
   "lua_ls",
 }
 
-vim.lsp.enable(servers)
-
 -- Disable virtual_text because its too intrusive
 vim.diagnostic.config({
   virtual_text = false,
   underline = true,
   update_in_insert = false,
 })
+
+vim.lsp.config('pylsp', {
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {'E501'},
+          maxLineLength = 100
+        }
+      }
+    }
+  }
+})
+
+vim.lsp.enable(servers)

@@ -47,7 +47,7 @@ return {
       model = "gpt-4.1",
       agent = "copilot",
       temperature = 0.1,           -- Lower = focused, higher = creative
-      auto_insert_mode = true,
+      auto_insert_mode = false,
       headers = {
         user = '  You: ',
         assistant = '  Copilot: ',
@@ -75,7 +75,7 @@ return {
           context = 'git:staged',
         },
         Docs = {
-          prompt = 'Please add documentation to the selected code.' ..
+          prompt = 'Add documentation to the selected code.' ..
             'Use the format of a code block with the language of the file.' ..
             'Do not add documentation to self-evident code, especially where name of enumerations or variables are self-explanatory.',
           description = 'Add documentation to the selected code.',
@@ -97,6 +97,14 @@ return {
             'When application, use cmocka for C code, and pytest for Python code.' ..
             'If the code is a function, write a test for the function.',
           description = 'Write a test for the selected code.',
+        },
+        Write = {
+          prompt = 'Re-write a code for the selected code or comment.' ..
+            'Use the format of a code block with the language of the file.' ..
+            'Refactor the code to be more readable and maintainable.' ..
+            'Apply modern coding practices and conventions.' ..
+            'By default, select the most recommended variation of the code.',
+          description = 'Re-write the selected code.',
         },
       },
       mappings = {
