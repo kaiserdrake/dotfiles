@@ -59,7 +59,8 @@ return {
       },
       prompts = {
         Align = {
-          prompt = 'Align the components of the selected code by adding whitespaces following recommended suggestion based on filetype.',
+          prompt = 'Align the components of the selected code by adding whitespaces ' ..
+            'following recommended suggestion based on filetype.',
           description = 'Align the selected code block by adding whitespaces',
         },
         Commit = {
@@ -76,35 +77,35 @@ return {
         },
         Docs = {
           prompt = 'Add documentation to the selected code.' ..
-            'Use the format of a code block with the language of the file.' ..
-            'Do not add documentation to self-evident code, especially where name of enumerations or variables are self-explanatory.',
+            'Use the format of a code block with the language of the file. ' ..
+            'Do not add documentation to self-evident code, especially where ' ..
+            'name of enumerations or variables are self-explanatory.',
           description = 'Add documentation to the selected code.',
         },
         MisraC = {
           prompt = 'Check the code in #buffer:current for compliance with MISRA C:2012 rules.' ..
-            'If there are no violations, return "No violations found."' ..
-            'If there are any violations, list them in a code block with the language of the file group by rules.' ..
-            'Provide a brief explanation of each violation and how to fix it.' ..
-            'Use the format of a code block with the language of the file.' ..
+            'If there are no violations, return "No violations found." ' ..
+            'If there are any violations, list them in a code block with the language of the file group by rules. ' ..
+            'Provide a brief explanation of each violation and how to fix it. ' ..
+            'Use the format of a code block with the language of the file. ' ..
             'Exclude any rules that are included in the #file:.misra_c_exceptions.json.',
           description = 'Check the selected code for compliance with MISRA C:2012 rules.',
           context = 'buffer:current',
         },
         Tests = {
-          prompt = 'Write a test for the selected code.' ..
+          prompt = 'Write a test for the selected code. ' ..
             'Use the format of a code block with the language of the file.' ..
-            'If the code is self-evident, do not write a test.' ..
-            'When application, use cmocka for C code, and pytest for Python code.' ..
+            'If the code is self-evident, do not write a test. ' ..
+            'When application, use cmocka for C code, and pytest for Python code. ' ..
             'If the code is a function, write a test for the function.',
           description = 'Write a test for the selected code.',
         },
-        Write = {
-          prompt = 'Re-write a code for the selected code or comment.' ..
-            'Use the format of a code block with the language of the file.' ..
-            'Refactor the code to be more readable and maintainable.' ..
-            'Apply modern coding practices and conventions.' ..
-            'By default, select the most recommended variation of the code.',
-          description = 'Re-write the selected code.',
+        Vibe = {
+          prompt = 'Write or re-write code following the filetype of the current ' ..
+            'buffer that is idiomatic, clear, and following best practices. ' ..
+            'Use the current selection as context, otherwise, ask the user for ' ..
+            'additional context.',
+          description = 'Vibe with the ai to write or re-write code.',
         },
       },
       mappings = {
