@@ -2,6 +2,7 @@ return {
   -- which-key (override default)
   {
     "folke/which-key.nvim",
+    event = "VeryLazy", -- fix to prevent which-key ignoring the first invocation
     opts = {
       preset = "helix",
     },
