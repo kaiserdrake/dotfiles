@@ -10,6 +10,7 @@ vim.cmd [[ autocmd Filetype orgagenda setlocal colorcolumn=0 ]]
 local augroup = vim.api.nvim_create_augroup("copilot-disable-patterns", { clear = true })
 local disable_dirs = {
     vim.fn.expand "$HOME/WORKSPACE/CONFIDENTIAL" .. "/*",
+    vim.fn.expand "$HOME/WORKSPACE/jpman" .. "/*",
     vim.fn.expand "/mnt/workspace/CONFIDENTIAL" .. "/*",
 }
 for _, pattern in ipairs(disable_dirs) do

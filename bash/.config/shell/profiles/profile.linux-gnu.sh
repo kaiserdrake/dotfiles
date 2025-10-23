@@ -85,6 +85,7 @@ export DOCKER_USEROPTIONS=" \
 
 export DOCKER_DEFOPTIONS="-it \
     --privileged \
+    --security-opt apparmor:unconfined \
     --group-add audio --device /dev/snd \
     -e DISPLAY=${DISPLAY} \
     -e XAUTHORITY=$HOME/.Xauthority \

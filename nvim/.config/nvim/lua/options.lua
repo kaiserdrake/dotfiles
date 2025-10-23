@@ -31,6 +31,7 @@ local function load_options()
     listchars = "tab:» ,nbsp:+,trail:·,extends:→,precedes:←";
 
     swapfile = true;
+    clipboard = "unnamedplus";
 
     shell = "/usr/bin/zsh";
   }

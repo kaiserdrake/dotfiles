@@ -16,7 +16,6 @@ packageList=(
     luarocks
     zoxide
     todotxt-cli
-    w3m
 )
 
 install_apt()
