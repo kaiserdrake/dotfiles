@@ -31,4 +31,19 @@ vim.lsp.config('pylsp', {
   }
 })
 
+vim.lsp.config.clangd = {
+  cmd = {
+    'clangd',
+    '--clang-tidy',
+    '--background-index',
+    '--offset-encoding=utf-8',
+  },
+  root_markers = { '.clangd', 'compile_commands.json' },
+  filetypes = { 'c', 'cpp' },
+  init_options = {
+    compilationDatabasePath = ".",
+    fallbackFlags = { "-include", "inttypes.h" },
+  },
+}
+
 vim.lsp.enable(servers)

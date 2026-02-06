@@ -54,4 +54,11 @@ map("n", "<leader>tQ", ":Trouble qflist toggle<CR>", { desc = "quickfix list tog
 map("n", "<leader>sh", ":Noice telescope<CR>", { desc = "Noice messages history"})
 
 -- Copilot
-map("i", "<C-l>", function () vim.fn.feedkeys(vim.fn['copilot#Accept'](), '') end, { desc = 'Copilot Accept', noremap = true, silent = true })
+map("i", "<C-l>", function ()
+  if vim.fn.bufname() ~= "copilot-chat" then
+    vim.fn.feedkeys(vim.fn['copilot#Accept'](), '')
+  else
+    return "<C-l>"
+  end
+end, { expr = true, desc = 'Copilot Accept', noremap = true, silent = true }
+)

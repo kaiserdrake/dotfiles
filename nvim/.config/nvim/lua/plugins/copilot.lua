@@ -40,6 +40,7 @@ return {
     dependencies = {
       -- { "zbirenbaum/copilot.vim" },
       { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+      { "nvim-mini/mini.pick" },
     },
     build = "make tiktoken",
 
