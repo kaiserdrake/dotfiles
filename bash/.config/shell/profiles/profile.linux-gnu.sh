@@ -34,7 +34,6 @@ alias ls='ls --color=always'                          # file listing
 alias ssh='TERM=xterm-256color ssh'                   # ssh to use xterm
 alias pbcopy="xclip -selection c"                     # put into clipboard
 alias pbpaste="xclip -selection clipboard -o"         # get from clipboard
-alias t='todo-txt'
 alias npm='node --dns-result-order=ipv4first /usr/bin/npm'
 
 # Apply host specific overrides from this section.

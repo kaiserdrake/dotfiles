@@ -15,7 +15,6 @@ packageList=(
     nfs-common
     luarocks
     zoxide
-    todotxt-cli
 )
 
 install_apt()
