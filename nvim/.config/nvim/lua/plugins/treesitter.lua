@@ -8,6 +8,7 @@ return {
         "html",
         "css",
         "javascript",
+        "typescript",
         "json",
         "toml",
         "markdown",

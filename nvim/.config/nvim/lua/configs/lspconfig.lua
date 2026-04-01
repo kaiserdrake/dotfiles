@@ -9,6 +9,7 @@ local servers = {
   "pylsp",
   "clangd",
   "lua_ls",
+  "ts_ls",
 }
 
 -- Disable virtual_text because its too intrusive
